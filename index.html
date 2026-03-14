@@ -24,9 +24,22 @@
 const CONFIG = {
 
   /* ── SITE ── */
-  siteName:         "Furry Freight",
+  siteName: "Furry Freight",
+
+  // Nav logo — paste the URL to your SVG file between the quotes
+  // To get the URL: upload your SVG to GitHub, click it, click "Raw", copy that URL
+  // Leave as "" to show the site name as text instead
+  navLogo:       "",
+  navLogoHeight: "36",   // height in pixels — adjust to fit your logo
+
+  // Hero logo — shown large on the homepage over the photo
+  // Can be the same SVG or a lighter/white version for contrast
+  // Leave as "" to hide it
+  heroLogo:      "",
+  heroLogoWidth: "220",  // width in pixels
+
   tagline:          "Saving shelter pets one road trip at a time.",
-  missionStatement: "Furry Freight transports at-risk shelter pets from overpopulated, under-resourced areas to our Pacific Northwest resuce partners where loving homes are waiting. A change of location changes everything.",
+  missionStatement: "Furry Freight transports at-risk shelter pets from overpopulated, under-resourced areas to our Pacific Northwest rescue partners where loving homes are waiting. A change of location changes everything.",
   founded:          "Est. 2017",
   ein:              "82-4423390",
   address:          "PO Box 93, Bend OR 97709",
@@ -100,16 +113,16 @@ const CONFIG = {
   impactCTASubline:  "Your gift keeps our wheels rolling.",
 
   /* ── SUPPORT CARDS ── */
-  donateHeadline:     "Make a Donation",
-  donateDesc:         "Every dollar goes directly to transport costs and our Spay It Forward Program. Any amount makes a difference.",
-  donateLink:         "https://furryfreight.org/donate",
+  donateHeadline: "Make a Donation",
+  donateDesc:     "Every dollar goes directly to transport costs and our Spay It Forward Program. Any amount makes a difference.",
+  donateLink:     "https://furryfreight.org/donate",
 
-  wishlistHeadline:   "Amazon Wishlist",
-  wishlistDesc:       "Ship supplies directly to our team. Crates, leashes, cleaning supplies and more. No account needed.",
-  wishlistLink:       "https://www.amazon.com/hz/wishlist/ls/1HH2KRDF6AX0U?ref_=wl_share",
+  wishlistHeadline: "Amazon Wishlist",
+  wishlistDesc:     "Ship supplies directly to our team. Crates, leashes, cleaning supplies and more. No account needed.",
+  wishlistLink:     "https://www.amazon.com/hz/wishlist/ls/1HH2KRDF6AX0U?ref_=wl_share",
 
   freeGivingHeadline: "Free Ways to Give",
-  freeGivingDesc:     "Link your Fred Meyer Shopper's Card or use Oregon BottleDrop blue bags. No cost to you!.",
+  freeGivingDesc:     "Link your Fred Meyer Shopper's Card or use Oregon BottleDrop blue bags. No cost to you!",
   freeGivingLink:     "https://furryfreight.org/help",
 
   /* ── VOLUNTEER ── */
@@ -145,8 +158,8 @@ const CONFIG = {
   ],
 
   /* ── SOCIAL LINKS ── */
-  facebookLink:   "https://facebook.com",
-  facebookHandle: "@furryfreight",
+  facebookLink:    "https://facebook.com",
+  facebookHandle:  "@furryfreight",
   instagramLink:   "https://www.instagram.com/furry.freight/",
   instagramHandle: "@furry.freight",
   tiktokLink:      "https://www.tiktok.com/@furryfreight",
@@ -169,7 +182,8 @@ const css = `
   body{font-family:'Nunito',sans-serif;background:var(--white);color:var(--dark);overflow-x:hidden;}
 
   nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;background:var(--white);border-bottom:1px solid rgba(92,51,23,.1);display:flex;align-items:center;padding:0 2.5rem;gap:2rem;}
-  .nav-logo{font-family:'Fredoka One',cursive;font-size:1.2rem;color:var(--rust);text-decoration:none;margin-right:auto;}
+  .nav-logo{font-family:'Fredoka One',cursive;font-size:1.2rem;color:var(--rust);text-decoration:none;margin-right:auto;display:flex;align-items:center;}
+  .nav-logo img{height:36px;width:auto;display:block;}
   .nav-links{list-style:none;display:flex;align-items:center;gap:.1rem;}
   .nav-links a{font-size:.85rem;font-weight:800;color:var(--muted);text-decoration:none;padding:.38rem .8rem;border-radius:5px;transition:color .2s,background .2s;}
   .nav-links a:hover,.nav-links a.active{color:var(--rust);background:var(--sand);}
@@ -192,6 +206,8 @@ const css = `
   .hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(43,26,14,.92) 0%,rgba(43,26,14,.35) 55%,transparent 100%);}
   .hero-content{position:relative;z-index:1;padding:0 5rem 5rem;max-width:720px;}
   .hero-kicker{font-size:.7rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+  .hero-logo{display:block;margin-bottom:1.5rem;}
+  .hero-logo img{display:block;}
   .hero-title{font-family:'Fredoka One',cursive;font-size:clamp(3rem,5.5vw,5.5rem);line-height:1.04;color:#fff;margin-bottom:1.4rem;}
   .hero-title em{font-style:normal;color:var(--gold);}
   .hero-actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:2.5rem;}
@@ -267,6 +283,23 @@ const css = `
   .vol-role h4{font-family:'Fredoka One',cursive;font-size:1.1rem;color:#fff;margin-bottom:.3rem;}
   .vol-role p{font-size:.83rem;line-height:1.65;color:rgba(255,255,255,.5);}
 
+  #social{background:var(--cream);}
+  .social-inner{max-width:1060px;margin:0 auto;padding:5rem 2rem;text-align:center;}
+  .social-inner .eyebrow{display:block;margin-bottom:.7rem;}
+  .social-inner h2{font-family:'Fredoka One',cursive;font-size:clamp(2rem,3vw,2.6rem);color:var(--dark);margin-bottom:.7rem;}
+  .social-inner p{font-size:.97rem;color:var(--muted);margin-bottom:3rem;}
+  .social-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:800px;margin:0 auto;}
+  .social-card{background:white;border-radius:16px;padding:2.2rem 1.5rem;border:1px solid rgba(92,51,23,.08);text-decoration:none;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column;align-items:center;gap:.75rem;}
+  .social-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(43,26,14,.12);}
+  .social-card .sc-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;}
+  .social-card .sc-icon svg{width:28px;height:28px;fill:white;}
+  .sc-ig .sc-icon{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);}
+  .sc-fb .sc-icon{background:#1877f2;}
+  .sc-tt .sc-icon{background:#010101;}
+  .social-card .sc-name{font-family:'Fredoka One',cursive;font-size:1.15rem;color:var(--dark);}
+  .social-card .sc-handle{font-size:.82rem;font-weight:800;color:var(--muted);letter-spacing:.02em;}
+  .social-card .sc-cta{font-size:.78rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--rust);margin-top:.25rem;}
+
   #newsletter{background:var(--amber);}
   .nl-inner{max-width:620px;margin:0 auto;padding:4.5rem 2rem;text-align:center;}
   .nl-inner .eyebrow{color:var(--brown);}
@@ -304,28 +337,9 @@ const css = `
   .foot-social a{width:32px;height:32px;border-radius:6px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:900;color:rgba(255,255,255,.45);text-decoration:none;transition:background .2s,color .2s;}
   .foot-social a:hover{background:var(--rust);color:#fff;}
 
-  #social{background:var(--cream);}
-  .social-inner{max-width:1060px;margin:0 auto;padding:5rem 2rem;text-align:center;}
-  .social-inner .eyebrow{display:block;margin-bottom:.7rem;}
-  .social-inner h2{font-family:'Fredoka One',cursive;font-size:clamp(2rem,3vw,2.6rem);color:var(--dark);margin-bottom:.7rem;}
-  .social-inner p{font-size:.97rem;color:var(--muted);margin-bottom:3rem;}
-  .social-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:800px;margin:0 auto;}
-  .social-card{background:white;border-radius:16px;padding:2.2rem 1.5rem;border:1px solid rgba(92,51,23,.08);text-decoration:none;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column;align-items:center;gap:.75rem;}
-  .social-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(43,26,14,.12);}
-  .social-card .sc-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;}
-  .social-card .sc-icon svg{width:28px;height:28px;fill:white;}
-  .sc-ig .sc-icon{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);}
-  .sc-fb .sc-icon{background:#1877f2;}
-  .sc-tt .sc-icon{background:#010101;}
-  .social-card .sc-name{font-family:'Fredoka One',cursive;font-size:1.15rem;color:var(--dark);}
-  .social-card .sc-handle{font-size:.82rem;font-weight:800;color:var(--muted);letter-spacing:.02em;}
-  .social-card .sc-cta{font-size:.78rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--rust);margin-top:.25rem;}
-
   @media(max-width:860px){
-    .social-cards{grid-template-columns:1fr;}
-  }
     .story-inner,.vol-header,.foot-inner{grid-template-columns:1fr;gap:2.5rem;}
-    .prog-grid,.support-cards,.vol-roles{grid-template-columns:1fr;}
+    .prog-grid,.support-cards,.vol-roles,.social-cards{grid-template-columns:1fr;}
     .mosaic{grid-template-columns:1fr 1fr;grid-template-rows:160px 160px;}
     .mosaic-item.tall{grid-row:span 1;}
     .hero-content{padding:0 2rem 4rem;}
@@ -341,7 +355,11 @@ document.title = CONFIG.siteName + ' — Shelter Transport';
 document.body.innerHTML = `
 
 <nav>
-  <a href="#home" class="nav-logo">${CONFIG.siteName}</a>
+  <a href="#home" class="nav-logo">
+    ${CONFIG.navLogo
+      ? `<img src="${CONFIG.navLogo}" height="${CONFIG.navLogoHeight}" alt="${CONFIG.siteName}">`
+      : CONFIG.siteName}
+  </a>
   <ul class="nav-links">
     <li><a href="#story">Our Story</a></li>
     <li><a href="#programs">Programs</a></li>
@@ -355,6 +373,9 @@ document.body.innerHTML = `
   <div class="hero-img" style="background-image:url('${CONFIG.heroPhoto}')"></div>
   <div class="hero-content">
     <div class="hero-kicker">501(c)(3) Nonprofit &middot; All Volunteer &middot; ${CONFIG.founded}</div>
+    ${CONFIG.heroLogo
+      ? `<div class="hero-logo"><img src="${CONFIG.heroLogo}" width="${CONFIG.heroLogoWidth}" alt="${CONFIG.siteName}"></div>`
+      : ''}
     <h1 class="hero-title">${CONFIG.tagline.replace('one road trip', '<em>one road trip</em>')}</h1>
     <div class="hero-actions">
       <a href="#support" class="btn btn-rust">Donate Now</a>
