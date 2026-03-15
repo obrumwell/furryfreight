@@ -23,7 +23,7 @@
 
   /* NAV */
   nav { position:fixed; top:0; left:0; right:0; z-index:100; height:56px; background:var(--dark); border-bottom:1px solid rgba(255,255,255,.07); display:flex; align-items:center; padding:0 2.5rem; gap:2rem; }
-  .nav-logo { font-family:'Fredoka One',cursive; font-size:1.2rem; color:var(--teal-lt); text-decoration:none; margin-right:auto; display:flex; align-items:center; }
+  .nav-logo { text-decoration:none; margin-right:auto; display:flex; align-items:center; }
   .nav-logo img { height:34px; width:auto; display:block; }
   .nav-links { list-style:none; display:flex; align-items:center; gap:.1rem; }
   .nav-links a { font-size:.85rem; font-weight:800; color:rgba(255,255,255,.55); text-decoration:none; padding:.38rem .8rem; border-radius:5px; transition:color .2s, background .2s; }
@@ -59,8 +59,6 @@
   #origin { background:var(--cream); }
   .origin-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
   .origin-img img { width:100%; border-radius:14px; display:block; box-shadow:8px 8px 0 var(--teal); }
-  .origin-text { }
-  .origin-text .body-text:last-of-type { margin-bottom:0; }
   .origin-btns { display:flex; gap:.75rem; flex-wrap:wrap; margin-top:2rem; }
 
   /* MISSION */
@@ -100,7 +98,7 @@
   /* FOOTER */
   footer { background:var(--dark); padding:3rem 2rem 2rem; }
   .foot-inner { max-width:1060px; margin:0 auto; display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:3rem; padding-bottom:2rem; border-bottom:1px solid rgba(255,255,255,.07); margin-bottom:1.5rem; }
-  .foot-logo { font-family:'Fredoka One',cursive; font-size:1.3rem; color:var(--teal-lt); display:block; margin-bottom:.65rem; }
+  .foot-logo-img { height:28px; width:auto; display:block; margin-bottom:.75rem; opacity:.75; filter:brightness(0) invert(1); }
   .foot-brand p { font-size:.8rem; color:rgba(255,255,255,.35); line-height:1.85; }
   .foot-brand a { color:rgba(255,255,255,.35); text-decoration:none; }
   .foot-brand a:hover { color:var(--teal-lt); }
@@ -143,7 +141,7 @@
 <div class="page-hero">
   <span class="eyebrow">Who We Are</span>
   <h1>Our <em>Story</em></h1>
-  <p>Just by changing their location, pets go from unwanted and discarded to loved members of the family..</p>
+  <p>Just by changing their location, pets go from unwanted and discarded to loved members of the family.</p>
 </div>
 
 <!-- ORIGIN -->
@@ -158,7 +156,7 @@
         <h2 class="section-title">One road trip changed everything.</h2>
         <p class="body-text">Furry Freight was founded in 2018 by Kim Wilken, a registered nurse living in Bend, Oregon. After moving to the Pacific Northwest, Kim noticed something: local shelters had room and strong adoption demand. But shelters in other parts of the country were overwhelmed, euthanizing healthy, adoptable dogs and cats simply because there were more animals than homes.</p>
         <p class="body-text">The solution seemed straightforward. Drive the animals from where they had no chance, to where families were waiting. That first road trip became the foundation of what is now Furry Freight Shelter Transport.</p>
-        <p class="body-text">We are a fully volunteer-run 501(c)(3) nonprofit. Every dollar donated goes directly to the in need animals.</p>
+        <p class="body-text">We are a fully volunteer-run 501(c)(3) nonprofit. Every dollar donated goes directly to the animals in need.</p>
         <div class="origin-btns">
           <a href="donate.html" class="btn btn-orange">Support Our Work</a>
           <a href="programs.html" class="btn btn-outline">Our Programs</a>
@@ -248,7 +246,7 @@
 <footer>
   <div class="foot-inner">
     <div class="foot-brand">
-      <span class="foot-logo">Furry Freight</span>
+      <img src="https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/ff_header.svg" alt="Furry Freight" class="foot-logo-img">
       <p>Oregon-registered 501(c)(3) public charity.<br>
          EIN: 82-4423390 &middot; PO Box 93, Bend OR 97709<br>
          <a href="mailto:info@furryfreight.org">info@furryfreight.org</a></p>
