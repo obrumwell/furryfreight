@@ -16,7 +16,6 @@
    • Change any text between the quote marks " "
    • To swap a photo, replace the URL with any image URL
      (right-click any image on the web → "Copy image address")
-   • To update a link, replace the URL between the quote marks
    • Don't change anything outside the CONFIG block below
    • Save the file and refresh your browser to see changes
    ============================================================ */
@@ -26,24 +25,19 @@ const CONFIG = {
   /* ── SITE ── */
   siteName: "Furry Freight",
 
-  // Nav logo — paste the URL to your SVG file between the quotes
-  // To get the URL: upload your SVG to GitHub, click it, click "Raw", copy that URL
-  // Leave as "" to show the site name as text instead
+  // Nav header logo (the horizontal version for the top bar)
   navLogo:       "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/ff_header.svg",
-  navLogoHeight: "36",   // height in pixels — adjust to fit your logo
+  navLogoHeight: "34",
 
-  // Hero logo — shown large on the homepage over the photo
-  // Can be the same SVG or a lighter/white version for contrast
-  // Leave as "" to hide it
+  // Hero logo (the stacked/icon version shown over the homepage photo)
   heroLogo:      "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/ff_logo.svg",
-  heroLogoWidth: "100",  // width in pixels
+  heroLogoWidth: "100",
 
-  tagline:          "Saving shelter pets one road trip at a time.",
-  missionStatement: "Furry Freight transports at-risk shelter pets from overpopulated, under-resourced areas to our Pacific Northwest rescue partners where loving homes are waiting. A change of location changes everything.",
-  founded:          "Est. 2017",
-  ein:              "82-4423390",
-  address:          "PO Box 93, Bend OR 97709",
-  email:            "info@furryfreight.org",
+  tagline:  "Saving shelter pets one road trip at a time.",
+  founded:  "Est. 2017",
+  ein:      "82-4423390",
+  address:  "PO Box 93, Bend OR 97709",
+  email:    "info@furryfreight.org",
 
   /* ── STATS ── */
   stat1Number: "1,709+",
@@ -54,53 +48,49 @@ const CONFIG = {
   stat3Label:  "On the Road",
 
   /* ── PHOTOS ──────────────────────────────────────────────────
-     These are placeholder photos from Unsplash (free to use).
-     To replace with your own photos:
-       1. Right-click any image on the web
-       2. Click "Copy image address"
-       3. Paste the URL below between the quote marks
+     To replace a photo: right-click any image on the web,
+     click "Copy image address", paste it below.
   ──────────────────────────────────────────────────────────── */
-
-  // Hero — big full-screen background photo
-  heroPhoto: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1600&q=85&fit=crop",
-
-  // Our Story section photo
-  storyPhoto: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=900&q=85&fit=crop",
-
-  // Mosaic grid — 5 photos shown in a grid below the hero
-  mosaicPhoto1: "https://images.unsplash.com/photo-1601758174493-bb649d8c5c2a?w=900&q=80&fit=crop",
-  mosaicPhoto2: "https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=600&q=80&fit=crop",
-  mosaicPhoto3: "https://images.unsplash.com/photo-1560807707-8cc77767d783?w=600&q=80&fit=crop",
-  mosaicPhoto4: "https://images.unsplash.com/photo-1534361960057-19f4434a88f4?w=600&q=80&fit=crop",
-  mosaicPhoto5: "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=600&q=80&fit=crop",
-
-  // Programs section photos
-  programPhoto1: "https://images.unsplash.com/photo-1444212477490-ca407925329e?w=900&q=80&fit=crop",
-  programPhoto2: "https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?w=900&q=80&fit=crop",
-
-  // Volunteer section photo
+  heroPhoto:      "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1600&q=85&fit=crop",
+  storyPhoto:     "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=900&q=85&fit=crop",
+  mosaicPhoto1:   "https://images.unsplash.com/photo-1601758174493-bb649d8c5c2a?w=900&q=80&fit=crop",
+  mosaicPhoto2:   "https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=600&q=80&fit=crop",
+  mosaicPhoto3:   "https://images.unsplash.com/photo-1560807707-8cc77767d783?w=600&q=80&fit=crop",
+  mosaicPhoto4:   "https://images.unsplash.com/photo-1534361960057-19f4434a88f4?w=600&q=80&fit=crop",
+  mosaicPhoto5:   "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=600&q=80&fit=crop",
+  programPhoto1:  "https://images.unsplash.com/photo-1444212477490-ca407925329e?w=900&q=80&fit=crop",
+  programPhoto2:  "https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?w=900&q=80&fit=crop",
   volunteerPhoto: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=900&q=80&fit=crop",
+  donatePhoto:    "https://images.unsplash.com/photo-1415369629372-26f2fe60c467?w=600&q=80&fit=crop",
+  bottledropPhoto:"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80&fit=crop",
 
-  // Support cards photos
-  donatePhoto:     "https://images.unsplash.com/photo-1415369629372-26f2fe60c467?w=600&q=80&fit=crop",
-  bottledropPhoto: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80&fit=crop",
-
-  /* ── OUR STORY ── */
+  /* ── OUR STORY SECTION ── */
   storyBadgeNumber: "1,709+",
   storyBadgeLabel:  "lives changed",
   storyHeadline:    "From at-risk to adored.",
-  storyBody:        "We partner with overpopulated shelters where pets face euthanasia and transport them to Pacific Northwest communities ready to welcome them home.",
-  storyButtonText:  "Read Our Full Story",
-  storyButtonLink:  "https://furryfreight.org/about",
+  storyOriginTitle: "How it started",
+  storyOriginBody:  "Furry Freight was founded in 2018 by Kim Wilken, a registered nurse living in Bend, Oregon. After moving to the Pacific Northwest, Kim noticed something: local shelters had room, and strong adoption demand. But shelters in other parts of the country were overwhelmed, euthanizing healthy, adoptable pets simply because there were more animals than homes. The solution seemed simple. Drive them north. That first road trip became the foundation of Furry Freight Shelter Transport.",
+  storyMissionBody: "We partner with overpopulated shelters where pets face euthanasia and transport them to Pacific Northwest communities ready to welcome them home.",
+
+  // Guiding principles — edit the title and description for each
+  principle1Title: "Every life has value",
+  principle1Desc:  "No healthy, adoptable animal should lose its life because of where it was born. Geography should not determine fate.",
+  principle2Title: "Community solves problems",
+  principle2Desc:  "Shelters, volunteers, donors, and adopters working together accomplish what none could do alone.",
+  principle3Title: "Prevention matters too",
+  principle3Desc:  "Transport saves lives today. Our Spay it Forward program works to reduce the number entering shelters tomorrow.",
+
+  storyButtonText: "Read Our Full Story",
+  storyButtonLink: "story.html",
 
   /* ── PROGRAMS ── */
   program1Title: "Transport",
   program1Desc:  "We drive at-risk dogs and cats from overcrowded shelters to communities where they are quickly adopted.",
-  program1Link:  "https://furryfreight.org/about#programs",
+  program1Link:  "programs.html",
 
   program2Title: "Spay it Forward",
   program2Desc:  "We fund spay and neuter surgeries for pets whose owners cannot afford the cost. Each surgery is about $70.",
-  program2Link:  "https://furryfreight.org/about#programs",
+  program2Link:  "programs.html",
 
   /* ── IMPACT STRIP ── */
   impactStat1Number: "1,709+",
@@ -113,30 +103,25 @@ const CONFIG = {
   impactCTASubline:  "Your gift keeps our wheels rolling.",
 
   /* ── SUPPORT CARDS ── */
-  donateHeadline: "Make a Donation",
-  donateDesc:     "Every dollar goes directly to transport costs and our Spay It Forward Program. Any amount makes a difference.",
-  donateLink:     "https://furryfreight.org/donate",
+  donateHeadline:     "Make a Donation",
+  donateDesc:         "Every dollar goes directly to transport costs and our Spay It Forward Program. Any amount makes a difference.",
+  donateLink:         "donate.html",
 
-  wishlistHeadline: "Amazon Wishlist",
-  wishlistDesc:     "Ship supplies directly to our team. Crates, leashes, cleaning supplies and more. No account needed.",
-  wishlistLink:     "https://www.amazon.com/hz/wishlist/ls/1HH2KRDF6AX0U?ref_=wl_share",
+  wishlistHeadline:   "Amazon Wishlist",
+  wishlistDesc:       "Ship supplies directly to our team. Crates, leashes, cleaning supplies and more. No account needed.",
+  wishlistLink:       "https://www.amazon.com/hz/wishlist/ls/1HH2KRDF6AX0U?ref_=wl_share",
 
   freeGivingHeadline: "Free Ways to Give",
-  freeGivingDesc:     "Link your Fred Meyer Shopper's Card or use Oregon BottleDrop blue bags. No cost to you!",
-  freeGivingLink:     "https://furryfreight.org/help",
+  freeGivingDesc:     "Link your Fred Meyer Shopper's Card or use Oregon BottleDrop blue bags. No cost to you.",
+  freeGivingLink:     "donate.html",
 
   /* ── VOLUNTEER ── */
-  volunteerHeadline:     "Join the pack.",
-  volunteerBody:         "We run entirely on volunteers. There is a place for you here no matter your skills or schedule.",
-  volunteerEmailLink:    "mailto:info@furryfreight.org",
-  volunteerFullPageLink: "https://furryfreight.org/help",
-
+  volunteerHeadline:  "Join the pack.",
+  volunteerBody:      "We run entirely on volunteers. There is a place for you here no matter your skills or schedule.",
   volunteerRole1Title: "Drive and Transport",
   volunteerRole1Desc:  "Long-haul drivers for multi-day transport trips. Must be 21+ with a clean record.",
-
   volunteerRole2Title: "Events and Fundraising",
   volunteerRole2Desc:  "Help plan and support our annual fundraising events like treat sales, Egg My House and Bingo.",
-
   volunteerRole3Title: "Social Media and More",
   volunteerRole3Desc:  "Content creation, grant writing, crate cleaning and more. All help is welcome.",
 
@@ -177,10 +162,8 @@ const css = `
     --teal-dk: #1D5C50;
     --teal-lt: #D6EDE9;
     --orange:  #E8622A;
-    --orange-lt: #F5956A;
     --cream:   #F7F2E8;
     --sand:    #EDE4D0;
-    --tan:     #C9B99A;
     --dark:    #1C2E2A;
     --muted:   #5A7268;
     --white:   #FDFAF5;
@@ -189,33 +172,39 @@ const css = `
   html{scroll-behavior:smooth;}
   body{font-family:'Nunito',sans-serif;background:var(--white);color:var(--dark);overflow-x:hidden;}
 
+  /* NAV */
   nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;background:var(--dark);border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;padding:0 2.5rem;gap:2rem;}
-  .nav-logo{font-family:'Fredoka One',cursive;font-size:1.2rem;color:var(--teal-lt);text-decoration:none;margin-right:auto;display:flex;align-items:center;}
-  .nav-logo img{height:36px;width:auto;display:block;}
+  .nav-logo{text-decoration:none;margin-right:auto;display:flex;align-items:center;}
+  .nav-logo img{height:34px;width:auto;display:block;}
+  .nav-logo span{font-family:'Fredoka One',cursive;font-size:1.2rem;color:var(--teal-lt);}
   .nav-links{list-style:none;display:flex;align-items:center;gap:.1rem;}
   .nav-links a{font-size:.85rem;font-weight:800;color:rgba(255,255,255,.55);text-decoration:none;padding:.38rem .8rem;border-radius:5px;transition:color .2s,background .2s;}
   .nav-links a:hover,.nav-links a.active{color:white;background:rgba(255,255,255,.1);}
   .nav-donate{background:var(--orange)!important;color:#fff!important;border-radius:5px;}
-  .nav-donate:hover{background:var(--orange-lt)!important;}
+  .nav-donate:hover{background:var(--teal)!important;}
 
+  /* BUTTONS */
   .btn{display:inline-block;font-family:'Nunito',sans-serif;font-weight:800;font-size:.88rem;text-decoration:none;padding:.62rem 1.45rem;border-radius:5px;border:none;cursor:pointer;transition:transform .18s,box-shadow .18s,background .18s;}
   .btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.13);}
-  .btn-rust{background:var(--orange);color:#fff;} .btn-rust:hover{background:var(--teal-dk);}
+  .btn-orange{background:var(--orange);color:#fff;} .btn-orange:hover{background:var(--teal-dk);}
+  .btn-teal{background:var(--teal);color:#fff;} .btn-teal:hover{background:var(--teal-dk);}
   .btn-white{background:#fff;color:var(--teal);} .btn-white:hover{background:var(--cream);}
   .btn-outline{background:transparent;color:var(--teal);border:2px solid var(--teal);} .btn-outline:hover{background:var(--teal);color:#fff;}
   .btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.22);} .btn-ghost:hover{background:rgba(255,255,255,.22);}
 
+  /* REVEAL */
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease;}
   .reveal.on{opacity:1;transform:none;}
   .d1{transition-delay:.07s;} .d2{transition-delay:.14s;} .d3{transition-delay:.21s;}
 
+  /* HERO */
   #home{height:100vh;min-height:600px;padding-top:56px;position:relative;overflow:hidden;display:flex;align-items:flex-end;}
   .hero-img{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat;}
   .hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(28,46,42,.95) 0%,rgba(28,46,42,.4) 55%,transparent 100%);}
   .hero-content{position:relative;z-index:1;padding:0 5rem 5rem;max-width:720px;}
-  .hero-kicker{font-size:.7rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-lt);margin-bottom:1rem;}
-  .hero-logo{display:block;margin-bottom:1.5rem;margin-top:1rem;}
-  .hero-logo img{display:block;}
+  .hero-kicker{font-size:.7rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-lt);margin-bottom:1.2rem;}
+  .hero-logo{display:block;margin-bottom:1.6rem;}
+  .hero-logo img{display:block;filter:brightness(0) invert(1);}
   .hero-title{font-family:'Fredoka One',cursive;font-size:clamp(3rem,5.5vw,5.5rem);line-height:1.04;color:#fff;margin-bottom:1.4rem;}
   .hero-title em{font-style:normal;color:var(--orange);}
   .hero-actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:2.5rem;}
@@ -223,26 +212,44 @@ const css = `
   .hstat .n{font-family:'Fredoka One',cursive;font-size:1.9rem;color:var(--teal-lt);display:block;line-height:1;}
   .hstat .l{font-size:.68rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.4);display:block;margin-top:.2rem;}
 
+  /* MOSAIC */
   .mosaic{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:220px 220px;gap:3px;background:var(--dark);}
   .mosaic-item{overflow:hidden;}
   .mosaic-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s;}
   .mosaic-item:hover img{transform:scale(1.05);}
   .mosaic-item.tall{grid-row:span 2;}
 
+  /* SHARED SECTION STYLES */
+  .eyebrow{font-size:.68rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:.7rem;display:block;}
+  .section-title{font-family:'Fredoka One',cursive;font-size:clamp(2rem,3vw,2.8rem);line-height:1.1;color:var(--dark);margin-bottom:1rem;}
+  .section-sub{font-size:1rem;line-height:1.85;color:var(--muted);max-width:500px;}
+
+  /* STORY */
   #story{background:var(--cream);}
-  .story-inner{max-width:1060px;margin:0 auto;padding:5.5rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+  .story-inner{max-width:1060px;margin:0 auto;padding:5.5rem 2rem;}
+  .story-top{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-bottom:4rem;}
   .story-img{position:relative;}
   .story-img img{width:100%;height:380px;object-fit:cover;border-radius:14px;display:block;box-shadow:8px 8px 0 var(--teal);}
   .story-badge{position:absolute;bottom:-14px;right:-14px;background:var(--orange);color:#fff;padding:.85rem 1.2rem;border-radius:10px;font-weight:900;font-size:.76rem;line-height:1.4;text-align:center;}
   .story-badge strong{font-family:'Fredoka One',cursive;font-size:1.7rem;display:block;line-height:1;}
-  .eyebrow{font-size:.68rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:.7rem;}
-  .story-text h2{font-family:'Fredoka One',cursive;font-size:clamp(2rem,3vw,2.8rem);line-height:1.1;color:var(--dark);margin-bottom:1rem;}
-  .story-text p{font-size:1rem;line-height:1.85;color:var(--muted);margin-bottom:2rem;max-width:460px;}
-  .story-btns{display:flex;gap:.75rem;flex-wrap:wrap;}
+  .story-text p{font-size:1rem;line-height:1.85;color:var(--muted);margin-bottom:1rem;}
+  .story-text .origin{font-size:.9rem;font-style:italic;color:var(--muted);opacity:.85;line-height:1.85;margin-bottom:1.5rem;padding-left:1rem;border-left:3px solid var(--teal-lt);}
+  .story-btns{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.8rem;}
 
+  /* PRINCIPLES */
+  .principles{margin-top:1rem;}
+  .principles-label{font-size:.68rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:1.5rem;display:block;}
+  .principles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
+  .principle{background:white;border-radius:12px;padding:1.5rem;border:1px solid rgba(42,127,111,.1);transition:transform .25s,box-shadow .25s;}
+  .principle:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(28,46,42,.09);}
+  .principle h4{font-family:'Fredoka One',cursive;font-size:1.1rem;color:var(--dark);margin-bottom:.4rem;}
+  .principle p{font-size:.87rem;line-height:1.72;color:var(--muted);}
+
+  /* PROGRAMS */
   #programs{background:var(--white);}
   .programs-inner{max-width:1060px;margin:0 auto;padding:5.5rem 2rem;}
   .section-head{text-align:center;margin-bottom:3.5rem;}
+  .section-head .eyebrow{display:block;text-align:center;}
   .section-head h2{font-family:'Fredoka One',cursive;font-size:clamp(2rem,3vw,2.8rem);color:var(--dark);}
   .prog-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
   .prog-card{border-radius:14px;overflow:hidden;position:relative;height:380px;transition:transform .3s,box-shadow .3s;}
@@ -254,6 +261,7 @@ const css = `
   .prog-title{font-family:'Fredoka One',cursive;font-size:2rem;color:#fff;margin-bottom:.5rem;line-height:1.1;}
   .prog-desc{font-size:.88rem;color:rgba(255,255,255,.65);line-height:1.6;margin-bottom:1.2rem;}
 
+  /* IMPACT */
   #impact{background:var(--teal);}
   .impact-strip{max-width:1060px;margin:0 auto;padding:3rem 2rem;display:flex;align-items:center;justify-content:space-around;gap:2rem;flex-wrap:wrap;}
   .impact-num{text-align:center;}
@@ -263,10 +271,11 @@ const css = `
   .impact-cta h3{font-family:'Fredoka One',cursive;font-size:1.6rem;color:#fff;margin-bottom:.5rem;}
   .impact-cta p{font-size:.88rem;color:rgba(255,255,255,.7);margin-bottom:1rem;}
 
+  /* SUPPORT */
   #support{background:var(--sand);}
   .support-inner{max-width:1060px;margin:0 auto;padding:5.5rem 2rem;}
   .support-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3rem;}
-  .sup-card{background:#fff;border-radius:14px;overflow:hidden;border:1px solid rgba(42,127,111,.12);transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column;}
+  .sup-card{background:#fff;border-radius:14px;overflow:hidden;border:1px solid rgba(42,127,111,.1);transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column;}
   .sup-card:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(28,46,42,.1);}
   .sup-card-img{height:175px;overflow:hidden;background:var(--sand);}
   .sup-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;}
@@ -277,6 +286,7 @@ const css = `
   .sup-card-body h3{font-family:'Fredoka One',cursive;font-size:1.3rem;color:var(--dark);margin-bottom:.4rem;}
   .sup-card-body p{font-size:.87rem;line-height:1.72;color:var(--muted);flex:1;margin-bottom:1.2rem;}
 
+  /* VOLUNTEER */
   #volunteer{background:var(--dark);color:#fff;}
   .vol-inner{max-width:1060px;margin:0 auto;padding:5.5rem 2rem;}
   .vol-header{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-bottom:3.5rem;}
@@ -291,13 +301,14 @@ const css = `
   .vol-role h4{font-family:'Fredoka One',cursive;font-size:1.1rem;color:#fff;margin-bottom:.3rem;}
   .vol-role p{font-size:.83rem;line-height:1.65;color:rgba(255,255,255,.5);}
 
+  /* SOCIAL */
   #social{background:var(--teal-lt);}
   .social-inner{max-width:1060px;margin:0 auto;padding:5rem 2rem;text-align:center;}
   .social-inner .eyebrow{display:block;margin-bottom:.7rem;}
   .social-inner h2{font-family:'Fredoka One',cursive;font-size:clamp(2rem,3vw,2.6rem);color:var(--dark);margin-bottom:.7rem;}
   .social-inner p{font-size:.97rem;color:var(--muted);margin-bottom:3rem;}
   .social-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:800px;margin:0 auto;}
-  .social-card{background:white;border-radius:16px;padding:2.2rem 1.5rem;border:1px solid rgba(42,127,111,.12);text-decoration:none;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column;align-items:center;gap:.75rem;}
+  .social-card{background:white;border-radius:16px;padding:2.2rem 1.5rem;border:1px solid rgba(42,127,111,.1);text-decoration:none;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column;align-items:center;gap:.75rem;}
   .social-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(28,46,42,.12);}
   .social-card .sc-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;}
   .social-card .sc-icon svg{width:28px;height:28px;fill:white;}
@@ -308,6 +319,7 @@ const css = `
   .social-card .sc-handle{font-size:.82rem;font-weight:800;color:var(--muted);letter-spacing:.02em;}
   .social-card .sc-cta{font-size:.78rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-top:.25rem;}
 
+  /* NEWSLETTER */
   #newsletter{background:var(--orange);}
   .nl-inner{max-width:620px;margin:0 auto;padding:4.5rem 2rem;text-align:center;}
   .nl-inner .eyebrow{color:rgba(255,255,255,.7);}
@@ -321,6 +333,7 @@ const css = `
   .nl-form button:hover{background:var(--teal-dk);}
   #nl-ok{display:none;color:#fff;font-weight:800;margin-top:1rem;}
 
+  /* SUPPORTERS */
   .supporters{background:var(--white);border-top:1px solid var(--sand);}
   .sup-row{max-width:1060px;margin:0 auto;padding:2rem;display:flex;align-items:center;gap:2.5rem;flex-wrap:wrap;}
   .sup-label{font-size:.65rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
@@ -328,9 +341,10 @@ const css = `
   .sup-logos img{height:30px;width:auto;object-fit:contain;opacity:.55;filter:grayscale(1);transition:opacity .2s,filter .2s;}
   .sup-logos img:hover{opacity:1;filter:none;}
 
+  /* FOOTER */
   footer{background:var(--dark);padding:3rem 2rem 2rem;}
   .foot-inner{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:1.5rem;}
-  .foot-logo{font-family:'Fredoka One',cursive;font-size:1.3rem;color:var(--teal-lt);display:block;margin-bottom:.65rem;}
+  .foot-logo img{height:30px;width:auto;display:block;margin-bottom:.75rem;opacity:.8;filter:brightness(0) invert(1);}
   .foot-brand p{font-size:.8rem;color:rgba(255,255,255,.35);line-height:1.85;}
   .foot-brand a{color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s;}
   .foot-brand a:hover{color:var(--teal-lt);}
@@ -346,8 +360,8 @@ const css = `
   .foot-social a:hover{background:var(--teal);color:#fff;}
 
   @media(max-width:860px){
-    .story-inner,.vol-header,.foot-inner{grid-template-columns:1fr;gap:2.5rem;}
-    .prog-grid,.support-cards,.vol-roles,.social-cards{grid-template-columns:1fr;}
+    .story-top,.vol-header,.foot-inner{grid-template-columns:1fr;gap:2.5rem;}
+    .prog-grid,.support-cards,.vol-roles,.social-cards,.principles-grid{grid-template-columns:1fr;}
     .mosaic{grid-template-columns:1fr 1fr;grid-template-rows:160px 160px;}
     .mosaic-item.tall{grid-row:span 1;}
     .hero-content{padding:0 2rem 4rem;}
@@ -363,30 +377,29 @@ document.title = CONFIG.siteName + ' — Shelter Transport';
 document.body.innerHTML = `
 
 <nav>
-  <a href="#home" class="nav-logo">
+  <a href="index.html" class="nav-logo">
     ${CONFIG.navLogo
       ? `<img src="${CONFIG.navLogo}" height="${CONFIG.navLogoHeight}" alt="${CONFIG.siteName}">`
-      : CONFIG.siteName}
+      : `<span>${CONFIG.siteName}</span>`}
   </a>
   <ul class="nav-links">
     <li><a href="#story">Our Story</a></li>
     <li><a href="#programs">Programs</a></li>
     <li><a href="#support">Support</a></li>
     <li><a href="#volunteer">Volunteer</a></li>
-    <li><a href="#support" class="nav-donate">Donate</a></li>
+    <li><a href="donate.html" class="nav-donate">Donate</a></li>
   </ul>
 </nav>
 
+<!-- HERO -->
 <section id="home">
   <div class="hero-img" style="background-image:url('${CONFIG.heroPhoto}')"></div>
   <div class="hero-content">
     <div class="hero-kicker">501(c)(3) Nonprofit &middot; All Volunteer &middot; ${CONFIG.founded}</div>
-    ${CONFIG.heroLogo
-      ? `<div class="hero-logo"><img src="${CONFIG.heroLogo}" width="${CONFIG.heroLogoWidth}" alt="${CONFIG.siteName}"></div>`
-      : ''}
+    ${CONFIG.heroLogo ? `<div class="hero-logo"><img src="${CONFIG.heroLogo}" width="${CONFIG.heroLogoWidth}" alt="${CONFIG.siteName}"></div>` : ''}
     <h1 class="hero-title">${CONFIG.tagline.replace('one road trip', '<em>one road trip</em>')}</h1>
     <div class="hero-actions">
-      <a href="#support" class="btn btn-rust">Donate Now</a>
+      <a href="donate.html" class="btn btn-orange">Donate Now</a>
       <a href="#story" class="btn btn-ghost">Our Story</a>
     </div>
     <div class="hero-stats">
@@ -397,6 +410,7 @@ document.body.innerHTML = `
   </div>
 </section>
 
+<!-- MOSAIC -->
 <div class="mosaic">
   <div class="mosaic-item tall"><img src="${CONFIG.mosaicPhoto1}" alt="Shelter animals" loading="lazy"></div>
   <div class="mosaic-item"><img src="${CONFIG.mosaicPhoto2}" alt="Animals" loading="lazy"></div>
@@ -405,28 +419,50 @@ document.body.innerHTML = `
   <div class="mosaic-item"><img src="${CONFIG.mosaicPhoto5}" alt="Animals" loading="lazy"></div>
 </div>
 
+<!-- STORY -->
 <section id="story">
   <div class="story-inner">
-    <div class="story-img reveal">
-      <img src="${CONFIG.storyPhoto}" alt="Dogs ready for a new home">
-      <div class="story-badge"><strong>${CONFIG.storyBadgeNumber}</strong>${CONFIG.storyBadgeLabel}</div>
+    <div class="story-top">
+      <div class="story-img reveal">
+        <img src="${CONFIG.storyPhoto}" alt="Dogs ready for a new home">
+        <div class="story-badge"><strong>${CONFIG.storyBadgeNumber}</strong>${CONFIG.storyBadgeLabel}</div>
+      </div>
+      <div class="story-text reveal d1">
+        <span class="eyebrow">Our Mission</span>
+        <h2 class="section-title">${CONFIG.storyHeadline}</h2>
+        <p>${CONFIG.storyMissionBody}</p>
+        <p class="origin">${CONFIG.storyOriginTitle}: ${CONFIG.storyOriginBody}</p>
+        <div class="story-btns">
+          <a href="${CONFIG.storyButtonLink}" class="btn btn-orange">${CONFIG.storyButtonText}</a>
+          <a href="#programs" class="btn btn-outline">Our Programs</a>
+        </div>
+      </div>
     </div>
-    <div class="story-text reveal d1">
-      <div class="eyebrow">Our Mission</div>
-      <h2>${CONFIG.storyHeadline}</h2>
-      <p>${CONFIG.storyBody}</p>
-      <div class="story-btns">
-        <a href="${CONFIG.storyButtonLink}" target="_blank" class="btn btn-rust">${CONFIG.storyButtonText}</a>
-        <a href="#programs" class="btn btn-outline">Our Programs</a>
+    <div class="principles reveal">
+      <span class="principles-label">What We Believe</span>
+      <div class="principles-grid">
+        <div class="principle reveal d1">
+          <h4>${CONFIG.principle1Title}</h4>
+          <p>${CONFIG.principle1Desc}</p>
+        </div>
+        <div class="principle reveal d2">
+          <h4>${CONFIG.principle2Title}</h4>
+          <p>${CONFIG.principle2Desc}</p>
+        </div>
+        <div class="principle reveal d3">
+          <h4>${CONFIG.principle3Title}</h4>
+          <p>${CONFIG.principle3Desc}</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- PROGRAMS -->
 <section id="programs">
   <div class="programs-inner">
     <div class="section-head reveal">
-      <div class="eyebrow">What We Do</div>
+      <span class="eyebrow">What We Do</span>
       <h2>Our Programs</h2>
     </div>
     <div class="prog-grid">
@@ -436,7 +472,7 @@ document.body.innerHTML = `
           <div class="prog-tag">Program</div>
           <div class="prog-title">${CONFIG.program1Title}</div>
           <div class="prog-desc">${CONFIG.program1Desc}</div>
-          <a href="${CONFIG.program1Link}" target="_blank" class="btn btn-white" style="align-self:flex-start;">Learn More</a>
+          <a href="${CONFIG.program1Link}" class="btn btn-white" style="align-self:flex-start;">Learn More</a>
         </div>
       </div>
       <div class="prog-card reveal d2">
@@ -445,13 +481,14 @@ document.body.innerHTML = `
           <div class="prog-tag">Program</div>
           <div class="prog-title">${CONFIG.program2Title}</div>
           <div class="prog-desc">${CONFIG.program2Desc}</div>
-          <a href="${CONFIG.program2Link}" target="_blank" class="btn btn-white" style="align-self:flex-start;">Learn More</a>
+          <a href="${CONFIG.program2Link}" class="btn btn-white" style="align-self:flex-start;">Learn More</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- IMPACT -->
 <section id="impact">
   <div class="impact-strip">
     <div class="impact-num reveal"><span class="n">${CONFIG.impactStat1Number}</span><span class="l">${CONFIG.impactStat1Label}</span></div>
@@ -463,15 +500,16 @@ document.body.innerHTML = `
     <div class="impact-cta reveal d3">
       <h3>${CONFIG.impactCTAHeadline}</h3>
       <p>${CONFIG.impactCTASubline}</p>
-      <a href="${CONFIG.donateLink}" target="_blank" class="btn btn-white">Donate Now</a>
+      <a href="donate.html" class="btn btn-white">Donate Now</a>
     </div>
   </div>
 </section>
 
+<!-- SUPPORT -->
 <section id="support">
   <div class="support-inner">
     <div class="section-head reveal">
-      <div class="eyebrow">Ways to Help</div>
+      <span class="eyebrow">Ways to Help</span>
       <h2>Support the Animals</h2>
     </div>
     <div class="support-cards">
@@ -480,7 +518,7 @@ document.body.innerHTML = `
         <div class="sup-card-body">
           <h3>${CONFIG.donateHeadline}</h3>
           <p>${CONFIG.donateDesc}</p>
-          <a href="${CONFIG.donateLink}" target="_blank" class="btn btn-rust">Donate Now</a>
+          <a href="${CONFIG.donateLink}" class="btn btn-orange">Donate Now</a>
         </div>
       </div>
       <div class="sup-card reveal d2">
@@ -488,7 +526,7 @@ document.body.innerHTML = `
         <div class="sup-card-body">
           <h3>${CONFIG.wishlistHeadline}</h3>
           <p>${CONFIG.wishlistDesc}</p>
-          <a href="${CONFIG.wishlistLink}" target="_blank" class="btn btn-rust">View Wishlist</a>
+          <a href="${CONFIG.wishlistLink}" target="_blank" class="btn btn-orange">View Wishlist</a>
         </div>
       </div>
       <div class="sup-card reveal d3">
@@ -496,23 +534,24 @@ document.body.innerHTML = `
         <div class="sup-card-body">
           <h3>${CONFIG.freeGivingHeadline}</h3>
           <p>${CONFIG.freeGivingDesc}</p>
-          <a href="${CONFIG.freeGivingLink}" target="_blank" class="btn btn-rust">Learn How</a>
+          <a href="${CONFIG.freeGivingLink}" class="btn btn-orange">Learn How</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- VOLUNTEER -->
 <section id="volunteer">
   <div class="vol-inner">
     <div class="vol-header">
       <div class="reveal">
-        <div class="eyebrow">Get Involved</div>
+        <span class="eyebrow">Get Involved</span>
         <h2>${CONFIG.volunteerHeadline}</h2>
         <p>${CONFIG.volunteerBody}</p>
         <div class="vol-actions">
-          <a href="${CONFIG.volunteerEmailLink}" class="btn btn-rust">Email Us</a>
-          <a href="${CONFIG.volunteerFullPageLink}" target="_blank" class="btn btn-ghost">Full Volunteer Page</a>
+          <a href="mailto:info@furryfreight.org" class="btn btn-orange">Email info@furryfreight.org</a>
+          <a href="${CONFIG.instagramLink}" target="_blank" class="btn btn-ghost">DM Us on Instagram</a>
         </div>
       </div>
       <div class="reveal d1">
@@ -536,6 +575,7 @@ document.body.innerHTML = `
   </div>
 </section>
 
+<!-- SOCIAL -->
 <section id="social">
   <div class="social-inner">
     <span class="eyebrow reveal">${CONFIG.socialHeadline}</span>
@@ -543,25 +583,19 @@ document.body.innerHTML = `
     <p class="reveal d1">${CONFIG.socialDesc}</p>
     <div class="social-cards">
       <a href="${CONFIG.instagramLink}" target="_blank" class="social-card sc-ig reveal d1">
-        <div class="sc-icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </div>
+        <div class="sc-icon"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div>
         <span class="sc-name">Instagram</span>
         <span class="sc-handle">${CONFIG.instagramHandle}</span>
         <span class="sc-cta">Follow Us</span>
       </a>
       <a href="${CONFIG.facebookLink}" target="_blank" class="social-card sc-fb reveal d2">
-        <div class="sc-icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-        </div>
+        <div class="sc-icon"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
         <span class="sc-name">Facebook</span>
         <span class="sc-handle">${CONFIG.facebookHandle}</span>
         <span class="sc-cta">Like Our Page</span>
       </a>
       <a href="${CONFIG.tiktokLink}" target="_blank" class="social-card sc-tt reveal d3">
-        <div class="sc-icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" fill="white"/></svg>
-        </div>
+        <div class="sc-icon"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" fill="white"/></svg></div>
         <span class="sc-name">TikTok</span>
         <span class="sc-handle">${CONFIG.tiktokHandle}</span>
         <span class="sc-cta">Watch Our Videos</span>
@@ -570,6 +604,7 @@ document.body.innerHTML = `
   </div>
 </section>
 
+<!-- NEWSLETTER -->
 <section id="newsletter">
   <div class="nl-inner">
     <div class="eyebrow reveal">Stay in the Loop</div>
@@ -583,6 +618,7 @@ document.body.innerHTML = `
   </div>
 </section>
 
+<!-- SUPPORTERS -->
 <div class="supporters">
   <div class="sup-row">
     <span class="sup-label">Community Supporters</span>
@@ -592,10 +628,13 @@ document.body.innerHTML = `
   </div>
 </div>
 
+<!-- FOOTER -->
 <footer>
   <div class="foot-inner">
     <div class="foot-brand">
-      <span class="foot-logo">${CONFIG.siteName}</span>
+      <div class="foot-logo">
+        ${CONFIG.navLogo ? `<img src="${CONFIG.navLogo}" alt="${CONFIG.siteName}">` : `<span style="font-family:'Fredoka One',cursive;font-size:1.3rem;color:var(--teal-lt)">${CONFIG.siteName}</span>`}
+      </div>
       <p>Oregon-registered 501(c)(3) public charity.<br>
          EIN: ${CONFIG.ein} &middot; ${CONFIG.address}<br>
          <a href="mailto:${CONFIG.email}">${CONFIG.email}</a></p>
@@ -607,17 +646,17 @@ document.body.innerHTML = `
         <li><a href="#programs">Programs</a></li>
         <li><a href="#support">Support Us</a></li>
         <li><a href="#volunteer">Volunteer</a></li>
-        <li><a href="#social">Social Media</a></li>
+        <li><a href="#social">Follow Us</a></li>
         <li><a href="#newsletter">Newsletter</a></li>
       </ul>
     </div>
     <div class="foot-col">
-      <h5>Full Pages</h5>
+      <h5>Pages</h5>
       <ul>
-        <li><a href="https://furryfreight.org/about" target="_blank">About Us</a></li>
-        <li><a href="https://furryfreight.org/news" target="_blank">News</a></li>
-        <li><a href="${CONFIG.volunteerFullPageLink}" target="_blank">Get Involved</a></li>
-        <li><a href="${CONFIG.donateLink}" target="_blank">Donate</a></li>
+        <li><a href="story.html">Our Full Story</a></li>
+        <li><a href="programs.html">Our Programs</a></li>
+        <li><a href="donate.html">Support Us</a></li>
+        <li><a href="donate.html">Donate</a></li>
       </ul>
     </div>
   </div>
@@ -632,21 +671,27 @@ document.body.innerHTML = `
 </footer>
 `;
 
+// SCROLL SPY NAV
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
 function updateNav() {
   const y = window.scrollY + 70;
   let cur = '';
-  document.querySelectorAll('section[id]').forEach(s => { if (y >= s.offsetTop) cur = s.id; });
-  document.querySelectorAll('.nav-links a[href^="#"]').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+  sections.forEach(s => { if (y >= s.offsetTop) cur = s.id; });
+  navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
 }
 
+// REVEAL ON SCROLL
+const revs = document.querySelectorAll('.reveal');
 function checkReveal() {
   const vh = window.innerHeight;
-  document.querySelectorAll('.reveal').forEach(el => { if (el.getBoundingClientRect().top < vh - 50) el.classList.add('on'); });
+  revs.forEach(el => { if (el.getBoundingClientRect().top < vh - 50) el.classList.add('on'); });
 }
 
 window.addEventListener('scroll', () => { updateNav(); checkReveal(); }, { passive: true });
 updateNav(); checkReveal();
 
+// NEWSLETTER
 function handleNL(e) {
   e.preventDefault();
   e.target.style.display = 'none';
