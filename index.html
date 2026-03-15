@@ -31,7 +31,7 @@ const CONFIG = {
 
   // Hero logo (the stacked/icon version shown over the homepage photo)
   heroLogo:      "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/ff_logo.svg",
-  heroLogoWidth: "100",
+  heroLogoWidth: "200",
 
   tagline:  "Saving shelter pets one road trip at a time.",
   founded:  "Est. 2017",
@@ -203,12 +203,11 @@ const css = `
   .hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(28,46,42,.95) 0%,rgba(28,46,42,.4) 55%,transparent 100%);}
   .hero-content{position:relative;z-index:1;padding:0 5rem 5rem;max-width:720px;}
   .hero-kicker{font-size:.7rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-lt);margin-bottom:1.2rem;}
-  .hero-logo{display:block;margin-bottom:1.6rem;}
-  .hero-logo img{display:block;filter:brightness(0) invert(1);}
   .hero-title{font-family:'Fredoka One',cursive;font-size:clamp(3rem,5.5vw,5.5rem);line-height:1.04;color:#fff;margin-bottom:1.4rem;}
   .hero-title em{font-style:normal;color:var(--orange);}
   .hero-actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:2.5rem;}
-  .hero-stats{display:flex;gap:2.5rem;border-top:1px solid rgba(255,255,255,.15);padding-top:2rem;}
+  .hero-stats{display:flex;gap:2.5rem;border-top:1px solid rgba(255,255,255,.15);padding-top:2rem;align-items:center;}
+  .hero-logo-small{height:48px;width:auto;display:block;margin-left:auto;opacity:.9;}
   .hstat .n{font-family:'Fredoka One',cursive;font-size:1.9rem;color:var(--teal-lt);display:block;line-height:1;}
   .hstat .l{font-size:.68rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.4);display:block;margin-top:.2rem;}
 
@@ -396,7 +395,6 @@ document.body.innerHTML = `
   <div class="hero-img" style="background-image:url('${CONFIG.heroPhoto}')"></div>
   <div class="hero-content">
     <div class="hero-kicker">501(c)(3) Nonprofit &middot; All Volunteer &middot; ${CONFIG.founded}</div>
-    ${CONFIG.heroLogo ? `<div class="hero-logo"><img src="${CONFIG.heroLogo}" width="${CONFIG.heroLogoWidth}" alt="${CONFIG.siteName}"></div>` : ''}
     <h1 class="hero-title">${CONFIG.tagline.replace('one road trip', '<em>one road trip</em>')}</h1>
     <div class="hero-actions">
       <a href="donate.html" class="btn btn-orange">Donate Now</a>
@@ -406,6 +404,7 @@ document.body.innerHTML = `
       <div class="hstat"><span class="n">${CONFIG.stat1Number}</span><span class="l">${CONFIG.stat1Label}</span></div>
       <div class="hstat"><span class="n">${CONFIG.stat2Number}</span><span class="l">${CONFIG.stat2Label}</span></div>
       <div class="hstat"><span class="n">${CONFIG.stat3Number}</span><span class="l">${CONFIG.stat3Label}</span></div>
+      ${CONFIG.heroLogo ? `<img src="${CONFIG.heroLogo}" class="hero-logo-small" alt="${CONFIG.siteName}">` : ''}
     </div>
   </div>
 </section>
