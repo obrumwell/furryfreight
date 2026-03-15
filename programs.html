@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Programs — Furry Freight</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal:    #2A7F6F;
+    --teal-dk: #1D5C50;
+    --teal-lt: #D6EDE9;
+    --orange:  #E8622A;
+    --cream:   #F7F2E8;
+    --sand:    #EDE4D0;
+    --dark:    #1C2E2A;
+    --muted:   #5A7268;
+    --white:   #FDFAF5;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Nunito',sans-serif;background:var(--white);color:var(--dark);overflow-x:hidden;}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;background:var(--dark);border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;padding:0 2.5rem;gap:2rem;}
+  .nav-logo{font-family:'Fredoka One',cursive;font-size:1.2rem;color:var(--teal-lt);text-decoration:none;margin-right:auto;display:flex;align-items:center;}
+  .nav-logo img{height:34px;width:auto;display:block;}
+  .nav-links{list-style:none;display:flex;align-items:center;gap:.1rem;}
+  .nav-links a{font-size:.85rem;font-weight:800;color:rgba(255,255,255,.55);text-decoration:none;padding:.38rem .8rem;border-radius:5px;transition:color .2s,background .2s;}
+  .nav-links a:hover,.nav-links a.active{color:white;background:rgba(255,255,255,.1);}
+  .nav-donate{background:var(--orange)!important;color:#fff!important;border-radius:5px;}
+  .nav-donate:hover{background:var(--teal)!important;}
+
+  .btn{display:inline-block;font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;text-decoration:none;padding:.65rem 1.5rem;border-radius:5px;border:none;cursor:pointer;transition:transform .18s,box-shadow .18s,background .18s;}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.13);}
+  .btn-teal{background:var(--teal);color:#fff;} .btn-teal:hover{background:var(--teal-dk);}
+  .btn-orange{background:var(--orange);color:#fff;} .btn-orange:hover{background:var(--teal-dk);}
+  .btn-outline{background:transparent;color:var(--teal);border:2px solid var(--teal);} .btn-outline:hover{background:var(--teal);color:#fff;}
+  .btn-outline-white{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.35);} .btn-outline-white:hover{background:rgba(255,255,255,.1);}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease;}
+  .reveal.on{opacity:1;transform:none;}
+  .d1{transition-delay:.08s;} .d2{transition-delay:.16s;} .d3{transition-delay:.24s;}
+
+  .eyebrow{font-size:.68rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:.7rem;display:block;}
+
+  .page-hero{padding:7rem 2rem 4rem;background:var(--dark);text-align:center;}
+  .page-hero .eyebrow{color:var(--teal-lt);}
+  .page-hero h1{font-family:'Fredoka One',cursive;font-size:clamp(2.5rem,5vw,4rem);color:#fff;line-height:1.05;margin-bottom:1rem;}
+  .page-hero h1 em{font-style:normal;color:var(--orange);}
+  .page-hero p{font-size:1.05rem;color:rgba(255,255,255,.6);max-width:520px;margin:0 auto;line-height:1.85;}
+
+  /* TRANSPORT */
+  #transport{background:var(--cream);}
+  .prog-section{max-width:1060px;margin:0 auto;padding:5.5rem 2rem;}
+  .prog-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+  .prog-grid.flip{direction:rtl;}
+  .prog-grid.flip > *{direction:ltr;}
+  .prog-img img{width:100%;border-radius:14px;display:block;box-shadow:8px 8px 0 var(--teal);}
+  .prog-img.orange-shadow img{box-shadow:8px 8px 0 var(--orange);}
+  .prog-copy h2{font-family:'Fredoka One',cursive;font-size:clamp(2rem,3vw,2.8rem);color:var(--dark);margin-bottom:1rem;line-height:1.1;}
+  .prog-copy p{font-size:1rem;line-height:1.9;color:var(--muted);margin-bottom:1rem;}
+  .prog-copy .highlight{background:var(--teal-lt);border-radius:10px;padding:1rem 1.2rem;font-size:.9rem;font-weight:700;color:var(--teal-dk);margin:1.5rem 0;line-height:1.6;}
+  .prog-btns{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.8rem;}
+
+  /* HOW IT WORKS */
+  #how{background:var(--white);}
+  .steps-inner{max-width:900px;margin:0 auto;padding:5rem 2rem;}
+  .steps-inner h2{font-family:'Fredoka One',cursive;font-size:clamp(1.9rem,3vw,2.4rem);color:var(--dark);margin-bottom:.5rem;}
+  .steps-inner .intro{font-size:1rem;color:var(--muted);line-height:1.8;margin-bottom:3rem;}
+  .steps{display:flex;flex-direction:column;gap:1.5rem;}
+  .step{display:flex;gap:1.5rem;align-items:flex-start;}
+  .step-num{width:42px;height:42px;border-radius:50%;background:var(--teal);color:white;font-family:'Fredoka One',cursive;font-size:1.2rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+  .step-body h4{font-family:'Fredoka One',cursive;font-size:1.15rem;color:var(--dark);margin-bottom:.3rem;}
+  .step-body p{font-size:.92rem;line-height:1.75;color:var(--muted);}
+
+  /* SPAY */
+  #spay{background:var(--sand);}
+
+  /* IMPACT */
+  #impact{background:var(--teal);}
+  .impact-inner{max-width:1060px;margin:0 auto;padding:4rem 2rem;display:flex;align-items:center;justify-content:space-around;gap:2rem;flex-wrap:wrap;}
+  .istat{text-align:center;}
+  .istat .n{font-family:'Fredoka One',cursive;font-size:3rem;color:var(--teal-lt);display:block;line-height:1;}
+  .istat .l{font-size:.68rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);display:block;margin-top:.3rem;}
+  .idiv{width:1px;height:48px;background:rgba(255,255,255,.2);}
+  .icta h3{font-family:'Fredoka One',cursive;font-size:1.5rem;color:#fff;margin-bottom:.4rem;}
+  .icta p{font-size:.88rem;color:rgba(255,255,255,.65);margin-bottom:1rem;}
+
+  footer{background:var(--dark);padding:3rem 2rem 2rem;}
+  .foot-inner{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:1.5rem;}
+  .foot-logo{font-family:'Fredoka One',cursive;font-size:1.3rem;color:var(--teal-lt);display:block;margin-bottom:.65rem;}
+  .foot-brand p{font-size:.8rem;color:rgba(255,255,255,.35);line-height:1.85;}
+  .foot-brand a{color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s;}
+  .foot-brand a:hover{color:var(--teal-lt);}
+  .foot-col h5{font-size:.65rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:1rem;}
+  .foot-col ul{list-style:none;}
+  .foot-col ul li{margin-bottom:.45rem;}
+  .foot-col ul a{font-size:.85rem;font-weight:700;color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s;}
+  .foot-col ul a:hover{color:var(--teal-lt);}
+  .foot-bottom{max-width:1060px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+  .foot-bottom p{font-size:.77rem;color:rgba(255,255,255,.25);}
+  .foot-social{display:flex;gap:.45rem;}
+  .foot-social a{width:32px;height:32px;border-radius:6px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:900;color:rgba(255,255,255,.45);text-decoration:none;transition:background .2s,color .2s;}
+  .foot-social a:hover{background:var(--teal);color:#fff;}
+
+  @media(max-width:860px){
+    nav{padding:0 1.25rem;}
+    .prog-grid,.prog-grid.flip{grid-template-columns:1fr;direction:ltr;}
+    .impact-inner{flex-direction:column;align-items:flex-start;}
+    .idiv{display:none;}
+    .foot-inner{grid-template-columns:1fr;gap:2rem;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Furry Freight</a>
+  <ul class="nav-links">
+    <li><a href="story.html">Our Story</a></li>
+    <li><a href="programs.html" class="active">Programs</a></li>
+    <li><a href="donate.html">Support</a></li>
+    <li><a href="index.html#volunteer">Volunteer</a></li>
+    <li><a href="donate.html" class="nav-donate">Donate</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <span class="eyebrow">What We Do</span>
+  <h1>Our <em>Programs</em></h1>
+  <p>Two ways we fight for adoptable animals. Moving them to safety today, and reducing the number who need saving tomorrow.</p>
+</div>
+
+<!-- TRANSPORT -->
+<section id="transport">
+  <div class="prog-section">
+    <div class="prog-grid">
+      <div class="prog-img reveal">
+        <img src="https://images.unsplash.com/photo-1444212477490-ca407925329e?w=900&q=80&fit=crop" alt="Transport program">
+      </div>
+      <div class="prog-copy reveal d1">
+        <span class="eyebrow">Program 1</span>
+        <h2>Transport</h2>
+        <p>Shelters in some parts of the country are overwhelmed. They take in more animals than their communities can adopt, and despite the best efforts of their staff, healthy and adoptable dogs and cats run out of time.</p>
+        <p>In the Pacific Northwest the picture looks different. Shelters have capacity. Adopters are waiting. The demand for pets is high and the supply is low.</p>
+        <p>Furry Freight bridges that gap. We partner with high-intake shelters in overpopulated areas and transport their at-risk animals directly to Pacific Northwest partner shelters where they are quickly placed into loving homes.</p>
+        <div class="highlight">Research shows that transport is one of the most effective tools available for reducing shelter euthanasia rates. It addresses the imbalance directly, moving animals from where there are too many to where there are not enough.</div>
+        <div class="prog-btns">
+          <a href="donate.html" class="btn btn-orange">Support This Program</a>
+          <a href="index.html#volunteer" class="btn btn-outline">Drive With Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="steps-inner">
+    <span class="eyebrow reveal">How Transport Works</span>
+    <h2 class="reveal">From at-risk to adopted</h2>
+    <p class="intro reveal d1">Every transport follows a careful process to keep animals safe and get them to their new homes as quickly as possible.</p>
+    <div class="steps">
+      <div class="step reveal d1">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>Partner shelters identify animals at risk</h4>
+          <p>Our partner shelters in overpopulated areas flag dogs and cats who are healthy and adoptable but facing euthanasia due to limited space or low local demand.</p>
+        </div>
+      </div>
+      <div class="step reveal d2">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>Animals are vetted and health-checked</h4>
+          <p>Before travel, all animals receive a health check and any required vaccinations or documentation for interstate transport.</p>
+        </div>
+      </div>
+      <div class="step reveal d1">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>Volunteer drivers hit the road</h4>
+          <p>Our trained volunteer drivers take multi-day road trips, transporting animals safely in pairs. Drivers switch off to keep animals moving and stress levels low.</p>
+        </div>
+      </div>
+      <div class="step reveal d2">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>Animals arrive at Pacific Northwest partners</h4>
+          <p>Partner shelters in Oregon and surrounding states receive the animals, provide any additional care needed, and begin the adoption process.</p>
+        </div>
+      </div>
+      <div class="step reveal d1">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h4>Animals find their forever homes</h4>
+          <p>Thanks to high demand in the Pacific Northwest, animals transported by Furry Freight are typically adopted quickly after arrival.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPAY IT FORWARD -->
+<section id="spay">
+  <div class="prog-section">
+    <div class="prog-grid flip">
+      <div class="prog-img orange-shadow reveal">
+        <img src="https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?w=900&q=80&fit=crop" alt="Spay it Forward program">
+      </div>
+      <div class="prog-copy reveal d1">
+        <span class="eyebrow">Program 2</span>
+        <h2>Spay it Forward</h2>
+        <p>Transport saves lives today. But the shelters we partner with keep filling up because too many animals are entering the system to begin with. Spay it Forward is our answer to that problem.</p>
+        <p>Launched in December 2021, this program funds spay and neuter surgeries for pets whose owners want to do the right thing but cannot afford the cost. Our first dog was fixed in Tulsa, Oklahoma, at no cost to the owner. Since then, we have set up regular surgery appointments through our rescue partners and are working to expand to more clinics.</p>
+        <p>We focus on large breed dogs and cats, which are statistically the hardest to adopt out and the most at risk of euthanasia in overcrowded shelters.</p>
+        <div class="highlight" style="background:rgba(232,98,42,.1);color:var(--orange);">
+          Each surgery costs about $70. To sponsor one, donate any amount and write "Spay it Forward" in the comments. Every surgery prevents dozens of future at-risk animals.
+        </div>
+        <div class="prog-btns">
+          <a href="donate.html" class="btn btn-orange">Sponsor a Surgery</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section id="impact">
+  <div class="impact-inner">
+    <div class="istat reveal"><span class="n">1,709+</span><span class="l">Animals Saved</span></div>
+    <div class="idiv"></div>
+    <div class="istat reveal d1"><span class="n">$70</span><span class="l">Sponsors a Surgery</span></div>
+    <div class="idiv"></div>
+    <div class="istat reveal d2"><span class="n">2021</span><span class="l">Spay it Forward Launched</span></div>
+    <div class="idiv"></div>
+    <div class="icta reveal d3">
+      <h3>Both programs need your support.</h3>
+      <p>Transport trips and surgeries are funded entirely by donors like you.</p>
+      <a href="donate.html" class="btn btn-orange" style="margin-right:.75rem;">Donate Now</a>
+      <a href="index.html#volunteer" class="btn btn-outline-white">Volunteer</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <span class="foot-logo">Furry Freight</span>
+      <p>Oregon-registered 501(c)(3) public charity.<br>
+         EIN: 82-4423390 &middot; PO Box 93, Bend OR 97709<br>
+         <a href="mailto:info@furryfreight.org">info@furryfreight.org</a></p>
+    </div>
+    <div class="foot-col">
+      <h5>Pages</h5>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="story.html">Our Story</a></li>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="donate.html">Support Us</a></li>
+        <li><a href="index.html#volunteer">Volunteer</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Follow Us</h5>
+      <ul>
+        <li><a href="https://www.instagram.com/furry.freight/" target="_blank">Instagram</a></li>
+        <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
+        <li><a href="https://www.tiktok.com/@furryfreight" target="_blank">TikTok</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <p>Copyright &copy; 2018&ndash;2026 Furry Freight Shelter Transport. Saving shelter pets, one road trip at a time.</p>
+    <div class="foot-social">
+      <a href="https://facebook.com" target="_blank">FB</a>
+      <a href="https://www.instagram.com/furry.freight/" target="_blank">IG</a>
+      <a href="https://www.tiktok.com/@furryfreight" target="_blank">TT</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const revs = document.querySelectorAll('.reveal');
+  function checkReveal(){const vh=window.innerHeight;revs.forEach(el=>{if(el.getBoundingClientRect().top<vh-50)el.classList.add('on');});}
+  window.addEventListener('scroll',checkReveal,{passive:true});
+  checkReveal();
+</script>
+</body>
+</html>

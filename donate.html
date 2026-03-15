@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support Furry Freight — Donate</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal:    #2A7F6F;
+    --teal-dk: #1D5C50;
+    --teal-lt: #D6EDE9;
+    --orange:  #E8622A;
+    --cream:   #F7F2E8;
+    --sand:    #EDE4D0;
+    --dark:    #1C2E2A;
+    --muted:   #5A7268;
+    --white:   #FDFAF5;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Nunito',sans-serif;background:var(--white);color:var(--dark);overflow-x:hidden;}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;background:var(--dark);border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;padding:0 2.5rem;gap:2rem;}
+  .nav-logo{font-family:'Fredoka One',cursive;font-size:1.2rem;color:var(--teal-lt);text-decoration:none;margin-right:auto;display:flex;align-items:center;}
+  .nav-logo img{height:34px;width:auto;display:block;}
+  .nav-links{list-style:none;display:flex;align-items:center;gap:.1rem;}
+  .nav-links a{font-size:.85rem;font-weight:800;color:rgba(255,255,255,.55);text-decoration:none;padding:.38rem .8rem;border-radius:5px;transition:color .2s,background .2s;}
+  .nav-links a:hover,.nav-links a.active{color:white;background:rgba(255,255,255,.1);}
+  .nav-donate{background:var(--orange)!important;color:#fff!important;border-radius:5px;}
+  .nav-donate:hover{background:var(--teal)!important;}
+
+  .btn{display:inline-block;font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;text-decoration:none;padding:.65rem 1.5rem;border-radius:5px;border:none;cursor:pointer;transition:transform .18s,box-shadow .18s,background .18s;}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.13);}
+  .btn-teal{background:var(--teal);color:#fff;} .btn-teal:hover{background:var(--teal-dk);}
+  .btn-orange{background:var(--orange);color:#fff;} .btn-orange:hover{background:var(--teal-dk);}
+  .btn-outline{background:transparent;color:var(--teal);border:2px solid var(--teal);} .btn-outline:hover{background:var(--teal);color:#fff;}
+  .btn-outline-white{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.4);} .btn-outline-white:hover{background:rgba(255,255,255,.1);}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease;}
+  .reveal.on{opacity:1;transform:none;}
+  .d1{transition-delay:.08s;} .d2{transition-delay:.16s;} .d3{transition-delay:.24s;}
+
+  .eyebrow{font-size:.68rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:.7rem;display:block;}
+
+  /* PAGE HERO */
+  .page-hero{padding:7rem 2rem 4rem;background:var(--dark);text-align:center;}
+  .page-hero .eyebrow{color:var(--teal-lt);}
+  .page-hero h1{font-family:'Fredoka One',cursive;font-size:clamp(2.5rem,5vw,4rem);color:#fff;line-height:1.05;margin-bottom:1rem;}
+  .page-hero h1 em{font-style:normal;color:var(--orange);}
+  .page-hero p{font-size:1.05rem;color:rgba(255,255,255,.6);max-width:520px;margin:0 auto;line-height:1.85;}
+
+  /* DONATE MAIN */
+  #donate-main{background:var(--cream);}
+  .donate-grid{max-width:1060px;margin:0 auto;padding:5rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+  .donate-copy h2{font-family:'Fredoka One',cursive;font-size:clamp(1.9rem,3vw,2.6rem);color:var(--dark);margin-bottom:1rem;}
+  .donate-copy p{font-size:1rem;line-height:1.9;color:var(--muted);margin-bottom:1rem;}
+  .donate-copy .spay-note{background:var(--teal-lt);border-radius:10px;padding:1rem 1.2rem;font-size:.9rem;font-weight:700;color:var(--teal-dk);margin-top:1.5rem;line-height:1.6;}
+
+  /* DONORBOX */
+  .donorbox-wrap{background:white;border-radius:16px;padding:2rem;box-shadow:0 8px 32px rgba(28,46,42,.1);border:1px solid rgba(42,127,111,.1);}
+  .donorbox-wrap h3{font-family:'Fredoka One',cursive;font-size:1.4rem;color:var(--dark);margin-bottom:.4rem;}
+  .donorbox-wrap .db-sub{font-size:.88rem;color:var(--muted);margin-bottom:1.5rem;line-height:1.5;}
+  .donorbox-embed{width:100%;min-height:500px;border:none;border-radius:8px;display:block;}
+
+  /* Donorbox placeholder — shown until campaign ID is added */
+  .db-placeholder{background:var(--teal-lt);border-radius:10px;padding:2.5rem 2rem;text-align:center;}
+  .db-placeholder h4{font-family:'Fredoka One',cursive;font-size:1.3rem;color:var(--teal-dk);margin-bottom:.5rem;}
+  .db-placeholder p{font-size:.88rem;color:var(--teal-dk);opacity:.75;line-height:1.7;margin-bottom:1.2rem;}
+  .db-placeholder code{background:rgba(28,46,42,.1);padding:.2rem .5rem;border-radius:4px;font-size:.82rem;font-family:monospace;}
+
+  /* OTHER WAYS */
+  #other-ways{background:var(--white);}
+  .other-inner{max-width:1060px;margin:0 auto;padding:5rem 2rem;}
+  .other-inner h2{font-family:'Fredoka One',cursive;font-size:clamp(1.9rem,3vw,2.4rem);color:var(--dark);margin-bottom:.5rem;}
+  .other-inner .intro{font-size:1rem;color:var(--muted);line-height:1.8;margin-bottom:3rem;max-width:600px;}
+  .ways-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
+  .way-card{background:var(--cream);border-radius:14px;padding:1.8rem;border:1px solid rgba(42,127,111,.1);transition:transform .3s,box-shadow .3s;}
+  .way-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(28,46,42,.09);}
+  .way-card h3{font-family:'Fredoka One',cursive;font-size:1.2rem;color:var(--dark);margin-bottom:.4rem;}
+  .way-card p{font-size:.87rem;line-height:1.72;color:var(--muted);margin-bottom:1.1rem;}
+
+  /* TIME AND VOICE */
+  #give-more{background:var(--teal);}
+  .give-inner{max-width:1060px;margin:0 auto;padding:5rem 2rem;}
+  .give-inner .eyebrow{color:var(--teal-lt);}
+  .give-inner h2{font-family:'Fredoka One',cursive;font-size:clamp(1.9rem,3vw,2.4rem);color:#fff;margin-bottom:.5rem;}
+  .give-inner .intro{font-size:1rem;color:rgba(255,255,255,.65);line-height:1.8;margin-bottom:3rem;max-width:600px;}
+  .give-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
+  .give-card{background:rgba(255,255,255,.08);border-radius:14px;padding:1.8rem;border:1px solid rgba(255,255,255,.1);transition:background .2s;}
+  .give-card:hover{background:rgba(255,255,255,.13);}
+  .give-card h3{font-family:'Fredoka One',cursive;font-size:1.15rem;color:#fff;margin-bottom:.4rem;}
+  .give-card p{font-size:.87rem;line-height:1.72;color:rgba(255,255,255,.6);}
+
+  footer{background:var(--dark);padding:3rem 2rem 2rem;}
+  .foot-inner{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:1.5rem;}
+  .foot-logo{font-family:'Fredoka One',cursive;font-size:1.3rem;color:var(--teal-lt);display:block;margin-bottom:.65rem;}
+  .foot-brand p{font-size:.8rem;color:rgba(255,255,255,.35);line-height:1.85;}
+  .foot-brand a{color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s;}
+  .foot-brand a:hover{color:var(--teal-lt);}
+  .foot-col h5{font-size:.65rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:1rem;}
+  .foot-col ul{list-style:none;}
+  .foot-col ul li{margin-bottom:.45rem;}
+  .foot-col ul a{font-size:.85rem;font-weight:700;color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s;}
+  .foot-col ul a:hover{color:var(--teal-lt);}
+  .foot-bottom{max-width:1060px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+  .foot-bottom p{font-size:.77rem;color:rgba(255,255,255,.25);}
+  .foot-social{display:flex;gap:.45rem;}
+  .foot-social a{width:32px;height:32px;border-radius:6px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:900;color:rgba(255,255,255,.45);text-decoration:none;transition:background .2s,color .2s;}
+  .foot-social a:hover{background:var(--teal);color:#fff;}
+
+  @media(max-width:860px){
+    nav{padding:0 1.25rem;}
+    .donate-grid{grid-template-columns:1fr;gap:2.5rem;}
+    .ways-grid,.give-cards{grid-template-columns:1fr;}
+    .foot-inner{grid-template-columns:1fr;gap:2rem;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Furry Freight</a>
+  <ul class="nav-links">
+    <li><a href="story.html">Our Story</a></li>
+    <li><a href="programs.html">Programs</a></li>
+    <li><a href="donate.html" class="active">Support</a></li>
+    <li><a href="index.html#volunteer">Volunteer</a></li>
+    <li><a href="donate.html" class="nav-donate">Donate</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <span class="eyebrow">Support the Animals</span>
+  <h1>Help us keep <em>rolling.</em></h1>
+  <p>Every dollar, every bottle returned, every shared post helps save a life. Here is every way you can support Furry Freight.</p>
+</div>
+
+<!-- DONATE MAIN -->
+<section id="donate-main">
+  <div class="donate-grid">
+    <div class="donate-copy reveal">
+      <span class="eyebrow">Make a Donation</span>
+      <h2>Your gift goes straight to the animals.</h2>
+      <p>We are 100% volunteer run. No salaries, no overhead. Every dollar you donate funds transport trips and spay/neuter surgeries for pets who need them most.</p>
+      <p>One-time gifts help us respond quickly. Monthly giving helps us plan ahead and commit to more transports.</p>
+      <div class="spay-note">
+        Want to sponsor a spay surgery? Each surgery costs about $70. Add a note in the comments that says "Spay it Forward" and we will direct your gift there.
+      </div>
+    </div>
+    <div class="donorbox-wrap reveal d1">
+      <h3>Donate Now</h3>
+      <p class="db-sub">Secure donation powered by Donorbox. Tax-deductible. EIN: 82-4423390.</p>
+
+      <!--
+      =====================================================
+      DONORBOX EMBED
+      =====================================================
+      To activate:
+        1. Log in at donorbox.org
+        2. Go to your campaign
+        3. Click "Embed" and copy your campaign name/ID
+        4. Replace YOUR_CAMPAIGN_NAME below with your real campaign name
+        5. Delete the db-placeholder div and uncomment the iframe below
+      =====================================================
+      -->
+
+      <!-- UNCOMMENT THIS BLOCK AND ADD YOUR CAMPAIGN NAME:
+      <iframe
+        src="https://donorbox.org/embed/YOUR_CAMPAIGN_NAME"
+        name="donorbox"
+        allowpaymentrequest="allowpaymentrequest"
+        seamless="seamless"
+        frameborder="0"
+        scrolling="no"
+        class="donorbox-embed"
+        allow="payment">
+      </iframe>
+      -->
+
+      <div class="db-placeholder">
+        <h4>Donorbox Coming Soon</h4>
+        <p>To activate your donation form, add your Donorbox campaign name to this file.<br>Find the comment that says <code>YOUR_CAMPAIGN_NAME</code> and replace it with your campaign slug from donorbox.org.</p>
+        <a href="https://donorbox.org" target="_blank" class="btn btn-teal">Go to Donorbox</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- OTHER WAYS TO GIVE -->
+<section id="other-ways">
+  <div class="other-inner">
+    <span class="eyebrow reveal">More Ways to Help</span>
+    <h2 class="reveal">Other ways to support Furry Freight</h2>
+    <p class="intro reveal d1">Not everyone can give cash, and that is completely okay. Here are other ways your support makes a real difference.</p>
+    <div class="ways-grid">
+
+      <div class="way-card reveal d1">
+        <h3>Oregon BottleDrop</h3>
+        <p>Pick up blue bags from us, fill them with returnables, and drop them off at any BottleDrop center. The credit comes straight to Furry Freight at no cost to you.</p>
+        <a href="https://www.bottledropcenters.com/raise-money/" target="_blank" class="btn btn-outline">Learn How</a>
+      </div>
+
+      <div class="way-card reveal d2">
+        <h3>Fred Meyer Rewards</h3>
+        <p>Link your Fred Meyer Shopper's Card to Furry Freight through the Community Rewards program. Fred Meyer donates a portion of your everyday purchases. Free to set up.</p>
+        <a href="https://www.fredmeyer.com/i/community/community-rewards" target="_blank" class="btn btn-outline">Link Your Card</a>
+      </div>
+
+      <div class="way-card reveal d3">
+        <h3>Amazon Wishlist</h3>
+        <p>Ship supplies directly to our team. Crates, leashes, cleaning supplies, and more. Items go straight to the volunteers keeping our animals safe on the road.</p>
+        <a href="https://www.amazon.com/hz/wishlist/ls/1HH2KRDF6AX0U?ref_=wl_share" target="_blank" class="btn btn-outline">View Wishlist</a>
+      </div>
+
+      <div class="way-card reveal d1">
+        <h3>GearFix Bend Consignment</h3>
+        <p>Drop off your used outdoor gear at GearFix in Bend and consign it in our name. When it sells, the proceeds come to Furry Freight. A great way to clear out your garage and give back.</p>
+        <a href="https://gearfixbend.com" target="_blank" class="btn btn-outline">Learn About GearFix</a>
+      </div>
+
+      <div class="way-card reveal d2">
+        <h3>Shop at Our Online Thrift Store</h3>
+        <p>We sell donated items online. Every purchase supports our transport program directly. Keep an eye on our social media for listings.</p>
+        <a href="https://www.instagram.com/furry.freight/" target="_blank" class="btn btn-outline">Follow for Updates</a>
+      </div>
+
+      <div class="way-card reveal d3">
+        <h3>Attend Our Events</h3>
+        <p>Our annual Yard Sale, Holiday Treat Sale, Egg My House, and Bingo nights are all fundraisers. Come out, have fun, and support the animals at the same time.</p>
+        <a href="index.html#newsletter" class="btn btn-outline">Get Event Updates</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GIVE YOUR TIME AND VOICE -->
+<section id="give-more">
+  <div class="give-inner">
+    <span class="eyebrow reveal">Beyond Dollars</span>
+    <h2 class="reveal">Your time and your voice matter too.</h2>
+    <p class="intro reveal d1">Some of the most valuable support we receive costs nothing at all.</p>
+    <div class="give-cards">
+      <div class="give-card reveal d1">
+        <h3>Follow and Share</h3>
+        <p>Following us on Instagram, Facebook, and TikTok and sharing our posts puts our mission in front of new people. Every share is a potential donor, volunteer, or adopter.</p>
+      </div>
+      <div class="give-card reveal d2">
+        <h3>Share Adoptable Pets</h3>
+        <p>When you see a dog or cat from one of our partner shelters posted for adoption, share it. You might be the reason that animal finds its home.</p>
+      </div>
+      <div class="give-card reveal d3">
+        <h3>Volunteer Your Time</h3>
+        <p>Drive, clean crates, run events, write grants, or post content. Volunteering with us, or with any local shelter or rescue, is one of the most direct ways to help animals in your community.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <span class="foot-logo">Furry Freight</span>
+      <p>Oregon-registered 501(c)(3) public charity.<br>
+         EIN: 82-4423390 &middot; PO Box 93, Bend OR 97709<br>
+         <a href="mailto:info@furryfreight.org">info@furryfreight.org</a></p>
+    </div>
+    <div class="foot-col">
+      <h5>Pages</h5>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="story.html">Our Story</a></li>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="donate.html">Support Us</a></li>
+        <li><a href="index.html#volunteer">Volunteer</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Follow Us</h5>
+      <ul>
+        <li><a href="https://www.instagram.com/furry.freight/" target="_blank">Instagram</a></li>
+        <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
+        <li><a href="https://www.tiktok.com/@furryfreight" target="_blank">TikTok</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <p>Copyright &copy; 2018&ndash;2026 Furry Freight Shelter Transport. Saving shelter pets, one road trip at a time.</p>
+    <div class="foot-social">
+      <a href="https://facebook.com" target="_blank">FB</a>
+      <a href="https://www.instagram.com/furry.freight/" target="_blank">IG</a>
+      <a href="https://www.tiktok.com/@furryfreight" target="_blank">TT</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const revs = document.querySelectorAll('.reveal');
+  function checkReveal(){const vh=window.innerHeight;revs.forEach(el=>{if(el.getBoundingClientRect().top<vh-50)el.classList.add('on');});}
+  window.addEventListener('scroll',checkReveal,{passive:true});
+  checkReveal();
+</script>
+</body>
+</html>
