@@ -22,7 +22,7 @@
   body{font-family:'Nunito',sans-serif;background:var(--white);color:var(--dark);overflow-x:hidden;}
 
   nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;background:var(--dark);border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;padding:0 2.5rem;gap:2rem;}
-  .nav-logo{font-family:'Fredoka One',cursive;font-size:1.2rem;color:var(--teal-lt);text-decoration:none;margin-right:auto;display:flex;align-items:center;}
+  .nav-logo{text-decoration:none;margin-right:auto;display:flex;align-items:center;}
   .nav-logo img{height:34px;width:auto;display:block;}
   .nav-links{list-style:none;display:flex;align-items:center;gap:.1rem;}
   .nav-links a{font-size:.85rem;font-weight:800;color:rgba(255,255,255,.55);text-decoration:none;padding:.38rem .8rem;border-radius:5px;transition:color .2s,background .2s;}
@@ -49,7 +49,6 @@
   .page-hero h1 em{font-style:normal;color:var(--orange);}
   .page-hero p{font-size:1.05rem;color:rgba(255,255,255,.6);max-width:520px;margin:0 auto;line-height:1.85;}
 
-  /* TRANSPORT */
   #transport{background:var(--cream);}
   .prog-section{max-width:1060px;margin:0 auto;padding:5.5rem 2rem;}
   .prog-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
@@ -62,7 +61,6 @@
   .prog-copy .highlight{background:var(--teal-lt);border-radius:10px;padding:1rem 1.2rem;font-size:.9rem;font-weight:700;color:var(--teal-dk);margin:1.5rem 0;line-height:1.6;}
   .prog-btns{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.8rem;}
 
-  /* HOW IT WORKS */
   #how{background:var(--white);}
   .steps-inner{max-width:900px;margin:0 auto;padding:5rem 2rem;}
   .steps-inner h2{font-family:'Fredoka One',cursive;font-size:clamp(1.9rem,3vw,2.4rem);color:var(--dark);margin-bottom:.5rem;}
@@ -73,10 +71,8 @@
   .step-body h4{font-family:'Fredoka One',cursive;font-size:1.15rem;color:var(--dark);margin-bottom:.3rem;}
   .step-body p{font-size:.92rem;line-height:1.75;color:var(--muted);}
 
-  /* SPAY */
   #spay{background:var(--sand);}
 
-  /* IMPACT */
   #impact{background:var(--teal);}
   .impact-inner{max-width:1060px;margin:0 auto;padding:4rem 2rem;display:flex;align-items:center;justify-content:space-around;gap:2rem;flex-wrap:wrap;}
   .istat{text-align:center;}
@@ -88,7 +84,7 @@
 
   footer{background:var(--dark);padding:3rem 2rem 2rem;}
   .foot-inner{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:1.5rem;}
-  .foot-logo{font-family:'Fredoka One',cursive;font-size:1.3rem;color:var(--teal-lt);display:block;margin-bottom:.65rem;}
+  .foot-logo img{height:28px;width:auto;display:block;margin-bottom:.75rem;filter:brightness(0) invert(1);opacity:.8;}
   .foot-brand p{font-size:.8rem;color:rgba(255,255,255,.35);line-height:1.85;}
   .foot-brand a{color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s;}
   .foot-brand a:hover{color:var(--teal-lt);}
@@ -115,12 +111,14 @@
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">Furry Freight</a>
+  <a href="index.html" class="nav-logo">
+    <img src="https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/ff_header.svg" alt="Furry Freight">
+  </a>
   <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
     <li><a href="story.html">Our Story</a></li>
     <li><a href="programs.html" class="active">Programs</a></li>
     <li><a href="donate.html">Support</a></li>
-    <li><a href="index.html#volunteer">Volunteer</a></li>
     <li><a href="donate.html" class="nav-donate">Donate</a></li>
   </ul>
 </nav>
@@ -131,7 +129,6 @@
   <p>Two ways we fight for adoptable animals. Moving them to safety today, and reducing the number who need saving tomorrow.</p>
 </div>
 
-<!-- TRANSPORT -->
 <section id="transport">
   <div class="prog-section">
     <div class="prog-grid">
@@ -154,7 +151,6 @@
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
 <section id="how">
   <div class="steps-inner">
     <span class="eyebrow reveal">How Transport Works</span>
@@ -200,7 +196,6 @@
   </div>
 </section>
 
-<!-- SPAY IT FORWARD -->
 <section id="spay">
   <div class="prog-section">
     <div class="prog-grid flip">
@@ -224,7 +219,6 @@
   </div>
 </section>
 
-<!-- IMPACT -->
 <section id="impact">
   <div class="impact-inner">
     <div class="istat reveal"><span class="n">1,709+</span><span class="l">Animals Saved</span></div>
@@ -245,7 +239,7 @@
 <footer>
   <div class="foot-inner">
     <div class="foot-brand">
-      <span class="foot-logo">Furry Freight</span>
+      <div class="foot-logo"><img src="https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/ff_header.svg" alt="Furry Freight"></div>
       <p>Oregon-registered 501(c)(3) public charity.<br>
          EIN: 82-4423390 &middot; PO Box 93, Bend OR 97709<br>
          <a href="mailto:info@furryfreight.org">info@furryfreight.org</a></p>
