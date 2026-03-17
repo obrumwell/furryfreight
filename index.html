@@ -67,16 +67,16 @@ const CONFIG = {
   programPhoto1:  "https://images.unsplash.com/photo-1444212477490-ca407925329e?w=900&q=80&fit=crop",
   programPhoto2:  "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/spay.jpg",
   volunteerPhoto: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=900&q=80&fit=crop",
-  donatePhoto:    "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/loki.jpg",
-  bottledropPhoto:"https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/kitty.jpg",
+  donatePhoto:    "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/rich.jpg",
+  bottledropPhoto:"https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/cat.jpg",
 
   /* ── OUR STORY SECTION ── */
   storyBadgeNumber: "1,709+",
   storyBadgeLabel:  "lives changed",
   storyHeadline:    "From at-risk to adored.",
   storyOriginTitle: "How it started",
-  storyOriginBody:  "Furry Freight was founded in 2018 by Kim Wilken, a registered nurse living in Bend, Oregon. After moving to the Pacific Northwest, Kim noticed something: local shelters had room, and strong adoption demand. But shelters in other parts of the country were overwhelmed, euthanizing healthy, adoptable pets simply because there were more animals than homes. The solution seemed simple. Drive them north. That first road trip became the foundation of Furry Freight Shelter Transport.",
-  storyMissionBody: "We partner with overpopulated shelters where pets face euthanasia and transport them to Pacific Northwest communities ready to welcome them home.",
+  storyOriginBody:  "Furry Freight was founded in 2018 by Kim Wilken, a registered nurse living in Bend, Oregon.",
+  storyMissionBody: "We partner with overpopulated shelters where adoptable pets face euthanasia and transport them to Pacific Northwest communities ready to welcome them home.",
 
   principle1Title: "Every life has value",
   principle1Desc:  "No healthy, adoptable animal should lose its life because of where it was born. Geography should not determine fate.",
@@ -90,11 +90,11 @@ const CONFIG = {
 
   /* ── PROGRAMS ── */
   program1Title: "Transport",
-  program1Desc:  "We drive at-risk dogs and cats from overcrowded shelters to communities where they are quickly adopted.",
+  program1Desc:  "We drive at-risk dogs and cats from over capacity shelters to communities where they are quickly adopted.",
   program1Link:  "programs.html",
 
   program2Title: "Spay it Forward",
-  program2Desc:  "We fund spay and neuter surgeries for pets whose owners cannot afford the cost. Each surgery is about $70.",
+  program2Desc:  "We fund spay and neuter surgeries for owned pets whose famalies cannot afford the cost, and for shelter pets to help increase chances of adoption. This program works to address overpopulation at the source. Each surgery is about $70.",
   program2Link:  "programs.html",
 
   /* ── IMPACT STRIP ── */
@@ -109,11 +109,11 @@ const CONFIG = {
 
   /* ── SUPPORT CARDS ── */
   donateHeadline:     "Make a Donation",
-  donateDesc:         "Every dollar goes directly to transport costs and our Spay It Forward Program. Any amount makes a difference.",
+  donateDesc:         "Every dollar goes directly to transport costs and our Spay It Forward Program. Any amount makes a positive impact.",
   donateLink:         "donate.html",
 
   wishlistHeadline:   "Amazon Wishlist",
-  wishlistDesc:       "Ship supplies directly to our team. Crates, leashes, cleaning supplies and more. No account needed.",
+  wishlistDesc:       "Ship supplies directly to our team, and the animals on board. Treats, crates, leashes, cleaning supplies and more. No account needed.",
   wishlistLink:       "https://www.amazon.com/hz/wishlist/ls/1HH2KRDF6AX0U?ref_=wl_share",
   wishlistPhoto:      "",
 
@@ -124,7 +124,12 @@ const CONFIG = {
   /* ── VOLUNTEER ── */
   volunteerHeadline:   "Join the pack.",
   volunteerBody:       "We run entirely on volunteers. There is a place for you here no matter your skills or schedule.",
-  volunteerRole1Title: "Drive and Transport",
+
+  // Volunteer section media — paste a video URL to show a video instead of a photo
+  // Supported: direct .mp4 links (e.g. from GitHub raw, Dropbox, Google Drive direct link)
+  // Leave volunteerVideo as "" to show the photo instead
+  volunteerVideo:  "https://raw.githubusercontent.com/obrumwell/furryfreight/main/pack.mp4",
+  volunteerPhoto:  "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=900&q=80&fit=crop",
   volunteerRole1Desc:  "Long-haul drivers for multi-day transport trips. Must be 21+ with a clean record.",
   volunteerRole2Title: "Events and Fundraising",
   volunteerRole2Desc:  "Help plan and support our annual fundraising events like treat sales, Egg My House and Bingo.",
@@ -133,7 +138,7 @@ const CONFIG = {
 
   /* ── NEWSLETTER ── */
   newsletterHeadline: "Updates from the road.",
-  newsletterDesc:     "Animal stories, events, and ways to help delivered to your inbox.",
+  newsletterDesc:     "Animal stories, events, and ways to get involved delivered to your inbox.",
 
   /* ── SOCIAL MEDIA ── */
   socialHeadline: "Follow Along",
@@ -216,28 +221,26 @@ const css = `
   .hstat .n{font-family:'Fredoka One',cursive;font-size:1.9rem;color:var(--teal-lt);display:block;line-height:1;}
   .hstat .l{font-size:.68rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.4);display:block;margin-top:.2rem;}
 
-  /* MOSAIC — portrait optimised */
+  /* MOSAIC — natural aspect ratio, flowing masonry-style */
   .mosaic{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:10px;
+    column-count:5;
+    column-gap:10px;
     padding:14px;
     background:var(--cream);
   }
   .mosaic-item{
-    overflow:hidden;
+    break-inside:avoid;
+    margin-bottom:10px;
     border-radius:14px;
-    /* Natural portrait height — shows full vertical photo */
-    aspect-ratio:3/4;
+    overflow:hidden;
+    display:block;
   }
   .mosaic-item img{
     width:100%;
-    height:100%;
-    object-fit:contain;   /* Shows full photo, no cropping */
-    object-position:center;
+    height:auto;        /* natural height — no cropping at all */
     display:block;
-    background:var(--sand); /* fills any letterbox gap with warm tone */
     transition:transform .4s;
+    border-radius:14px;
   }
   .mosaic-item:hover img{transform:scale(1.03);}
 
@@ -313,6 +316,7 @@ const css = `
   .vol-inner{max-width:1060px;margin:0 auto;padding:5.5rem 2rem;}
   .vol-header{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-bottom:3.5rem;}
   .vol-header img{width:100%;border-radius:14px;display:block;height:340px;object-fit:cover;}
+  .vol-header video{width:100%;border-radius:14px;display:block;height:340px;object-fit:cover;background:var(--dark);}
   .vol-header h2{font-family:'Fredoka One',cursive;font-size:clamp(2rem,3vw,2.8rem);color:#fff;margin-bottom:.9rem;}
   .vol-header p{font-size:.97rem;line-height:1.85;color:rgba(255,255,255,.55);margin-bottom:1.8rem;}
   .vol-header .eyebrow{color:var(--teal-lt);}
@@ -384,8 +388,9 @@ const css = `
   @media(max-width:860px){
     .story-top,.vol-header,.foot-inner{grid-template-columns:1fr;gap:2.5rem;}
     .prog-grid,.support-cards,.vol-roles,.social-cards,.principles-grid{grid-template-columns:1fr;}
-    .mosaic{grid-template-columns:repeat(3,1fr);gap:8px;padding:10px;}
-    .mosaic-item{border-radius:10px;}
+    .mosaic{column-count:3;column-gap:8px;padding:10px;}
+    .mosaic-item{margin-bottom:8px;border-radius:10px;}
+    .mosaic-item img{border-radius:10px;}
     .hero-content{padding:0 2rem 4rem;}
     nav{padding:0 1.25rem;}
     .impact-div{display:none;}
@@ -587,7 +592,12 @@ document.body.innerHTML = `
         </div>
       </div>
       <div class="reveal d1">
-        <img src="${CONFIG.volunteerPhoto}" alt="Furry Freight volunteers" loading="lazy">
+        ${CONFIG.volunteerVideo
+          ? `<video id="vol-video" muted loop playsinline preload="metadata" style="width:100%;border-radius:14px;display:block;height:340px;object-fit:cover;background:var(--dark);">
+              <source src="${CONFIG.volunteerVideo}" type="video/mp4">
+              <source src="${CONFIG.volunteerVideo}" type="video/quicktime">
+            </video>`
+          : `<img src="${CONFIG.volunteerPhoto}" alt="Furry Freight volunteers" loading="lazy">`}
       </div>
     </div>
     <div class="vol-roles">
@@ -720,8 +730,24 @@ function checkReveal() {
   revs.forEach(el => { if (el.getBoundingClientRect().top < vh - 50) el.classList.add('on'); });
 }
 
-window.addEventListener('scroll', () => { updateNav(); checkReveal(); }, { passive: true });
-updateNav(); checkReveal();
+// SCROLL-TRIGGERED VIDEO
+const volVideo = document.getElementById('vol-video');
+let videoPlaying = false;
+function checkVideo() {
+  if (!volVideo) return;
+  const rect = volVideo.getBoundingClientRect();
+  const inView = rect.top < window.innerHeight * 0.85 && rect.bottom > 0;
+  if (inView && !videoPlaying) {
+    volVideo.play().catch(() => {});
+    videoPlaying = true;
+  } else if (!inView && videoPlaying) {
+    volVideo.pause();
+    videoPlaying = false;
+  }
+}
+
+window.addEventListener('scroll', () => { updateNav(); checkReveal(); checkVideo(); }, { passive: true });
+updateNav(); checkReveal(); checkVideo();
 
 // NEWSLETTER
 function handleNL(e) {
