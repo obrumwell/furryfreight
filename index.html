@@ -25,11 +25,9 @@ const CONFIG = {
   /* ── SITE ── */
   siteName: "Furry Freight",
 
-  // Nav header logo (the horizontal version for the top bar)
   navLogo:       "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/ff_header.svg",
   navLogoHeight: "34",
 
-  // Hero logo (the stacked/icon version shown over the homepage photo)
   heroLogo:      "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/ff_logo.svg",
   heroLogoWidth: "200",
 
@@ -48,16 +46,24 @@ const CONFIG = {
   stat3Label:  "On the Road",
 
   /* ── PHOTOS ──────────────────────────────────────────────────
-     To replace a photo: right-click any image on the web,
-     click "Copy image address", paste it below.
+     All photos below are portrait (vertical) orientation.
+     Add more mosaic photos by filling in mosaicPhoto6-8.
+     Leave as "" to hide that slot.
   ──────────────────────────────────────────────────────────── */
   heroPhoto:      "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1600&q=85&fit=crop",
   storyPhoto:     "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/dogtile1.jpg",
+
+  // Mosaic photos — all portrait orientation
   mosaicPhoto1:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/geoff.jpg",
   mosaicPhoto2:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/kamala.jpg",
   mosaicPhoto3:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/dogtile3.jpg",
   mosaicPhoto4:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/aussie.jpg",
   mosaicPhoto5:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/polly.jpg",
+  // Add up to 3 more photos here — leave as "" to hide
+  mosaicPhoto6:   "",
+  mosaicPhoto7:   "",
+  mosaicPhoto8:   "",
+
   programPhoto1:  "https://images.unsplash.com/photo-1444212477490-ca407925329e?w=900&q=80&fit=crop",
   programPhoto2:  "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/spay.jpg",
   volunteerPhoto: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=900&q=80&fit=crop",
@@ -72,7 +78,6 @@ const CONFIG = {
   storyOriginBody:  "Furry Freight was founded in 2018 by Kim Wilken, a registered nurse living in Bend, Oregon. After moving to the Pacific Northwest, Kim noticed something: local shelters had room, and strong adoption demand. But shelters in other parts of the country were overwhelmed, euthanizing healthy, adoptable pets simply because there were more animals than homes. The solution seemed simple. Drive them north. That first road trip became the foundation of Furry Freight Shelter Transport.",
   storyMissionBody: "We partner with overpopulated shelters where pets face euthanasia and transport them to Pacific Northwest communities ready to welcome them home.",
 
-  // Guiding principles — edit the title and description for each
   principle1Title: "Every life has value",
   principle1Desc:  "No healthy, adoptable animal should lose its life because of where it was born. Geography should not determine fate.",
   principle2Title: "Community solves problems",
@@ -110,8 +115,6 @@ const CONFIG = {
   wishlistHeadline:   "Amazon Wishlist",
   wishlistDesc:       "Ship supplies directly to our team. Crates, leashes, cleaning supplies and more. No account needed.",
   wishlistLink:       "https://www.amazon.com/hz/wishlist/ls/1HH2KRDF6AX0U?ref_=wl_share",
-  // Wishlist card photo — add an image URL here to show a photo instead of the placeholder text
-  // Leave as "" to keep the default amazon placeholder
   wishlistPhoto:      "",
 
   freeGivingHeadline: "Free Ways to Give",
@@ -119,8 +122,8 @@ const CONFIG = {
   freeGivingLink:     "donate.html",
 
   /* ── VOLUNTEER ── */
-  volunteerHeadline:  "Join the pack.",
-  volunteerBody:      "We run entirely on volunteers. There is a place for you here no matter your skills or schedule.",
+  volunteerHeadline:   "Join the pack.",
+  volunteerBody:       "We run entirely on volunteers. There is a place for you here no matter your skills or schedule.",
   volunteerRole1Title: "Drive and Transport",
   volunteerRole1Desc:  "Long-haul drivers for multi-day transport trips. Must be 21+ with a clean record.",
   volunteerRole2Title: "Events and Fundraising",
@@ -136,8 +139,7 @@ const CONFIG = {
   socialHeadline: "Follow Along",
   socialDesc:     "We share happy endings, on the road stories, and behind the scenes moments from our life saving transports.",
 
-  /* ── COMMUNITY SUPPORTERS ──
-     Add or remove logos. Keep the format exactly as shown.     */
+  /* ── COMMUNITY SUPPORTERS ── */
   supporterLogos: [
     { src: "https://furryfreight.org/images/logos/riversplace.png", alt: "River's Place" },
     { src: "https://furryfreight.org/images/logos/bpe.png",         alt: "Bend Pet Express" },
@@ -214,13 +216,30 @@ const css = `
   .hstat .n{font-family:'Fredoka One',cursive;font-size:1.9rem;color:var(--teal-lt);display:block;line-height:1;}
   .hstat .l{font-size:.68rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.4);display:block;margin-top:.2rem;}
 
-  /* MOSAIC */
-  .mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:260px 260px;gap:10px;padding:14px;background:var(--cream);}
-  .mosaic-item{overflow:hidden;border-radius:14px;}
-  .mosaic-item img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform .5s;}
-  .mosaic-item:hover img{transform:scale(1.05);}
-  .mosaic-item.tall{grid-row:span 2;}
-  .mosaic-item.wide{grid-column:span 2;}
+  /* MOSAIC — portrait optimised */
+  .mosaic{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
+    padding:14px;
+    background:var(--cream);
+  }
+  .mosaic-item{
+    overflow:hidden;
+    border-radius:14px;
+    /* Natural portrait height — shows full vertical photo */
+    aspect-ratio:3/4;
+  }
+  .mosaic-item img{
+    width:100%;
+    height:100%;
+    object-fit:contain;   /* Shows full photo, no cropping */
+    object-position:center;
+    display:block;
+    background:var(--sand); /* fills any letterbox gap with warm tone */
+    transition:transform .4s;
+  }
+  .mosaic-item:hover img{transform:scale(1.03);}
 
   /* SHARED SECTION STYLES */
   .eyebrow{font-size:.68rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:.7rem;display:block;}
@@ -365,9 +384,8 @@ const css = `
   @media(max-width:860px){
     .story-top,.vol-header,.foot-inner{grid-template-columns:1fr;gap:2.5rem;}
     .prog-grid,.support-cards,.vol-roles,.social-cards,.principles-grid{grid-template-columns:1fr;}
-    .mosaic{grid-template-columns:1fr 1fr;grid-template-rows:auto;gap:8px;padding:10px;}
-    .mosaic-item.tall,.mosaic-item.wide{grid-row:span 1;grid-column:span 1;}
-    .mosaic-item{border-radius:10px;height:180px;}
+    .mosaic{grid-template-columns:repeat(3,1fr);gap:8px;padding:10px;}
+    .mosaic-item{border-radius:10px;}
     .hero-content{padding:0 2rem 4rem;}
     nav{padding:0 1.25rem;}
     .impact-div{display:none;}
@@ -377,6 +395,17 @@ const css = `
 
 document.head.insertAdjacentHTML('beforeend', `<style>${css}</style>`);
 document.title = CONFIG.siteName + ' — Shelter Transport';
+
+// Build mosaic items — only include slots that have a URL
+const mosaicPhotos = [
+  CONFIG.mosaicPhoto1, CONFIG.mosaicPhoto2, CONFIG.mosaicPhoto3,
+  CONFIG.mosaicPhoto4, CONFIG.mosaicPhoto5, CONFIG.mosaicPhoto6,
+  CONFIG.mosaicPhoto7, CONFIG.mosaicPhoto8
+].filter(Boolean);
+
+const mosaicHTML = mosaicPhotos.map((url, i) =>
+  `<div class="mosaic-item"><img src="${url}" alt="Furry Freight animal ${i+1}" loading="lazy"></div>`
+).join('');
 
 document.body.innerHTML = `
 
@@ -417,11 +446,7 @@ document.body.innerHTML = `
 
 <!-- MOSAIC -->
 <div class="mosaic">
-  <div class="mosaic-item tall"><img src="${CONFIG.mosaicPhoto1}" alt="Shelter animals" loading="lazy"></div>
-  <div class="mosaic-item wide"><img src="${CONFIG.mosaicPhoto2}" alt="Animals" loading="lazy"></div>
-  <div class="mosaic-item"><img src="${CONFIG.mosaicPhoto3}" alt="Rescue" loading="lazy"></div>
-  <div class="mosaic-item"><img src="${CONFIG.mosaicPhoto4}" alt="Transport" loading="lazy"></div>
-  <div class="mosaic-item wide"><img src="${CONFIG.mosaicPhoto5}" alt="Animals" loading="lazy"></div>
+  ${mosaicHTML}
 </div>
 
 <!-- STORY -->
