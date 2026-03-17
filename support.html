@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Support Furry Freight — Donate</title>
+<title>Support Furry Freight</title>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -21,6 +21,7 @@
   html{scroll-behavior:smooth;}
   body{font-family:'Nunito',sans-serif;background:var(--white);color:var(--dark);overflow-x:hidden;}
 
+  /* NAV */
   nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;background:var(--dark);border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;padding:0 2.5rem;gap:2rem;}
   .nav-logo{text-decoration:none;margin-right:auto;display:flex;align-items:center;}
   .nav-logo img{height:34px;width:auto;display:block;}
@@ -35,22 +36,19 @@
   .btn-teal{background:var(--teal);color:#fff;} .btn-teal:hover{background:var(--teal-dk);}
   .btn-orange{background:var(--orange);color:#fff;} .btn-orange:hover{background:var(--teal-dk);}
   .btn-outline{background:transparent;color:var(--teal);border:2px solid var(--teal);} .btn-outline:hover{background:var(--teal);color:#fff;}
-  .btn-outline-white{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.4);} .btn-outline-white:hover{background:rgba(255,255,255,.1);}
 
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease;}
   .reveal.on{opacity:1;transform:none;}
-  .d1{transition-delay:.08s;} .d2{transition-delay:.16s;} .d3{transition-delay:.24s;}
+  .d1{transition-delay:.07s;} .d2{transition-delay:.14s;} .d3{transition-delay:.21s;}
 
   .eyebrow{font-size:.68rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:.7rem;display:block;}
 
-  /* PAGE HERO */
+  /* HERO — paw bg, matches donate page */
   .page-hero{padding:7rem 2rem 4rem;background:var(--dark);text-align:center;position:relative;overflow:hidden;}
-  .page-hero .eyebrow{color:var(--teal-lt);}
+  .page-hero .eyebrow{color:var(--teal-lt);position:relative;z-index:1;}
   .page-hero h1{font-family:'Fredoka One',cursive;font-size:clamp(2.5rem,5vw,4rem);color:#fff;line-height:1.05;margin-bottom:1rem;position:relative;z-index:1;}
   .page-hero h1 em{font-style:normal;color:var(--orange);}
   .page-hero p{font-size:1.05rem;color:rgba(255,255,255,.6);max-width:520px;margin:0 auto;line-height:1.85;position:relative;z-index:1;}
-
-  /* Paw background layer */
   .paw-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;}
   .paw-bg svg{position:absolute;fill:rgba(255,255,255,.05);}
   .paw-bg svg:nth-child(1){width:130px;top:8%;left:4%;}
@@ -59,46 +57,23 @@
   .paw-bg svg:nth-child(4){width:65px;top:68%;right:18%;transform:rotate(40deg);}
   .paw-bg svg:nth-child(5){width:150px;bottom:2%;left:38%;transform:rotate(-30deg);}
   .paw-bg svg:nth-child(6){width:75px;top:38%;left:48%;transform:rotate(10deg);}
-
-  /* Eyebrow above hero needs z-index too */
-  .page-hero .eyebrow{position:relative;z-index:1;}
-
-  /* DONATE MAIN */
-  #donate-main{background:var(--cream);}
-  .donate-grid{max-width:1060px;margin:0 auto;padding:5rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
-  .donate-copy h2{font-family:'Fredoka One',cursive;font-size:clamp(1.9rem,3vw,2.6rem);color:var(--dark);margin-bottom:1rem;}
-  .donate-copy p{font-size:1rem;line-height:1.9;color:var(--muted);margin-bottom:1rem;}
-  .donate-copy .spay-note{background:var(--teal-lt);border-radius:10px;padding:1rem 1.2rem;font-size:.9rem;font-weight:700;color:var(--teal-dk);margin-top:1.5rem;line-height:1.6;}
-
-  /* Paw trail */
-  .paw-trail{display:flex;gap:.6rem;align-items:flex-end;margin-bottom:1.5rem;opacity:.3;}
-  .paw-trail svg{fill:var(--teal);flex-shrink:0;}
-  .paw-trail svg:nth-child(even){transform:translateY(5px) rotate(12deg);}
-  .paw-trail svg:nth-child(odd){transform:rotate(-10deg);}
-
-  /* DONORBOX */
-  .donorbox-wrap{background:white;border-radius:16px;padding:2rem;box-shadow:0 8px 32px rgba(28,46,42,.1);border:1px solid rgba(42,127,111,.1);}
-  .donorbox-wrap h3{font-family:'Fredoka One',cursive;font-size:1.4rem;color:var(--dark);margin-bottom:.4rem;}
-  .donorbox-wrap .db-sub{font-size:.88rem;color:var(--muted);margin-bottom:1.5rem;line-height:1.5;}
-  .donorbox-embed{width:100%;min-height:500px;border:none;border-radius:8px;display:block;}
-  .db-placeholder{background:var(--teal-lt);border-radius:10px;padding:2.5rem 2rem;text-align:center;}
-  .db-placeholder h4{font-family:'Fredoka One',cursive;font-size:1.3rem;color:var(--teal-dk);margin-bottom:.5rem;}
-  .db-placeholder p{font-size:.88rem;color:var(--teal-dk);opacity:.75;line-height:1.7;margin-bottom:1.2rem;}
-  .db-placeholder code{background:rgba(28,46,42,.1);padding:.2rem .5rem;border-radius:4px;font-size:.82rem;font-family:monospace;}
+  .hero-donate-nudge{margin-top:1.5rem;position:relative;z-index:1;}
+  .hero-donate-nudge a{font-size:.88rem;font-weight:800;color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s;}
+  .hero-donate-nudge a:hover{color:var(--teal-lt);}
 
   /* OTHER WAYS */
   #other-ways{background:var(--white);}
   .other-inner{max-width:1060px;margin:0 auto;padding:5rem 2rem;}
-  .other-inner h2{font-family:'Fredoka One',cursive;font-size:clamp(1.9rem,3vw,2.4rem);color:var(--dark);margin-bottom:.5rem;}
-  .other-inner .intro{font-size:1rem;color:var(--muted);line-height:1.8;margin-bottom:3rem;max-width:600px;}
+  .other-inner h2{font-family:'Fredoka One',cursive;font-size:clamp(1.8rem,3vw,2.4rem);color:var(--dark);margin-bottom:.5rem;}
+  .other-inner .intro{font-size:1rem;color:var(--muted);line-height:1.8;margin-bottom:2.5rem;max-width:580px;}
   .ways-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
-  .way-card{background:var(--cream);border-radius:14px;padding:1.8rem;border:1px solid rgba(42,127,111,.1);transition:transform .3s,box-shadow .3s;}
+  .way-card{background:var(--cream);border-radius:14px;padding:1.8rem;border:1px solid rgba(42,127,111,.1);transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column;}
   .way-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(28,46,42,.09);}
-  .way-card h3{font-family:'Fredoka One',cursive;font-size:1.2rem;color:var(--dark);margin-bottom:.4rem;}
-  .way-card p{font-size:.87rem;line-height:1.72;color:var(--muted);margin-bottom:1.1rem;}
+  .way-card h3{font-family:'Fredoka One',cursive;font-size:1.15rem;color:var(--dark);margin-bottom:.4rem;}
+  .way-card p{font-size:.87rem;line-height:1.72;color:var(--muted);margin-bottom:1.1rem;flex:1;}
 
-  /* GIVE MORE */
-  #give-more{background:var(--teal);position:relative;overflow:hidden;}
+  /* GIVE TIME */
+  #give-time{background:var(--teal);position:relative;overflow:hidden;}
   .give-paws{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
   .give-paws svg{position:absolute;fill:rgba(255,255,255,.06);}
   .give-paws svg:nth-child(1){width:180px;bottom:-30px;right:-30px;transform:rotate(-20deg);}
@@ -106,14 +81,20 @@
   .give-paws svg:nth-child(3){width:90px;bottom:25%;left:3%;transform:rotate(-10deg);}
   .give-inner{max-width:1060px;margin:0 auto;padding:5rem 2rem;position:relative;z-index:1;}
   .give-inner .eyebrow{color:var(--teal-lt);}
-  .give-inner h2{font-family:'Fredoka One',cursive;font-size:clamp(1.9rem,3vw,2.4rem);color:#fff;margin-bottom:.5rem;}
-  .give-inner .intro{font-size:1rem;color:rgba(255,255,255,.65);line-height:1.8;margin-bottom:3rem;max-width:600px;}
+  .give-inner h2{font-family:'Fredoka One',cursive;font-size:clamp(1.8rem,3vw,2.4rem);color:#fff;margin-bottom:.5rem;}
+  .give-inner .intro{font-size:1rem;color:rgba(255,255,255,.65);line-height:1.8;margin-bottom:2.5rem;max-width:580px;}
   .give-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
   .give-card{background:rgba(255,255,255,.08);border-radius:14px;padding:1.8rem;border:1px solid rgba(255,255,255,.1);transition:background .2s;}
   .give-card:hover{background:rgba(255,255,255,.13);}
-  .give-card h3{font-family:'Fredoka One',cursive;font-size:1.15rem;color:#fff;margin-bottom:.4rem;}
-  .give-card p{font-size:.87rem;line-height:1.72;color:rgba(255,255,255,.6);}
+  .give-card h3{font-family:'Fredoka One',cursive;font-size:1.1rem;color:#fff;margin-bottom:.4rem;}
+  .give-card p{font-size:.87rem;line-height:1.72;color:rgba(255,255,255,.65);}
 
+  /* DONATE CTA BAND */
+  .donate-band{background:var(--sand);padding:4rem 2rem;text-align:center;}
+  .donate-band h2{font-family:'Fredoka One',cursive;font-size:clamp(1.8rem,3vw,2.4rem);color:var(--dark);margin-bottom:.6rem;}
+  .donate-band p{font-size:1rem;color:var(--muted);line-height:1.8;max-width:480px;margin:0 auto 1.6rem;}
+
+  /* FOOTER */
   footer{background:var(--dark);padding:3rem 2rem 2rem;}
   .foot-inner{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:1.5rem;}
   .foot-logo img{height:28px;width:auto;display:block;margin-bottom:.75rem;filter:brightness(0) invert(1);opacity:.8;}
@@ -131,11 +112,13 @@
   .foot-social a{width:32px;height:32px;border-radius:6px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:900;color:rgba(255,255,255,.45);text-decoration:none;transition:background .2s,color .2s;}
   .foot-social a:hover{background:var(--teal);color:#fff;}
 
-  @media(max-width:860px){
+  /* MOBILE */
+  @media(max-width:700px){
     nav{padding:0 1.25rem;}
-    .donate-grid{grid-template-columns:1fr;gap:2.5rem;}
+    .nav-links a{font-size:.78rem;padding:.35rem .55rem;}
     .ways-grid,.give-cards{grid-template-columns:1fr;}
     .foot-inner{grid-template-columns:1fr;gap:2rem;}
+    .hero-donate-cta{flex-direction:column;gap:.5rem;text-align:center;}
   }
 </style>
 </head>
@@ -149,98 +132,35 @@
     <li><a href="index.html">Home</a></li>
     <li><a href="story.html">Our Story</a></li>
     <li><a href="programs.html">Programs</a></li>
-    <li><a href="donate.html" class="active">Support</a></li>
+    <li><a href="support.html" class="active">Support</a></li>
     <li><a href="donate.html" class="nav-donate">Donate</a></li>
   </ul>
 </nav>
 
-<!-- PAGE HERO -->
+<!-- HERO -->
 <div class="page-hero">
   <div class="paw-bg">
-    <!-- Paw 1 -->
     <svg viewBox="0 0 100 100"><ellipse cx="50" cy="66" rx="24" ry="20"/><ellipse cx="24" cy="42" rx="9" ry="11"/><ellipse cx="40" cy="34" rx="9" ry="11"/><ellipse cx="60" cy="34" rx="9" ry="11"/><ellipse cx="76" cy="42" rx="9" ry="11"/></svg>
-    <!-- Paw 2 -->
     <svg viewBox="0 0 100 100"><ellipse cx="50" cy="66" rx="24" ry="20"/><ellipse cx="24" cy="42" rx="9" ry="11"/><ellipse cx="40" cy="34" rx="9" ry="11"/><ellipse cx="60" cy="34" rx="9" ry="11"/><ellipse cx="76" cy="42" rx="9" ry="11"/></svg>
-    <!-- Paw 3 -->
     <svg viewBox="0 0 100 100"><ellipse cx="50" cy="66" rx="24" ry="20"/><ellipse cx="24" cy="42" rx="9" ry="11"/><ellipse cx="40" cy="34" rx="9" ry="11"/><ellipse cx="60" cy="34" rx="9" ry="11"/><ellipse cx="76" cy="42" rx="9" ry="11"/></svg>
-    <!-- Paw 4 -->
     <svg viewBox="0 0 100 100"><ellipse cx="50" cy="66" rx="24" ry="20"/><ellipse cx="24" cy="42" rx="9" ry="11"/><ellipse cx="40" cy="34" rx="9" ry="11"/><ellipse cx="60" cy="34" rx="9" ry="11"/><ellipse cx="76" cy="42" rx="9" ry="11"/></svg>
-    <!-- Paw 5 -->
     <svg viewBox="0 0 100 100"><ellipse cx="50" cy="66" rx="24" ry="20"/><ellipse cx="24" cy="42" rx="9" ry="11"/><ellipse cx="40" cy="34" rx="9" ry="11"/><ellipse cx="60" cy="34" rx="9" ry="11"/><ellipse cx="76" cy="42" rx="9" ry="11"/></svg>
-    <!-- Paw 6 -->
     <svg viewBox="0 0 100 100"><ellipse cx="50" cy="66" rx="24" ry="20"/><ellipse cx="24" cy="42" rx="9" ry="11"/><ellipse cx="40" cy="34" rx="9" ry="11"/><ellipse cx="60" cy="34" rx="9" ry="11"/><ellipse cx="76" cy="42" rx="9" ry="11"/></svg>
   </div>
   <span class="eyebrow">Support the Animals</span>
   <h1>Help us keep <em>rolling.</em></h1>
   <p>Every dollar, every bottle returned, every shared post helps save a life. Here is every way you can support Furry Freight.</p>
+  <div class="hero-donate-nudge">
+    <a href="donate.html">Ready to make a financial gift? Donate here →</a>
+  </div>
 </div>
 
-<!-- DONATE MAIN -->
-<section id="donate-main">
-  <div class="donate-grid">
-    <div class="donate-copy reveal">
-      <!-- Paw trail decoration -->
-      <div class="paw-trail">
-        <svg width="20" height="20" viewBox="0 0 100 100"><ellipse cx="50" cy="66" rx="24" ry="20"/><ellipse cx="24" cy="42" rx="9" ry="11"/><ellipse cx="40" cy="34" rx="9" ry="11"/><ellipse cx="60" cy="34" rx="9" ry="11"/><ellipse cx="76" cy="42" rx="9" ry="11"/></svg>
-        <svg width="20" height="20" viewBox="0 0 100 100"><ellipse cx="50" cy="66" rx="24" ry="20"/><ellipse cx="24" cy="42" rx="9" ry="11"/><ellipse cx="40" cy="34" rx="9" ry="11"/><ellipse cx="60" cy="34" rx="9" ry="11"/><ellipse cx="76" cy="42" rx="9" ry="11"/></svg>
-        <svg width="20" height="20" viewBox="0 0 100 100"><ellipse cx="50" cy="66" rx="24" ry="20"/><ellipse cx="24" cy="42" rx="9" ry="11"/><ellipse cx="40" cy="34" rx="9" ry="11"/><ellipse cx="60" cy="34" rx="9" ry="11"/><ellipse cx="76" cy="42" rx="9" ry="11"/></svg>
-        <svg width="20" height="20" viewBox="0 0 100 100"><ellipse cx="50" cy="66" rx="24" ry="20"/><ellipse cx="24" cy="42" rx="9" ry="11"/><ellipse cx="40" cy="34" rx="9" ry="11"/><ellipse cx="60" cy="34" rx="9" ry="11"/><ellipse cx="76" cy="42" rx="9" ry="11"/></svg>
-        <svg width="20" height="20" viewBox="0 0 100 100"><ellipse cx="50" cy="66" rx="24" ry="20"/><ellipse cx="24" cy="42" rx="9" ry="11"/><ellipse cx="40" cy="34" rx="9" ry="11"/><ellipse cx="60" cy="34" rx="9" ry="11"/><ellipse cx="76" cy="42" rx="9" ry="11"/></svg>
-      </div>
-      <span class="eyebrow">Make a Donation</span>
-      <h2>Your gift goes straight to the animals.</h2>
-      <p>We are 100% volunteer run. Every dollar you donate funds transport trips and spay/neuter surgeries for pets who need them most.</p>
-      <p>One-time gifts help us respond quickly. Monthly giving helps us plan ahead and commit to more transports and more clinic days.</p>
-      <div class="spay-note">
-        Want to sponsor a spay or neuter surgery? For $70, you can prevent hundreds of animals from entering an already maxed shelter system. Add a note in the comments that says "Spay it Forward" and we will direct your gift there.
-      </div>
-    </div>
-    <div class="donorbox-wrap reveal d1">
-      <h3>Donate Now</h3>
-      <p class="db-sub">Secure donation powered by Donorbox. Tax-deductible. EIN: 82-4423390.</p>
-
-      <!--
-      =====================================================
-      DONORBOX EMBED
-      =====================================================
-      To activate:
-        1. Log in at donorbox.org
-        2. Go to your campaign
-        3. Click "Embed" and copy your campaign name
-        4. Replace YOUR_CAMPAIGN_NAME below with your real campaign name
-        5. Delete the db-placeholder div and uncomment the iframe
-      =====================================================
-      -->
-
-      <!-- UNCOMMENT AND ADD YOUR CAMPAIGN NAME:
-      <iframe
-        src="https://donorbox.org/embed/YOUR_CAMPAIGN_NAME"
-        name="donorbox"
-        allowpaymentrequest="allowpaymentrequest"
-        seamless="seamless"
-        frameborder="0"
-        scrolling="no"
-        class="donorbox-embed"
-        allow="payment">
-      </iframe>
-      -->
-
-      <div class="db-placeholder">
-        <h4>Donorbox Coming Soon</h4>
-        <p>To activate your donation form, add your Donorbox campaign name to this file.<br>Find the comment that says <code>YOUR_CAMPAIGN_NAME</code> and replace it with your campaign slug from donorbox.org.</p>
-        <a href="https://donorbox.org" target="_blank" class="btn btn-teal">Go to Donorbox</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- OTHER WAYS TO GIVE -->
+<!-- OTHER WAYS -->
 <section id="other-ways">
   <div class="other-inner">
-    <span class="eyebrow reveal">More Ways to Help</span>
+    <span class="eyebrow reveal">No-Cost &amp; Low-Cost Ways to Give</span>
     <h2 class="reveal">Other ways to support Furry Freight</h2>
-    <p class="intro reveal d1">Not everyone can give finanically, we absoletly get that. Here are other ways you can lift up our organization.</p>
+    <p class="intro reveal d1">Not everyone can give financially, and that is completely okay. Here are other ways your support makes a real difference.</p>
     <div class="ways-grid">
       <div class="way-card reveal d1">
         <h3>Oregon BottleDrop</h3>
@@ -254,7 +174,7 @@
       </div>
       <div class="way-card reveal d3">
         <h3>Amazon Wishlist</h3>
-        <p>Ship supplies directly to our team. Crates, leashes, cleaning supplies, and more. Items go straight to the volunteers keeping our animals safe on the road.</p>
+        <p>Ship supplies directly to our team. Crates, leashes, cleaning supplies, and more — straight to the volunteers keeping animals safe on the road.</p>
         <a href="https://www.amazon.com/hz/wishlist/ls/1HH2KRDF6AX0U?ref_=wl_share" target="_blank" class="btn btn-outline">View Wishlist</a>
       </div>
       <div class="way-card reveal d1">
@@ -263,8 +183,8 @@
         <a href="https://www.gearfix.com/nonprofit-accounts" target="_blank" class="btn btn-outline">Learn About GearFix</a>
       </div>
       <div class="way-card reveal d2">
-        <h3>Shop at Our Online Thrift Store</h3>
-        <p>We sell donated items online. Every purchase supports our programs directly.</p>
+        <h3>Shop Our Online Thrift Store</h3>
+        <p>We sell donated items on Poshmark. Every purchase supports our programs directly.</p>
         <a href="https://poshmark.com/closet/ffthriftstore?srsltid=AfmBOoq22p48qcTKiKwFgOU4b8Phc5OtC_hsk16vbwMBCvR3fcr06a2n" target="_blank" class="btn btn-outline">Shop Now</a>
       </div>
       <div class="way-card reveal d3">
@@ -276,17 +196,17 @@
   </div>
 </section>
 
-<!-- GIVE YOUR TIME AND VOICE -->
-<section id="give-more">
+<!-- GIVE YOUR TIME & VOICE -->
+<section id="give-time">
   <div class="give-paws">
     <svg viewBox="0 0 100 100"><ellipse cx="50" cy="66" rx="24" ry="20"/><ellipse cx="24" cy="42" rx="9" ry="11"/><ellipse cx="40" cy="34" rx="9" ry="11"/><ellipse cx="60" cy="34" rx="9" ry="11"/><ellipse cx="76" cy="42" rx="9" ry="11"/></svg>
     <svg viewBox="0 0 100 100"><ellipse cx="50" cy="66" rx="24" ry="20"/><ellipse cx="24" cy="42" rx="9" ry="11"/><ellipse cx="40" cy="34" rx="9" ry="11"/><ellipse cx="60" cy="34" rx="9" ry="11"/><ellipse cx="76" cy="42" rx="9" ry="11"/></svg>
     <svg viewBox="0 0 100 100"><ellipse cx="50" cy="66" rx="24" ry="20"/><ellipse cx="24" cy="42" rx="9" ry="11"/><ellipse cx="40" cy="34" rx="9" ry="11"/><ellipse cx="60" cy="34" rx="9" ry="11"/><ellipse cx="76" cy="42" rx="9" ry="11"/></svg>
   </div>
   <div class="give-inner">
-    <span class="eyebrow reveal">Every Action Makes A Difference</span>
-    <h2 class="reveal">Your time and your voice matter too.</h2>
-    <p class="intro reveal d1">Some of the most valuable support we receive in the animal wellfare space costs nothing at all.</p>
+    <span class="eyebrow reveal">Your Time &amp; Voice</span>
+    <h2 class="reveal">Every action makes a difference.</h2>
+    <p class="intro reveal d1">Some of the most valuable support we receive in the animal welfare space costs nothing at all.</p>
     <div class="give-cards">
       <div class="give-card reveal d1">
         <h3>Follow and Share</h3>
@@ -294,16 +214,24 @@
       </div>
       <div class="give-card reveal d2">
         <h3>Share Adoptable Pets</h3>
-        <p>When you see a dog or cat from a local shelter or rescue posted for adoption, share it. You might be the reason that furry friend finds its home.</p>
+        <p>When you see a dog or cat from a local shelter or rescue posted for adoption, share it. You might be the reason that animal finds its home.</p>
       </div>
       <div class="give-card reveal d3">
         <h3>Volunteer Your Time</h3>
-        <p>Drive, clean crates, run events, write grants, or post content. Volunteering with us, or with any local shelter or rescue, is one of the most direct ways to help animals in your community.</p>
+        <p>Drive, clean crates, run events, write grants, or post content. Volunteering with us — or any local shelter or rescue — is one of the most direct ways to help animals in your community.</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- DONATE CTA -->
+<div class="donate-band">
+  <h2>Ready to make a gift?</h2>
+  <p>Every dollar goes directly to transport costs and spay/neuter surgeries. We are 100% volunteer run.</p>
+  <a href="donate.html" class="btn btn-orange">Donate Now</a>
+</div>
+
+<!-- FOOTER -->
 <footer>
   <div class="foot-inner">
     <div class="foot-brand">
@@ -318,8 +246,8 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="story.html">Our Story</a></li>
         <li><a href="programs.html">Programs</a></li>
-        <li><a href="donate.html">Support Us</a></li>
-        <li><a href="index.html#volunteer">Volunteer</a></li>
+        <li><a href="support.html">Support Us</a></li>
+        <li><a href="donate.html">Donate</a></li>
       </ul>
     </div>
     <div class="foot-col">
