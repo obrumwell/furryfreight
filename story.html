@@ -98,7 +98,6 @@
   /* FOOTER */
   footer { background:var(--dark); padding:3rem 2rem 2rem; }
   .foot-inner { max-width:1060px; margin:0 auto; display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:3rem; padding-bottom:2rem; border-bottom:1px solid rgba(255,255,255,.07); margin-bottom:1.5rem; }
-  .foot-logo-img { height:28px; width:auto; display:block; margin-bottom:.75rem; opacity:.75; filter:brightness(0) invert(1); }
   .foot-brand p { font-size:.8rem; color:rgba(255,255,255,.35); line-height:1.85; }
   .foot-brand a { color:rgba(255,255,255,.35); text-decoration:none; }
   .foot-brand a:hover { color:var(--teal-lt); }
@@ -154,7 +153,7 @@
       <div class="origin-text reveal d1">
         <span class="eyebrow">How It Started</span>
         <h2 class="section-title">One road trip changed everything.</h2>
-        <p class="body-text">Furry Freight was founded in 2018 by Kim Wilken, a registered nurse living in Bend, Oregon. After moving to the Pacific Northwest, Kim noticed something: local shelters had room and strong adoption demand. But shelters in other parts of the country were overwhelmed, euthanizing healthy, adoptable dogs and cats simply because there were more animals than homes.</p>
+        <p class="body-text">Furry Freight was founded in 2018 by Kim Wilken, a registered nurse living in Bend, Oregon.</p>
         <p class="body-text">The solution seemed straightforward. Drive the animals from where they had no chance, to where families were waiting. That first road trip became the foundation of what is now Furry Freight Shelter Transport.</p>
         <p class="body-text">We are a fully volunteer-run 501(c)(3) nonprofit. Every dollar donated goes directly to the animals in need.</p>
         <div class="origin-btns">
@@ -239,7 +238,7 @@
 <div class="legal-wrap">
   <div class="legal-inner">
     <p>Furry Freight Shelter Transport is an Oregon-registered 501(c)(3) public charity. Contributions are tax-deductible retroactive to our incorporation date of February 6, 2018.<br>
-    EIN: 82-4423390 &middot; PO Box 93, Bend OR 97709 &middot; <a href="/cdn-cgi/l/email-protection#e68f888089a6809394949f8094838f818e92c8899481"><span class="__cf_email__" data-cfemail="355c5b535a75534047474c5347505c525d411b5a4752">[email&#160;protected]</span></a></p>
+    EIN: 82-4423390 &middot; PO Box 93, Bend OR 97709 &middot; <a href="mailto:info@furryfreight.org">info@furryfreight.org</a></p>
   </div>
 </div>
 
@@ -280,4 +279,14 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/c
+<script>
+  const revs = document.querySelectorAll('.reveal');
+  function checkReveal() {
+    const vh = window.innerHeight;
+    revs.forEach(el => { if (el.getBoundingClientRect().top < vh - 50) el.classList.add('on'); });
+  }
+  window.addEventListener('scroll', checkReveal, { passive: true });
+  checkReveal();
+</script>
+</body>
+</html>
