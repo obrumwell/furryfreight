@@ -54,13 +54,13 @@ const CONFIG = {
   storyPhoto:     "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/dogtile1.jpg",
 
   // Mosaic photos — all portrait orientation
-  mosaicPhoto1:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/geoff.jpg",
+  mosaicPhoto1:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/polly.jpg",
   mosaicPhoto2:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/kamala.jpg",
-  mosaicPhoto3:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/dogtile3.jpg",
-  mosaicPhoto4:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/aussie.jpg",
-  mosaicPhoto5:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/polly.jpg",
+  mosaicPhoto3:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/kitty.jpg",
+  mosaicPhoto4:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/Ruby.jpg",
+  mosaicPhoto5:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/liv.jpg",
   // Add up to 3 more photos here — leave as "" to hide
-  mosaicPhoto6:   "",
+  mosaicPhoto6:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/daisy.jpg",
   mosaicPhoto7:   "",
   mosaicPhoto8:   "",
 
@@ -131,12 +131,7 @@ const CONFIG = {
   volunteerVideo:  "https://raw.githubusercontent.com/obrumwell/furryfreight/main/pack.mp4",
   volunteerPhoto:  "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=900&q=80&fit=crop",
 
-  // Three smaller clip videos shown below the header, lined up with the role cards
-  // Leave as "" to hide that slot — all three can be left empty
-  clipVideo1: "",   // e.g. "https://raw.githubusercontent.com/obrumwell/furryfreight/main/clip1.mov"
-  clipVideo2: "",
-  clipVideo3: "",
-
+  volunteerRole1Title: "Drive and Transport",
   volunteerRole1Desc:  "Long-haul drivers for multi-day transport trips. Must be 21+ with a clean record.",
   volunteerRole2Title: "Events and Fundraising",
   volunteerRole2Desc:  "Help plan and support our annual fundraising events like treat sales, Egg My House and Bingo.",
@@ -310,7 +305,7 @@ const css = `
   .sup-card{background:#fff;border-radius:14px;overflow:hidden;border:1px solid rgba(42,127,111,.1);transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column;}
   .sup-card:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(28,46,42,.1);}
   .sup-card-img{height:175px;overflow:hidden;background:var(--sand);}
-  .sup-card-img img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform .4s;}
+  .sup-card-img img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;transition:transform .4s;}
   .sup-card:hover .sup-card-img img{transform:scale(1.06);}
   .sup-card-img.no-photo{display:flex;align-items:center;justify-content:center;background:var(--teal-lt);}
   .sup-card-img.no-photo span{font-family:'Fredoka One',cursive;font-size:2rem;color:var(--teal);opacity:.4;}
@@ -329,9 +324,6 @@ const css = `
   .vol-header .eyebrow{color:var(--teal-lt);}
   .vol-actions{display:flex;gap:.75rem;flex-wrap:wrap;}
   /* Clip videos row — 3 columns matching the role cards below */
-  .vol-clips{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1rem;}
-  .vol-clip{border-radius:11px;overflow:hidden;background:rgba(255,255,255,.05);aspect-ratio:9/7;}
-  .vol-clip video{width:100%;height:100%;object-fit:cover;display:block;border-radius:11px;}
   .vol-roles{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
   .vol-role{background:rgba(255,255,255,.06);border-radius:11px;padding:1.3rem;border:1px solid rgba(255,255,255,.08);transition:background .2s;}
   .vol-role:hover{background:rgba(255,255,255,.1);}
@@ -398,7 +390,7 @@ const css = `
 
   @media(max-width:860px){
     .story-top,.vol-header,.foot-inner{grid-template-columns:1fr;gap:2.5rem;}
-    .prog-grid,.support-cards,.vol-roles,.social-cards,.principles-grid,.vol-clips{grid-template-columns:1fr;}
+    .prog-grid,.support-cards,.vol-roles,.social-cards,.principles-grid{grid-template-columns:1fr;}
     .mosaic{
       grid-template-columns:1fr 1fr;
       grid-template-rows:auto;
@@ -619,12 +611,6 @@ document.body.innerHTML = `
           : `<img src="${CONFIG.volunteerPhoto}" alt="Furry Freight volunteers" loading="lazy">`}
       </div>
     </div>
-    ${(CONFIG.clipVideo1 || CONFIG.clipVideo2 || CONFIG.clipVideo3) ? `
-    <div class="vol-clips">
-      <div class="vol-clip">${CONFIG.clipVideo1 ? `<video class="clip-vid" muted loop playsinline preload="metadata"><source src="${CONFIG.clipVideo1}" type="video/mp4"><source src="${CONFIG.clipVideo1}" type="video/quicktime"></video>` : ''}</div>
-      <div class="vol-clip">${CONFIG.clipVideo2 ? `<video class="clip-vid" muted loop playsinline preload="metadata"><source src="${CONFIG.clipVideo2}" type="video/mp4"><source src="${CONFIG.clipVideo2}" type="video/quicktime"></video>` : ''}</div>
-      <div class="vol-clip">${CONFIG.clipVideo3 ? `<video class="clip-vid" muted loop playsinline preload="metadata"><source src="${CONFIG.clipVideo3}" type="video/mp4"><source src="${CONFIG.clipVideo3}" type="video/quicktime"></video>` : ''}</div>
-    </div>` : ''}
     <div class="vol-roles">
       <div class="vol-role reveal d1">
         <h4>${CONFIG.volunteerRole1Title}</h4>
@@ -755,23 +741,18 @@ function checkReveal() {
   revs.forEach(el => { if (el.getBoundingClientRect().top < vh - 50) el.classList.add('on'); });
 }
 
-// SCROLL-TRIGGERED VIDEO — main + clips
+// SCROLL-TRIGGERED VIDEO
 const volVideo = document.getElementById('vol-video');
-const clipVids = Array.from(document.querySelectorAll('.clip-vid'));
-const allVids = [...(volVideo ? [volVideo] : []), ...clipVids];
 let videoPlaying = false;
-
 function checkVideo() {
-  if (!allVids.length) return;
-  const section = document.getElementById('volunteer');
-  if (!section) return;
-  const rect = section.getBoundingClientRect();
-  const inView = rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
+  if (!volVideo) return;
+  const rect = volVideo.getBoundingClientRect();
+  const inView = rect.top < window.innerHeight * 0.85 && rect.bottom > 0;
   if (inView && !videoPlaying) {
-    allVids.forEach(v => v.play().catch(() => {}));
+    volVideo.play().catch(() => {});
     videoPlaying = true;
   } else if (!inView && videoPlaying) {
-    allVids.forEach(v => v.pause());
+    volVideo.pause();
     videoPlaying = false;
   }
 }
