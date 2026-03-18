@@ -43,7 +43,7 @@
 
   .eyebrow{font-size:.68rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:.7rem;display:block;}
 
-  /* HERO — paw bg, matches donate page */
+  /* HERO */
   .page-hero{padding:7rem 2rem 4rem;background:var(--dark);text-align:center;position:relative;overflow:hidden;}
   .page-hero .eyebrow{color:var(--teal-lt);position:relative;z-index:1;}
   .page-hero h1{font-family:'Fredoka One',cursive;font-size:clamp(2.5rem,5vw,4rem);color:#fff;line-height:1.05;margin-bottom:1rem;position:relative;z-index:1;}
@@ -71,6 +71,26 @@
   .way-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(28,46,42,.09);}
   .way-card h3{font-family:'Fredoka One',cursive;font-size:1.15rem;color:var(--dark);margin-bottom:.4rem;}
   .way-card p{font-size:.87rem;line-height:1.72;color:var(--muted);margin-bottom:1.1rem;flex:1;}
+
+  /* EVENTS */
+  #events{background:var(--sand);}
+  .events-inner{max-width:1060px;margin:0 auto;padding:5rem 2rem;}
+  .events-inner h2{font-family:'Fredoka One',cursive;font-size:clamp(1.8rem,3vw,2.4rem);color:var(--dark);margin-bottom:.5rem;}
+  .events-inner .intro{font-size:1rem;color:var(--muted);line-height:1.8;margin-bottom:2.5rem;max-width:580px;}
+  .events-list{display:flex;flex-direction:column;gap:.85rem;}
+  .event-item{background:white;border-radius:14px;padding:1.4rem 1.6rem;border:1px solid rgba(42,127,111,.1);display:flex;gap:1.5rem;align-items:flex-start;transition:transform .25s,box-shadow .25s;}
+  .event-item:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(28,46,42,.08);}
+  .event-date{background:var(--teal);color:#fff;border-radius:10px;padding:.6rem .9rem;text-align:center;flex-shrink:0;min-width:58px;}
+  .event-date .month{font-size:.6rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;opacity:.8;display:block;line-height:1;margin-bottom:2px;}
+  .event-date .day{font-family:'Fredoka One',cursive;font-size:1.7rem;display:block;line-height:1;}
+  .event-body{flex:1;}
+  .event-body h4{font-family:'Fredoka One',cursive;font-size:1.1rem;color:var(--dark);margin-bottom:.2rem;}
+  .event-body .event-meta{font-size:.8rem;font-weight:800;color:var(--teal);letter-spacing:.04em;margin-bottom:.35rem;display:block;}
+  .event-body p{font-size:.87rem;line-height:1.7;color:var(--muted);}
+  .event-link{font-size:.82rem;font-weight:800;color:var(--orange);text-decoration:none;display:inline-block;margin-top:.5rem;transition:color .2s;}
+  .event-link:hover{color:var(--teal-dk);}
+  .no-events{background:var(--cream);border-radius:14px;padding:2.5rem;text-align:center;border:1px solid rgba(42,127,111,.08);}
+  .no-events p{font-size:.95rem;color:var(--muted);line-height:1.8;}
 
   /* GIVE TIME */
   #give-time{background:var(--teal);position:relative;overflow:hidden;}
@@ -118,7 +138,10 @@
     .nav-links a{font-size:.78rem;padding:.35rem .55rem;}
     .ways-grid,.give-cards{grid-template-columns:1fr;}
     .foot-inner{grid-template-columns:1fr;gap:2rem;}
-    .hero-donate-cta{flex-direction:column;gap:.5rem;text-align:center;}
+    .event-item{flex-direction:column;gap:.8rem;}
+    .event-date{display:flex;align-items:center;gap:.6rem;border-radius:8px;padding:.5rem .9rem;width:auto;align-self:flex-start;}
+    .event-date .month{margin-bottom:0;}
+    .event-date .day{font-size:1.3rem;}
   }
 </style>
 </head>
@@ -190,9 +213,83 @@
       <div class="way-card reveal d3">
         <h3>Attend Our Events</h3>
         <p>Our annual Yard Sale, Holiday Treat Sale, Egg My House, and Bingo nights are all fundraisers. Come out, have fun, and support our furry friends.</p>
-        <a href="index.html#newsletter" class="btn btn-outline">Get Event Updates</a>
+        <a href="#events" class="btn btn-outline">See Upcoming Events</a>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     UPCOMING EVENTS
+     ============================================================
+     HOW TO EDIT:
+     • Copy an event-item block to add a new event
+     • Change the month, day, title, location/time, description
+     • Delete an event-item block to remove an event
+     • If no events are coming up, delete all event-item blocks
+       and uncomment the no-events placeholder at the bottom
+     ============================================================ -->
+<section id="events">
+  <div class="events-inner">
+    <span class="eyebrow reveal">Mark Your Calendar</span>
+    <h2 class="reveal">Upcoming Events</h2>
+    <p class="intro reveal d1">Come out and support the animals in person. All events help fund our transport trips and spay/neuter surgeries.</p>
+
+    <div class="events-list">
+
+      <!-- ── EVENT 1 — copy this block to add more ── -->
+      <div class="event-item reveal d1">
+        <div class="event-date">
+          <span class="month">Apr</span>
+          <span class="day">12</span>
+        </div>
+        <div class="event-body">
+          <h4>Spring Yard Sale</h4>
+          <span class="event-meta">10am – 3pm &middot; Bend, OR</span>
+          <p>Our biggest annual sale. Furniture, clothes, outdoor gear, and more. All proceeds go directly to Furry Freight transports.</p>
+          <a href="#" class="event-link">More info →</a>
+        </div>
+      </div>
+
+      <!-- ── EVENT 2 ── -->
+      <div class="event-item reveal d2">
+        <div class="event-date">
+          <span class="month">May</span>
+          <span class="day">3</span>
+        </div>
+        <div class="event-body">
+          <h4>Bingo Night</h4>
+          <span class="event-meta">6pm – 9pm &middot; Location TBA</span>
+          <p>A fun night out with prizes, raffles, and lots of animal photos. Tickets available at the door.</p>
+          <a href="#" class="event-link">More info →</a>
+        </div>
+      </div>
+
+      <!-- ── EVENT 3 ── -->
+      <div class="event-item reveal d3">
+        <div class="event-date">
+          <span class="month">Jun</span>
+          <span class="day">21</span>
+        </div>
+        <div class="event-body">
+          <h4>Egg My House</h4>
+          <span class="event-meta">Morning &middot; Central Oregon</span>
+          <p>Sign up to have your yard Easter-egged by our volunteers — a fun fundraiser the whole neighborhood will love.</p>
+          <a href="#" class="event-link">More info →</a>
+        </div>
+      </div>
+
+      <!-- ── ADD MORE EVENTS by copying an event-item block above ── -->
+
+    </div>
+
+    <!-- UNCOMMENT if there are no upcoming events:
+    <div class="no-events">
+      <p>No events scheduled right now. Sign up for our newsletter to be the first to know when something is coming up.</p>
+      <a href="index.html#newsletter" class="btn btn-teal" style="margin-top:1rem;display:inline-block;">Get Notified</a>
+    </div>
+    -->
+
   </div>
 </section>
 
