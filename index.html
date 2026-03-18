@@ -46,23 +46,22 @@ const CONFIG = {
   stat3Label:  "On the Road",
 
   /* ── PHOTOS ──────────────────────────────────────────────────
-     All photos below are portrait (vertical) orientation.
-     Add more mosaic photos by filling in mosaicPhoto6-8.
-     Leave as "" to hide that slot.
+     To swap a photo: paste any image URL between the quotes.
+     Mosaic supports up to 9 photos — leave as "" to hide a slot.
   ──────────────────────────────────────────────────────────── */
   heroPhoto:      "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1600&q=85&fit=crop",
   storyPhoto:     "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/dogtile1.jpg",
 
-  // Mosaic photos — all portrait orientation
   mosaicPhoto1:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/geoff.jpg",
   mosaicPhoto2:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/kamala.jpg",
   mosaicPhoto3:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/pittie.jpg",
   mosaicPhoto4:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/aussie.jpg",
   mosaicPhoto5:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/polly.jpg",
-  // Add up to 3 more photos here — leave as "" to hide
   mosaicPhoto6:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/kitten.jpg",
   mosaicPhoto7:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/keegan.jpg",
   mosaicPhoto8:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/dogtile3.jpg",
+  // 9th mosaic photo — fills the bottom-right slot
+  mosaicPhoto9:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/cliff.jpg",
 
   programPhoto1:  "https://images.unsplash.com/photo-1444212477490-ca407925329e?w=900&q=80&fit=crop",
   programPhoto2:  "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/spay.jpg",
@@ -125,9 +124,7 @@ const CONFIG = {
   volunteerHeadline:   "Join the pack.",
   volunteerBody:       "We run entirely on volunteers. There is a place for you here no matter your skills or schedule.",
 
-  // Volunteer section media — paste a video URL to show a video instead of a photo
-  // Supported: direct .mp4 or .mov links from GitHub raw
-  // Leave volunteerVideo as "" to show the photo instead
+  // Paste a .mp4 or .mov video URL here to show a video, or leave "" to show the photo
   volunteerVideo:  "https://raw.githubusercontent.com/obrumwell/furryfreight/main/pack2.mp4",
   volunteerPhoto:  "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=900&q=80&fit=crop",
 
@@ -165,7 +162,8 @@ const CONFIG = {
 };
 
 /* ============================================================
-   STOP HERE — Design code lives below. No need to edit.
+   STOP HERE — everything below is generated from CONFIG.
+   Do not edit below this line.
    ============================================================ */
 
 const css = `
@@ -184,7 +182,6 @@ const css = `
   html{scroll-behavior:smooth;}
   body{font-family:'Nunito',sans-serif;background:var(--white);color:var(--dark);overflow-x:hidden;}
 
-  /* NAV */
   nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;background:var(--dark);border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;padding:0 2.5rem;gap:2rem;}
   .nav-logo{text-decoration:none;margin-right:auto;display:flex;align-items:center;}
   .nav-logo img{height:34px;width:auto;display:block;}
@@ -195,7 +192,6 @@ const css = `
   .nav-donate{background:var(--orange)!important;color:#fff!important;border-radius:5px;}
   .nav-donate:hover{background:var(--teal)!important;}
 
-  /* BUTTONS */
   .btn{display:inline-block;font-family:'Nunito',sans-serif;font-weight:800;font-size:.88rem;text-decoration:none;padding:.62rem 1.45rem;border-radius:5px;border:none;cursor:pointer;transition:transform .18s,box-shadow .18s,background .18s;}
   .btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.13);}
   .btn-orange{background:var(--orange);color:#fff;} .btn-orange:hover{background:var(--teal-dk);}
@@ -204,12 +200,10 @@ const css = `
   .btn-outline{background:transparent;color:var(--teal);border:2px solid var(--teal);} .btn-outline:hover{background:var(--teal);color:#fff;}
   .btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.22);} .btn-ghost:hover{background:rgba(255,255,255,.22);}
 
-  /* REVEAL */
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease;}
   .reveal.on{opacity:1;transform:none;}
   .d1{transition-delay:.07s;} .d2{transition-delay:.14s;} .d3{transition-delay:.21s;}
 
-  /* HERO */
   #home{height:100vh;min-height:600px;padding-top:56px;position:relative;overflow:hidden;display:flex;align-items:flex-end;}
   .hero-img{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat;}
   .hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(28,46,42,.95) 0%,rgba(28,46,42,.4) 55%,transparent 100%);}
@@ -223,34 +217,25 @@ const css = `
   .hstat .n{font-family:'Fredoka One',cursive;font-size:1.9rem;color:var(--teal-lt);display:block;line-height:1;}
   .hstat .l{font-size:.68rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.4);display:block;margin-top:.2rem;}
 
-  /* MOSAIC — portrait & square only, no landscape slots */
-  .mosaic{
-    display:grid;
-    grid-template-columns:1.4fr 1fr 1fr 1.2fr;
-    grid-template-rows:260px 220px 280px;
-    gap:10px;
-    padding:14px;
-    background:var(--cream);
-  }
+  /* MOSAIC — portrait & square, 9 slots */
+  .mosaic{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;grid-template-rows:260px 220px 280px;gap:10px;padding:14px;background:var(--cream);}
   .mosaic-item{overflow:hidden;border-radius:14px;}
   .mosaic-item img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;transition:transform .45s;}
   .mosaic-item:hover img{transform:scale(1.05);}
-  /* Every slot is taller-than-wide or square — no wide landscape spans */
-  .mosaic-item:nth-child(1){grid-column:1;grid-row:1/3;}   /* tall portrait, spans 2 rows */
-  .mosaic-item:nth-child(2){grid-column:2;grid-row:1;}      /* square-ish */
-  .mosaic-item:nth-child(3){grid-column:3;grid-row:1;}      /* square-ish */
-  .mosaic-item:nth-child(4){grid-column:4;grid-row:1/3;}   /* tall portrait, spans 2 rows */
-  .mosaic-item:nth-child(5){grid-column:2;grid-row:2;}      /* square-ish */
-  .mosaic-item:nth-child(6){grid-column:3;grid-row:2;}      /* square-ish */
-  .mosaic-item:nth-child(7){grid-column:1;grid-row:3;}      /* portrait */
-  .mosaic-item:nth-child(8){grid-column:2/4;grid-row:3;}   /* only wide slot — centre bottom, fills gap */
+  .mosaic-item:nth-child(1){grid-column:1;grid-row:1/3;}
+  .mosaic-item:nth-child(2){grid-column:2;grid-row:1;}
+  .mosaic-item:nth-child(3){grid-column:3;grid-row:1;}
+  .mosaic-item:nth-child(4){grid-column:4;grid-row:1/3;}
+  .mosaic-item:nth-child(5){grid-column:2;grid-row:2;}
+  .mosaic-item:nth-child(6){grid-column:3;grid-row:2;}
+  .mosaic-item:nth-child(7){grid-column:1;grid-row:3;}
+  .mosaic-item:nth-child(8){grid-column:2/4;grid-row:3;}
+  .mosaic-item:nth-child(9){grid-column:4;grid-row:3;}
 
-  /* SHARED SECTION STYLES */
   .eyebrow{font-size:.68rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:.7rem;display:block;}
   .section-title{font-family:'Fredoka One',cursive;font-size:clamp(2rem,3vw,2.8rem);line-height:1.1;color:var(--dark);margin-bottom:1rem;}
   .section-sub{font-size:1rem;line-height:1.85;color:var(--muted);max-width:500px;}
 
-  /* STORY */
   #story{background:var(--cream);}
   .story-inner{max-width:1060px;margin:0 auto;padding:5.5rem 2rem;}
   .story-top{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-bottom:4rem;}
@@ -262,7 +247,6 @@ const css = `
   .story-text .origin{font-size:.9rem;font-style:italic;color:var(--muted);opacity:.85;line-height:1.85;margin-bottom:1.5rem;padding-left:1rem;border-left:3px solid var(--teal-lt);}
   .story-btns{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.8rem;}
 
-  /* PRINCIPLES */
   .principles{margin-top:1rem;}
   .principles-label{font-size:.68rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:1.5rem;display:block;}
   .principles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
@@ -271,7 +255,6 @@ const css = `
   .principle h4{font-family:'Fredoka One',cursive;font-size:1.1rem;color:var(--dark);margin-bottom:.4rem;}
   .principle p{font-size:.87rem;line-height:1.72;color:var(--muted);}
 
-  /* PROGRAMS */
   #programs{background:var(--white);}
   .programs-inner{max-width:1060px;margin:0 auto;padding:5.5rem 2rem;}
   .section-head{text-align:center;margin-bottom:3.5rem;}
@@ -287,7 +270,6 @@ const css = `
   .prog-title{font-family:'Fredoka One',cursive;font-size:2rem;color:#fff;margin-bottom:.5rem;line-height:1.1;}
   .prog-desc{font-size:.88rem;color:rgba(255,255,255,.65);line-height:1.6;margin-bottom:1.2rem;}
 
-  /* IMPACT */
   #impact{background:var(--teal);}
   .impact-strip{max-width:1060px;margin:0 auto;padding:3rem 2rem;display:flex;align-items:center;justify-content:space-around;gap:2rem;flex-wrap:wrap;}
   .impact-num{text-align:center;}
@@ -297,7 +279,6 @@ const css = `
   .impact-cta h3{font-family:'Fredoka One',cursive;font-size:1.6rem;color:#fff;margin-bottom:.5rem;}
   .impact-cta p{font-size:.88rem;color:rgba(255,255,255,.7);margin-bottom:1rem;}
 
-  /* SUPPORT */
   #support{background:var(--sand);}
   .support-inner{max-width:1060px;margin:0 auto;padding:5.5rem 2rem;}
   .support-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3rem;}
@@ -312,7 +293,6 @@ const css = `
   .sup-card-body h3{font-family:'Fredoka One',cursive;font-size:1.3rem;color:var(--dark);margin-bottom:.4rem;}
   .sup-card-body p{font-size:.87rem;line-height:1.72;color:var(--muted);flex:1;margin-bottom:1.2rem;}
 
-  /* VOLUNTEER */
   #volunteer{background:var(--dark);color:#fff;}
   .vol-inner{max-width:1060px;margin:0 auto;padding:5.5rem 2rem;}
   .vol-header{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-bottom:3.5rem;}
@@ -322,14 +302,12 @@ const css = `
   .vol-header p{font-size:.97rem;line-height:1.85;color:rgba(255,255,255,.55);margin-bottom:1.8rem;}
   .vol-header .eyebrow{color:var(--teal-lt);}
   .vol-actions{display:flex;gap:.75rem;flex-wrap:wrap;}
-  /* Clip videos row — 3 columns matching the role cards below */
   .vol-roles{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
   .vol-role{background:rgba(255,255,255,.06);border-radius:11px;padding:1.3rem;border:1px solid rgba(255,255,255,.08);transition:background .2s;}
   .vol-role:hover{background:rgba(255,255,255,.1);}
   .vol-role h4{font-family:'Fredoka One',cursive;font-size:1.1rem;color:#fff;margin-bottom:.3rem;}
   .vol-role p{font-size:.83rem;line-height:1.65;color:rgba(255,255,255,.5);}
 
-  /* SOCIAL */
   #social{background:var(--teal-lt);}
   .social-inner{max-width:1060px;margin:0 auto;padding:5rem 2rem;text-align:center;}
   .social-inner .eyebrow{display:block;margin-bottom:.7rem;}
@@ -347,7 +325,6 @@ const css = `
   .social-card .sc-handle{font-size:.82rem;font-weight:800;color:var(--muted);letter-spacing:.02em;}
   .social-card .sc-cta{font-size:.78rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-top:.25rem;}
 
-  /* NEWSLETTER */
   #newsletter{background:var(--orange);}
   .nl-inner{max-width:620px;margin:0 auto;padding:4.5rem 2rem;text-align:center;}
   .nl-inner .eyebrow{color:rgba(255,255,255,.7);}
@@ -361,7 +338,6 @@ const css = `
   .nl-form button:hover{background:var(--teal-dk);}
   #nl-ok{display:none;color:#fff;font-weight:800;margin-top:1rem;}
 
-  /* SUPPORTERS */
   .supporters{background:var(--white);border-top:1px solid var(--sand);}
   .sup-row{max-width:1060px;margin:0 auto;padding:2rem;display:flex;align-items:center;gap:2.5rem;flex-wrap:wrap;}
   .sup-label{font-size:.65rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
@@ -369,7 +345,6 @@ const css = `
   .sup-logos img{height:30px;width:auto;object-fit:contain;opacity:.55;filter:grayscale(1);transition:opacity .2s,filter .2s;}
   .sup-logos img:hover{opacity:1;filter:none;}
 
-  /* FOOTER */
   footer{background:var(--dark);padding:3rem 2rem 2rem;}
   .foot-inner{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:1.5rem;}
   .foot-logo img{height:30px;width:auto;display:block;margin-bottom:.75rem;opacity:.8;filter:brightness(0) invert(1);}
@@ -390,16 +365,12 @@ const css = `
   @media(max-width:860px){
     .story-top,.vol-header,.foot-inner{grid-template-columns:1fr;gap:2.5rem;}
     .prog-grid,.support-cards,.vol-roles,.social-cards,.principles-grid{grid-template-columns:1fr;}
-    .mosaic{
-      grid-template-columns:1fr 1fr;
-      grid-template-rows:auto;
-      gap:8px;
-      padding:10px;
-    }
+    .mosaic{grid-template-columns:1fr 1fr;grid-template-rows:auto;gap:8px;padding:10px;}
     .mosaic-item{border-radius:10px;height:200px;}
     .mosaic-item:nth-child(1){grid-column:1/3;grid-row:auto;height:240px;}
     .mosaic-item:nth-child(4){grid-column:auto;grid-row:auto;}
     .mosaic-item:nth-child(8){grid-column:auto;grid-row:auto;}
+    .mosaic-item:nth-child(9){grid-column:auto;grid-row:auto;}
     .hero-content{padding:0 2rem 4rem;}
     nav{padding:0 1.25rem;}
     .impact-div{display:none;}
@@ -410,12 +381,10 @@ const css = `
 document.head.insertAdjacentHTML('beforeend', `<style>${css}</style>`);
 document.title = CONFIG.siteName + ' — Shelter Transport';
 
-// Build mosaic — bento layout, nth-child CSS handles slot placement
-// Slots: 1=tall hero, 2=small, 3=wide, 4=medium, 5=small, 6=wide, 7=wide, 8=accent
 const mosaicPhotos = [
   CONFIG.mosaicPhoto1, CONFIG.mosaicPhoto2, CONFIG.mosaicPhoto3,
   CONFIG.mosaicPhoto4, CONFIG.mosaicPhoto5, CONFIG.mosaicPhoto6,
-  CONFIG.mosaicPhoto7, CONFIG.mosaicPhoto8
+  CONFIG.mosaicPhoto7, CONFIG.mosaicPhoto8, CONFIG.mosaicPhoto9
 ].filter(Boolean);
 
 const mosaicHTML = mosaicPhotos.map((url, i) =>
@@ -440,7 +409,6 @@ document.body.innerHTML = `
   </ul>
 </nav>
 
-<!-- HERO -->
 <section id="home">
   <div class="hero-img" style="background-image:url('${CONFIG.heroPhoto}')"></div>
   <div class="hero-content">
@@ -459,12 +427,8 @@ document.body.innerHTML = `
   </div>
 </section>
 
-<!-- MOSAIC -->
-<div class="mosaic">
-  ${mosaicHTML}
-</div>
+<div class="mosaic">${mosaicHTML}</div>
 
-<!-- STORY -->
 <section id="story">
   <div class="story-inner">
     <div class="story-top">
@@ -486,24 +450,14 @@ document.body.innerHTML = `
     <div class="principles reveal">
       <span class="principles-label">What We Believe</span>
       <div class="principles-grid">
-        <div class="principle reveal d1">
-          <h4>${CONFIG.principle1Title}</h4>
-          <p>${CONFIG.principle1Desc}</p>
-        </div>
-        <div class="principle reveal d2">
-          <h4>${CONFIG.principle2Title}</h4>
-          <p>${CONFIG.principle2Desc}</p>
-        </div>
-        <div class="principle reveal d3">
-          <h4>${CONFIG.principle3Title}</h4>
-          <p>${CONFIG.principle3Desc}</p>
-        </div>
+        <div class="principle reveal d1"><h4>${CONFIG.principle1Title}</h4><p>${CONFIG.principle1Desc}</p></div>
+        <div class="principle reveal d2"><h4>${CONFIG.principle2Title}</h4><p>${CONFIG.principle2Desc}</p></div>
+        <div class="principle reveal d3"><h4>${CONFIG.principle3Title}</h4><p>${CONFIG.principle3Desc}</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROGRAMS -->
 <section id="programs">
   <div class="programs-inner">
     <div class="section-head reveal">
@@ -533,7 +487,6 @@ document.body.innerHTML = `
   </div>
 </section>
 
-<!-- IMPACT -->
 <section id="impact">
   <div class="impact-strip">
     <div class="impact-num reveal"><span class="n">${CONFIG.impactStat1Number}</span><span class="l">${CONFIG.impactStat1Label}</span></div>
@@ -550,7 +503,6 @@ document.body.innerHTML = `
   </div>
 </section>
 
-<!-- SUPPORT -->
 <section id="support">
   <div class="support-inner">
     <div class="section-head reveal">
@@ -588,7 +540,6 @@ document.body.innerHTML = `
   </div>
 </section>
 
-<!-- VOLUNTEER -->
 <section id="volunteer">
   <div class="vol-inner">
     <div class="vol-header">
@@ -597,7 +548,7 @@ document.body.innerHTML = `
         <h2>${CONFIG.volunteerHeadline}</h2>
         <p>${CONFIG.volunteerBody}</p>
         <div class="vol-actions">
-          <a href="mailto:info@furryfreight.org" class="btn btn-orange">Email info@furryfreight.org</a>
+          <a href="mailto:${CONFIG.email}" class="btn btn-orange">Email ${CONFIG.email}</a>
           <a href="${CONFIG.instagramLink}" target="_blank" class="btn btn-ghost">DM Us on Instagram</a>
         </div>
       </div>
@@ -611,23 +562,13 @@ document.body.innerHTML = `
       </div>
     </div>
     <div class="vol-roles">
-      <div class="vol-role reveal d1">
-        <h4>${CONFIG.volunteerRole1Title}</h4>
-        <p>${CONFIG.volunteerRole1Desc}</p>
-      </div>
-      <div class="vol-role reveal d2">
-        <h4>${CONFIG.volunteerRole2Title}</h4>
-        <p>${CONFIG.volunteerRole2Desc}</p>
-      </div>
-      <div class="vol-role reveal d3">
-        <h4>${CONFIG.volunteerRole3Title}</h4>
-        <p>${CONFIG.volunteerRole3Desc}</p>
-      </div>
+      <div class="vol-role reveal d1"><h4>${CONFIG.volunteerRole1Title}</h4><p>${CONFIG.volunteerRole1Desc}</p></div>
+      <div class="vol-role reveal d2"><h4>${CONFIG.volunteerRole2Title}</h4><p>${CONFIG.volunteerRole2Desc}</p></div>
+      <div class="vol-role reveal d3"><h4>${CONFIG.volunteerRole3Title}</h4><p>${CONFIG.volunteerRole3Desc}</p></div>
     </div>
   </div>
 </section>
 
-<!-- SOCIAL -->
 <section id="social">
   <div class="social-inner">
     <span class="eyebrow reveal">${CONFIG.socialHeadline}</span>
@@ -656,7 +597,6 @@ document.body.innerHTML = `
   </div>
 </section>
 
-<!-- NEWSLETTER -->
 <section id="newsletter">
   <div class="nl-inner">
     <div class="eyebrow reveal">Stay in the Loop</div>
@@ -670,7 +610,6 @@ document.body.innerHTML = `
   </div>
 </section>
 
-<!-- SUPPORTERS -->
 <div class="supporters">
   <div class="sup-row">
     <span class="sup-label">Community Supporters</span>
@@ -680,7 +619,6 @@ document.body.innerHTML = `
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="foot-inner">
     <div class="foot-brand">
@@ -707,7 +645,7 @@ document.body.innerHTML = `
       <ul>
         <li><a href="story.html">Our Full Story</a></li>
         <li><a href="programs.html">Our Programs</a></li>
-        <li><a href="donate.html">Support Us</a></li>
+        <li><a href="support.html">Support Us</a></li>
         <li><a href="donate.html">Donate</a></li>
       </ul>
     </div>
