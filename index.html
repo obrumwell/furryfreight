@@ -55,8 +55,8 @@ const CONFIG = {
   programPhoto1:  "https://images.unsplash.com/photo-1444212477490-ca407925329e?w=900&q=80&fit=crop",
   programPhoto2:  "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/spay.jpg",
   volunteerPhoto: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=900&q=80&fit=crop",
-  donatePhoto:    "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/van.jpg",
-  bottledropPhoto:"https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/george.jpg",
+  donatePhoto:    "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/shep.jpg",
+  bottledropPhoto:"https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/kitty.jpg",
 
   /* ── OUR STORY SECTION ── */
   storyBadgeNumber: "1,709+",
@@ -285,23 +285,23 @@ const css = `
   .sup-card-body h3{font-family:'Fredoka One',cursive;font-size:1.3rem;color:var(--dark);margin-bottom:.4rem;}
   .sup-card-body p{font-size:.87rem;line-height:1.72;color:var(--muted);flex:1;margin-bottom:1.2rem;}
 
-  /* EVENTS PREVIEW */
-  #events-preview{background:var(--dark);}
-  .events-preview-inner{max-width:1060px;margin:0 auto;padding:4rem 2rem;display:grid;grid-template-columns:auto 1fr;gap:3rem;align-items:start;}
-  .events-preview-head .eyebrow{color:var(--teal-lt);}
-  .events-preview-head h2{font-family:'Fredoka One',cursive;font-size:clamp(1.6rem,2.5vw,2.2rem);color:#fff;margin-bottom:1rem;line-height:1.1;}
-  .events-preview-head .ep-sub{font-size:.88rem;color:rgba(255,255,255,.45);line-height:1.7;margin-bottom:1.5rem;max-width:200px;}
-  .ep-list{display:flex;flex-direction:column;gap:.7rem;}
-  .ep-item{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:11px;padding:1rem 1.25rem;display:flex;gap:1.1rem;align-items:center;transition:background .2s;}
-  .ep-item:hover{background:rgba(255,255,255,.09);}
-  .ep-date{background:var(--teal);color:#fff;border-radius:8px;padding:.45rem .7rem;text-align:center;flex-shrink:0;min-width:48px;}
-  .ep-date .m{font-size:.55rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;opacity:.8;display:block;line-height:1;margin-bottom:1px;}
-  .ep-date .d{font-family:'Fredoka One',cursive;font-size:1.4rem;display:block;line-height:1;}
-  .ep-body{flex:1;}
-  .ep-body h4{font-family:'Fredoka One',cursive;font-size:1rem;color:#fff;margin-bottom:.15rem;}
-  .ep-body span{font-size:.78rem;font-weight:800;color:rgba(255,255,255,.4);letter-spacing:.03em;}
-  .ep-link{font-size:.78rem;font-weight:800;color:var(--orange);text-decoration:none;white-space:nowrap;transition:color .2s;flex-shrink:0;}
-  .ep-link:hover{color:var(--teal-lt);}
+  /* EVENTS PREVIEW — sand bg, horizontal cards, orange date badges */
+  #events-preview{background:var(--sand);}
+  .events-preview-inner{max-width:1060px;margin:0 auto;padding:5rem 2rem;}
+  .events-preview-inner .ep-head{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem;}
+  .events-preview-inner .ep-head h2{font-family:'Fredoka One',cursive;font-size:clamp(1.8rem,3vw,2.4rem);color:var(--dark);}
+  .events-preview-inner .ep-head a{font-size:.85rem;font-weight:800;color:var(--teal);text-decoration:none;transition:color .2s;}
+  .events-preview-inner .ep-head a:hover{color:var(--teal-dk);}
+  .ep-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
+  .ep-card{background:white;border-radius:16px;padding:1.6rem;border:1px solid rgba(42,127,111,.1);display:flex;flex-direction:column;gap:.9rem;transition:transform .25s,box-shadow .25s;}
+  .ep-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(28,46,42,.1);}
+  .ep-card-date{background:var(--orange);color:#fff;border-radius:10px;padding:.65rem 1rem;display:inline-flex;align-items:center;gap:.6rem;align-self:flex-start;}
+  .ep-card-date .m{font-size:.62rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;opacity:.85;}
+  .ep-card-date .d{font-family:'Fredoka One',cursive;font-size:1.5rem;line-height:1;}
+  .ep-card h4{font-family:'Fredoka One',cursive;font-size:1.15rem;color:var(--dark);margin:0;}
+  .ep-card .ep-meta{font-size:.8rem;font-weight:800;color:var(--muted);letter-spacing:.03em;}
+  .ep-card .ep-link{font-size:.82rem;font-weight:800;color:var(--orange);text-decoration:none;margin-top:auto;padding-top:.5rem;transition:color .2s;}
+  .ep-card .ep-link:hover{color:var(--teal-dk);}
 
   #volunteer{background:var(--dark);color:#fff;}
   .vol-inner{max-width:1060px;margin:0 auto;padding:5.5rem 2rem;}
@@ -385,8 +385,7 @@ const css = `
     nav{padding:0 1.25rem;}
     .impact-div{display:none;}
     .impact-strip{justify-content:center;gap:1.5rem;}
-    .events-preview-inner{grid-template-columns:1fr;gap:1.5rem;}
-    .events-preview-head .ep-sub{max-width:100%;}
+    .ep-cards{grid-template-columns:1fr;}
   }
 `;
 
@@ -406,20 +405,22 @@ const mosaicHTML = mosaicPhotos.map((url, i) =>
 const eventsHTML = CONFIG.showEvents && CONFIG.events.length ? `
 <section id="events-preview">
   <div class="events-preview-inner">
-    <div class="events-preview-head reveal">
-      <span class="eyebrow">Mark Your Calendar</span>
-      <h2>Upcoming Events</h2>
-      <p class="ep-sub">Come out and support the animals in person.</p>
-      <a href="support.html#events" class="btn btn-outline-lt">See All Events →</a>
+    <div class="ep-head reveal">
+      <div>
+        <span class="eyebrow">Mark Your Calendar</span>
+        <h2>Upcoming Events</h2>
+      </div>
+      <a href="support.html#events">See all events →</a>
     </div>
-    <div class="ep-list reveal d1">
-      ${CONFIG.events.map(e => `
-      <div class="ep-item">
-        <div class="ep-date"><span class="m">${e.month}</span><span class="d">${e.day}</span></div>
-        <div class="ep-body">
-          <h4>${e.title}</h4>
-          <span>${e.meta}</span>
+    <div class="ep-cards">
+      ${CONFIG.events.map((e, i) => `
+      <div class="ep-card reveal d${(i % 3) + 1}">
+        <div class="ep-card-date">
+          <span class="d">${e.day}</span>
+          <span class="m">${e.month}</span>
         </div>
+        <h4>${e.title}</h4>
+        <span class="ep-meta">${e.meta}</span>
         ${e.link ? `<a href="${e.link}" target="_blank" class="ep-link">More info →</a>` : ''}
       </div>`).join('')}
     </div>
@@ -575,8 +576,6 @@ document.body.innerHTML = `
   </div>
 </section>
 
-${eventsHTML}
-
 <section id="volunteer">
   <div class="vol-inner">
     <div class="vol-header">
@@ -605,6 +604,8 @@ ${eventsHTML}
     </div>
   </div>
 </section>
+
+${eventsHTML}
 
 <section id="social">
   <div class="social-inner">
