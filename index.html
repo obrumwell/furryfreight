@@ -15,22 +15,17 @@
    HOW TO EDIT:
    • Change any text between the quote marks " "
    • To swap a photo, replace the URL with any image URL
-     (right-click any image on the web → "Copy image address")
-   • Don't change anything outside the CONFIG block below
-   • Save the file and refresh your browser to see changes
+   • Only edit inside this CONFIG block
    ============================================================ */
 
 const CONFIG = {
 
   /* ── SITE ── */
   siteName: "Furry Freight",
-
   navLogo:       "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/ff_header.svg",
   navLogoHeight: "34",
-
   heroLogo:      "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/ff_logo.svg",
   heroLogoWidth: "200",
-
   tagline:  "Saving shelter pets one road trip at a time.",
   founded:  "Est. 2017",
   ein:      "82-4423390",
@@ -45,13 +40,9 @@ const CONFIG = {
   stat3Number: "Since 2018",
   stat3Label:  "On the Road",
 
-  /* ── PHOTOS ──────────────────────────────────────────────────
-     To swap a photo: paste any image URL between the quotes.
-     Mosaic supports up to 9 photos — leave as "" to hide a slot.
-  ──────────────────────────────────────────────────────────── */
+  /* ── PHOTOS ── */
   heroPhoto:      "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1600&q=85&fit=crop",
   storyPhoto:     "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/dogtile1.jpg",
-
   mosaicPhoto1:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/geoff.jpg",
   mosaicPhoto2:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/kamala.jpg",
   mosaicPhoto3:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/pittie.jpg",
@@ -60,14 +51,12 @@ const CONFIG = {
   mosaicPhoto6:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/kitten.jpg",
   mosaicPhoto7:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/keegan.jpg",
   mosaicPhoto8:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/dogtile3.jpg",
-  // 9th mosaic photo — fills the bottom-right slot
   mosaicPhoto9:   "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/cliff.jpg",
-
   programPhoto1:  "https://images.unsplash.com/photo-1444212477490-ca407925329e?w=900&q=80&fit=crop",
   programPhoto2:  "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/spay.jpg",
   volunteerPhoto: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=900&q=80&fit=crop",
-  donatePhoto:    "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/shep.jpg",
-  bottledropPhoto:"https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/kitty.jpg",
+  donatePhoto:    "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/van.jpg",
+  bottledropPhoto:"https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/george.jpg",
 
   /* ── OUR STORY SECTION ── */
   storyBadgeNumber: "1,709+",
@@ -76,14 +65,12 @@ const CONFIG = {
   storyOriginTitle: "How it started",
   storyOriginBody:  "Furry Freight was founded in 2018 by Kim Wilken, a registered nurse living in Bend, Oregon. After moving to the Pacific Northwest, Kim noticed something: shelters across the country were overwhelmed, euthanizing healthy, adoptable pets simply because there were more animals than homes. The solution seemed simple. Drive them from at-risk locations, to more resourced areas with higher adoption rates. That first road trip became the foundation of Furry Freight Shelter Transport.",
   storyMissionBody: "We partner with overpopulated shelters where pets face euthanasia and transport them to Pacific Northwest communities ready to welcome them home.",
-
   principle1Title: "Every life has value",
   principle1Desc:  "No healthy, adoptable animal should lose its life because of where it was born. Geography should not determine fate.",
   principle2Title: "Community solves problems",
   principle2Desc:  "Shelters, rescues, volunteers, donors, and adopters working together accomplish what none could do alone.",
   principle3Title: "Prevention matters too",
   principle3Desc:  "Transport saves lives today. Our Spay it Forward program works to reduce the number entering shelters tomorrow.",
-
   storyButtonText: "Read Our Full Story",
   storyButtonLink: "story.html",
 
@@ -91,7 +78,6 @@ const CONFIG = {
   program1Title: "Transport",
   program1Desc:  "We drive at-risk dogs and cats from over capacity shelters to communities where they are quickly adopted.",
   program1Link:  "programs.html",
-
   program2Title: "Spay it Forward",
   program2Desc:  "We fund spay and neuter surgeries for owned pets whose family cannot afford the cost, and shelter pets to help increase chances of adoption.",
   program2Link:  "programs.html",
@@ -110,24 +96,32 @@ const CONFIG = {
   donateHeadline:     "Make a Donation",
   donateDesc:         "Every dollar goes directly benefits our life saving transports and the Spay It Forward Program. Any amount makes a positive impact.",
   donateLink:         "donate.html",
-
   wishlistHeadline:   "Amazon Wishlist",
   wishlistDesc:       "Ship supplies directly to our team. Crates, treats, leashes, cleaning supplies and more. No account needed.",
   wishlistLink:       "https://www.amazon.com/hz/wishlist/ls/1HH2KRDF6AX0U?ref_=wl_share",
   wishlistPhoto:      "https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/rich.jpg",
-
   freeGivingHeadline: "Free Ways to Give",
   freeGivingDesc:     "Link your Fred Meyer Shopper's Card or use Oregon BottleDrop blue bags. No cost to you.",
-  freeGivingLink:     "donate.html",
+  freeGivingLink:     "support.html",
+
+  /* ── UPCOMING EVENTS PREVIEW ──────────────────────────────
+     These show as a small card strip on the home page.
+     Edit dates, titles and links here.
+     Set showEvents to false to hide the section entirely.
+     Leave a link as "" to hide the "More info" button.
+  ──────────────────────────────────────────────────────── */
+  showEvents: true,
+  events: [
+    { month: "Apr", day: "12", title: "Spring Yard Sale",       meta: "10am – 3pm · Bend, OR",       link: "" },
+    { month: "May", day: "3",  title: "Bingo Night",            meta: "6pm – 9pm · Location TBA",    link: "" },
+    { month: "Jun", day: "21", title: "Egg My House",           meta: "Morning · Central Oregon",     link: "" },
+  ],
 
   /* ── VOLUNTEER ── */
   volunteerHeadline:   "Join the pack.",
   volunteerBody:       "We run entirely on volunteers. There is a place for you here no matter your skills or schedule.",
-
-  // Paste a .mp4 or .mov video URL here to show a video, or leave "" to show the photo
   volunteerVideo:  "https://raw.githubusercontent.com/obrumwell/furryfreight/main/pack2.mp4",
   volunteerPhoto:  "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=900&q=80&fit=crop",
-
   volunteerRole1Title: "Drive and Transport",
   volunteerRole1Desc:  "Long-haul drivers for multi-day transport trips. Must be 21+ with a clean record.",
   volunteerRole2Title: "Events and Fundraising",
@@ -163,7 +157,6 @@ const CONFIG = {
 
 /* ============================================================
    STOP HERE — everything below is generated from CONFIG.
-   Do not edit below this line.
    ============================================================ */
 
 const css = `
@@ -198,6 +191,7 @@ const css = `
   .btn-teal{background:var(--teal);color:#fff;} .btn-teal:hover{background:var(--teal-dk);}
   .btn-white{background:#fff;color:var(--teal);} .btn-white:hover{background:var(--cream);}
   .btn-outline{background:transparent;color:var(--teal);border:2px solid var(--teal);} .btn-outline:hover{background:var(--teal);color:#fff;}
+  .btn-outline-lt{background:transparent;color:var(--teal-lt);border:2px solid rgba(214,237,233,.4);} .btn-outline-lt:hover{background:rgba(214,237,233,.1);}
   .btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.22);} .btn-ghost:hover{background:rgba(255,255,255,.22);}
 
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease;}
@@ -217,7 +211,6 @@ const css = `
   .hstat .n{font-family:'Fredoka One',cursive;font-size:1.9rem;color:var(--teal-lt);display:block;line-height:1;}
   .hstat .l{font-size:.68rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.4);display:block;margin-top:.2rem;}
 
-  /* MOSAIC — portrait & square, 9 slots */
   .mosaic{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;grid-template-rows:260px 220px 280px;gap:10px;padding:14px;background:var(--cream);}
   .mosaic-item{overflow:hidden;border-radius:14px;}
   .mosaic-item img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;transition:transform .45s;}
@@ -234,7 +227,6 @@ const css = `
 
   .eyebrow{font-size:.68rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:.7rem;display:block;}
   .section-title{font-family:'Fredoka One',cursive;font-size:clamp(2rem,3vw,2.8rem);line-height:1.1;color:var(--dark);margin-bottom:1rem;}
-  .section-sub{font-size:1rem;line-height:1.85;color:var(--muted);max-width:500px;}
 
   #story{background:var(--cream);}
   .story-inner{max-width:1060px;margin:0 auto;padding:5.5rem 2rem;}
@@ -292,6 +284,24 @@ const css = `
   .sup-card-body{padding:1.5rem;flex:1;display:flex;flex-direction:column;}
   .sup-card-body h3{font-family:'Fredoka One',cursive;font-size:1.3rem;color:var(--dark);margin-bottom:.4rem;}
   .sup-card-body p{font-size:.87rem;line-height:1.72;color:var(--muted);flex:1;margin-bottom:1.2rem;}
+
+  /* EVENTS PREVIEW */
+  #events-preview{background:var(--dark);}
+  .events-preview-inner{max-width:1060px;margin:0 auto;padding:4rem 2rem;display:grid;grid-template-columns:auto 1fr;gap:3rem;align-items:start;}
+  .events-preview-head .eyebrow{color:var(--teal-lt);}
+  .events-preview-head h2{font-family:'Fredoka One',cursive;font-size:clamp(1.6rem,2.5vw,2.2rem);color:#fff;margin-bottom:1rem;line-height:1.1;}
+  .events-preview-head .ep-sub{font-size:.88rem;color:rgba(255,255,255,.45);line-height:1.7;margin-bottom:1.5rem;max-width:200px;}
+  .ep-list{display:flex;flex-direction:column;gap:.7rem;}
+  .ep-item{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:11px;padding:1rem 1.25rem;display:flex;gap:1.1rem;align-items:center;transition:background .2s;}
+  .ep-item:hover{background:rgba(255,255,255,.09);}
+  .ep-date{background:var(--teal);color:#fff;border-radius:8px;padding:.45rem .7rem;text-align:center;flex-shrink:0;min-width:48px;}
+  .ep-date .m{font-size:.55rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;opacity:.8;display:block;line-height:1;margin-bottom:1px;}
+  .ep-date .d{font-family:'Fredoka One',cursive;font-size:1.4rem;display:block;line-height:1;}
+  .ep-body{flex:1;}
+  .ep-body h4{font-family:'Fredoka One',cursive;font-size:1rem;color:#fff;margin-bottom:.15rem;}
+  .ep-body span{font-size:.78rem;font-weight:800;color:rgba(255,255,255,.4);letter-spacing:.03em;}
+  .ep-link{font-size:.78rem;font-weight:800;color:var(--orange);text-decoration:none;white-space:nowrap;transition:color .2s;flex-shrink:0;}
+  .ep-link:hover{color:var(--teal-lt);}
 
   #volunteer{background:var(--dark);color:#fff;}
   .vol-inner{max-width:1060px;margin:0 auto;padding:5.5rem 2rem;}
@@ -375,6 +385,8 @@ const css = `
     nav{padding:0 1.25rem;}
     .impact-div{display:none;}
     .impact-strip{justify-content:center;gap:1.5rem;}
+    .events-preview-inner{grid-template-columns:1fr;gap:1.5rem;}
+    .events-preview-head .ep-sub{max-width:100%;}
   }
 `;
 
@@ -390,6 +402,29 @@ const mosaicPhotos = [
 const mosaicHTML = mosaicPhotos.map((url, i) =>
   `<div class="mosaic-item"><img src="${url}" alt="Furry Freight animal ${i+1}" loading="lazy"></div>`
 ).join('');
+
+const eventsHTML = CONFIG.showEvents && CONFIG.events.length ? `
+<section id="events-preview">
+  <div class="events-preview-inner">
+    <div class="events-preview-head reveal">
+      <span class="eyebrow">Mark Your Calendar</span>
+      <h2>Upcoming Events</h2>
+      <p class="ep-sub">Come out and support the animals in person.</p>
+      <a href="support.html#events" class="btn btn-outline-lt">See All Events →</a>
+    </div>
+    <div class="ep-list reveal d1">
+      ${CONFIG.events.map(e => `
+      <div class="ep-item">
+        <div class="ep-date"><span class="m">${e.month}</span><span class="d">${e.day}</span></div>
+        <div class="ep-body">
+          <h4>${e.title}</h4>
+          <span>${e.meta}</span>
+        </div>
+        ${e.link ? `<a href="${e.link}" target="_blank" class="ep-link">More info →</a>` : ''}
+      </div>`).join('')}
+    </div>
+  </div>
+</section>` : '';
 
 document.body.innerHTML = `
 
@@ -540,6 +575,8 @@ document.body.innerHTML = `
   </div>
 </section>
 
+${eventsHTML}
+
 <section id="volunteer">
   <div class="vol-inner">
     <div class="vol-header">
@@ -671,33 +708,25 @@ function updateNav() {
   navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
 }
 
-// REVEAL ON SCROLL
 const revs = document.querySelectorAll('.reveal');
 function checkReveal() {
   const vh = window.innerHeight;
   revs.forEach(el => { if (el.getBoundingClientRect().top < vh - 50) el.classList.add('on'); });
 }
 
-// SCROLL-TRIGGERED VIDEO
 const volVideo = document.getElementById('vol-video');
 let videoPlaying = false;
 function checkVideo() {
   if (!volVideo) return;
   const rect = volVideo.getBoundingClientRect();
   const inView = rect.top < window.innerHeight * 0.85 && rect.bottom > 0;
-  if (inView && !videoPlaying) {
-    volVideo.play().catch(() => {});
-    videoPlaying = true;
-  } else if (!inView && videoPlaying) {
-    volVideo.pause();
-    videoPlaying = false;
-  }
+  if (inView && !videoPlaying) { volVideo.play().catch(() => {}); videoPlaying = true; }
+  else if (!inView && videoPlaying) { volVideo.pause(); videoPlaying = false; }
 }
 
 window.addEventListener('scroll', () => { updateNav(); checkReveal(); checkVideo(); }, { passive: true });
 updateNav(); checkReveal(); checkVideo();
 
-// NEWSLETTER
 function handleNL(e) {
   e.preventDefault();
   e.target.style.display = 'none';
