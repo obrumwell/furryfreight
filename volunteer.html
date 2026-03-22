@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Volunteer — Furry Freight Shelter Transport</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal:    #2A7F6F;
+    --teal-dk: #1D5C50;
+    --teal-lt: #D6EDE9;
+    --orange:  #E8622A;
+    --cream:   #F7F2E8;
+    --sand:    #EDE4D0;
+    --dark:    #1C2E2A;
+    --muted:   #5A7268;
+    --white:   #FDFAF5;
+  }
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Nunito',sans-serif; background:var(--white); color:var(--dark); overflow-x:hidden; }
+
+  /* ── NAV ── */
+  nav { position:fixed; top:0; left:0; right:0; z-index:200; height:56px; background:var(--dark); border-bottom:1px solid rgba(255,255,255,.07); display:flex; align-items:center; padding:0 2.5rem; gap:2rem; }
+  .nav-logo { text-decoration:none; margin-right:auto; display:flex; align-items:center; }
+  .nav-logo img { height:34px; width:auto; display:block; }
+  .nav-links { list-style:none; display:flex; align-items:center; gap:.1rem; }
+  .nav-links a { font-size:.85rem; font-weight:800; color:rgba(255,255,255,.55); text-decoration:none; padding:.38rem .8rem; border-radius:5px; transition:color .2s,background .2s; }
+  .nav-links a:hover, .nav-links a.active { color:white; background:rgba(255,255,255,.1); }
+  .nav-donate { background:var(--orange)!important; color:#fff!important; border-radius:5px; }
+  .nav-donate:hover { background:var(--teal)!important; }
+  .nav-burger { display:none; flex-direction:column; justify-content:center; gap:5px; width:32px; height:32px; background:none; border:none; cursor:pointer; padding:4px; flex-shrink:0; }
+  .nav-burger span { display:block; width:22px; height:2px; background:#fff; border-radius:2px; transition:transform .25s,opacity .25s; }
+  .nav-burger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+  .nav-burger.open span:nth-child(2) { opacity:0; }
+  .nav-burger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+  .nav-drawer { display:none; position:fixed; top:56px; left:0; right:0; background:rgba(18,40,35,.97); backdrop-filter:blur(8px); border-bottom:2px solid rgba(255,255,255,.1); z-index:199; padding:.75rem 1.5rem 1.25rem; flex-direction:column; gap:.15rem; }
+  .nav-drawer.open { display:flex; }
+  .nav-drawer a { font-size:1rem; font-weight:800; color:#fff; text-decoration:none; padding:.7rem .8rem; border-radius:6px; transition:background .2s; }
+  .nav-drawer a:hover { background:rgba(255,255,255,.1); }
+  .nav-drawer .nav-donate { background:var(--orange)!important; color:#fff!important; margin-top:.5rem; text-align:center; border-radius:6px; }
+
+  /* ── SHARED ── */
+  .btn { display:inline-block; font-family:'Nunito',sans-serif; font-weight:800; font-size:.88rem; text-decoration:none; padding:.62rem 1.45rem; border-radius:5px; border:none; cursor:pointer; transition:transform .18s,box-shadow .18s,background .18s; }
+  .btn:hover { transform:translateY(-2px); box-shadow:0 6px 18px rgba(0,0,0,.13); }
+  .btn-orange { background:var(--orange); color:#fff; } .btn-orange:hover { background:var(--teal-dk); }
+  .btn-teal { background:var(--teal); color:#fff; } .btn-teal:hover { background:var(--teal-dk); }
+  .btn-outline { background:transparent; color:var(--teal); border:2px solid var(--teal); } .btn-outline:hover { background:var(--teal); color:#fff; }
+  .btn-ghost { background:rgba(255,255,255,.12); color:#fff; border:1px solid rgba(255,255,255,.22); } .btn-ghost:hover { background:rgba(255,255,255,.22); }
+  .eyebrow { font-size:.68rem; font-weight:900; letter-spacing:.14em; text-transform:uppercase; color:var(--teal); margin-bottom:.7rem; display:block; }
+  .reveal { opacity:0; transform:translateY(18px); transition:opacity .5s ease,transform .5s ease; }
+  .reveal.on { opacity:1; transform:none; }
+  .d1{transition-delay:.07s;} .d2{transition-delay:.14s;} .d3{transition-delay:.21s;}
+
+  /* ── HERO ── */
+  .page-hero { padding:7rem 2rem 4.5rem; background:var(--dark); text-align:center; position:relative; overflow:hidden; }
+  .page-hero .eyebrow { color:var(--teal-lt); }
+  .page-hero h1 { font-family:'Fredoka One',cursive; font-size:clamp(2.5rem,5vw,4rem); color:#fff; line-height:1.05; margin-bottom:1rem; }
+  .page-hero h1 em { font-style:normal; color:var(--orange); }
+  .page-hero p { font-size:1.05rem; color:rgba(255,255,255,.6); max-width:520px; margin:0 auto; line-height:1.85; }
+  .paw-bg { position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0; }
+  .paw-bg svg { position:absolute; fill:rgba(255,255,255,.05); }
+  .paw-bg svg:nth-child(1){width:130px;top:8%;left:4%;}
+  .paw-bg svg:nth-child(2){width:85px;top:52%;left:16%;transform:rotate(25deg);}
+  .paw-bg svg:nth-child(3){width:110px;top:15%;right:6%;transform:rotate(-15deg);}
+  .paw-bg svg:nth-child(4){width:65px;top:68%;right:18%;transform:rotate(40deg);}
+  .paw-bg svg:nth-child(5){width:150px;bottom:2%;left:38%;transform:rotate(-30deg);}
+  .page-hero .eyebrow, .page-hero h1, .page-hero p { position:relative; z-index:1; }
+
+  /* ── URGENT NEEDS ── */
+  #urgent { background:var(--orange); padding:1.5rem 2rem; }
+  .urgent-inner { max-width:1060px; margin:0 auto; display:flex; align-items:center; gap:1.25rem; flex-wrap:wrap; }
+  .urgent-badge { background:#fff; color:var(--orange); font-family:'Fredoka One',cursive; font-size:.8rem; letter-spacing:.08em; padding:.3rem .8rem; border-radius:4px; white-space:nowrap; flex-shrink:0; }
+  .urgent-text { font-size:.92rem; font-weight:700; color:#fff; line-height:1.5; flex:1; }
+  .urgent-text strong { color:#fff; }
+
+  /* ── INTRO STRIP ── */
+  #intro { background:var(--cream); }
+  .intro-inner { max-width:1060px; margin:0 auto; padding:5rem 2rem; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+  .intro-text h2 { font-family:'Fredoka One',cursive; font-size:clamp(2rem,3.5vw,3rem); color:var(--dark); line-height:1.05; margin-bottom:1rem; }
+  .intro-text h2 em { font-style:normal; color:var(--orange); }
+  .intro-text p { font-size:1rem; line-height:1.9; color:var(--muted); margin-bottom:1rem; }
+  .intro-stats { display:flex; flex-direction:column; gap:0; }
+  .intro-stat { padding:1.6rem 0; border-bottom:1px solid rgba(42,127,111,.12); display:flex; align-items:baseline; gap:1rem; }
+  .intro-stat:first-child { border-top:1px solid rgba(42,127,111,.12); }
+  .intro-stat .num { font-family:'Fredoka One',cursive; font-size:3rem; color:var(--orange); line-height:1; flex-shrink:0; }
+  .intro-stat .lbl { font-size:.82rem; font-weight:800; color:var(--muted); line-height:1.4; }
+
+  /* ── ROLES ── */
+  #roles { background:var(--white); }
+  .roles-inner { max-width:1060px; margin:0 auto; padding:5.5rem 2rem; }
+  .roles-header { margin-bottom:3.5rem; }
+  .roles-header h2 { font-family:'Fredoka One',cursive; font-size:clamp(2rem,3.5vw,2.8rem); color:var(--dark); margin-bottom:.5rem; }
+  .roles-header p { font-size:1rem; color:var(--muted); line-height:1.8; max-width:580px; }
+  .role-cards { display:flex; flex-direction:column; gap:1.5rem; }
+  .role-card { background:var(--cream); border-radius:16px; padding:2.2rem 2.5rem; border:1px solid rgba(42,127,111,.1); display:grid; grid-template-columns:1fr auto; gap:2rem; align-items:start; transition:box-shadow .25s; }
+  .role-card:hover { box-shadow:0 10px 32px rgba(28,46,42,.08); }
+  .role-card.driver { border-left:4px solid var(--orange); }
+  .role-card.prepost { border-left:4px solid var(--teal); }
+  .role-card.events { border-left:4px solid #B5E48C; }
+  .role-card.social { border-left:4px solid var(--teal-lt); }
+  .role-tag { font-size:.62rem; font-weight:900; letter-spacing:.16em; text-transform:uppercase; margin-bottom:.6rem; display:block; }
+  .role-card.driver .role-tag { color:var(--orange); }
+  .role-card.prepost .role-tag { color:var(--teal); }
+  .role-card.events .role-tag { color:#3B6D11; }
+  .role-card.social .role-tag { color:var(--teal-dk); }
+  .role-card h3 { font-family:'Fredoka One',cursive; font-size:1.5rem; color:var(--dark); margin-bottom:.5rem; }
+  .role-card .role-desc { font-size:.92rem; line-height:1.85; color:var(--muted); margin-bottom:1rem; }
+  .role-reqs { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1.25rem; }
+  .role-req { font-size:.72rem; font-weight:800; letter-spacing:.06em; background:rgba(42,127,111,.08); color:var(--teal-dk); padding:.25rem .7rem; border-radius:20px; }
+  .role-card.driver .role-req { background:rgba(232,98,42,.08); color:var(--orange); }
+  .role-cta { display:flex; flex-direction:column; align-items:flex-end; gap:.75rem; min-width:160px; }
+  .role-cta .btn { width:100%; text-align:center; white-space:nowrap; }
+  .driver-note { font-size:.75rem; color:var(--muted); text-align:center; line-height:1.5; }
+
+  /* ── SIGN UP SECTION ── */
+  #signup { background:var(--sand); }
+  .signup-inner { max-width:1060px; margin:0 auto; padding:5.5rem 2rem; display:grid; grid-template-columns:1fr 1.8fr; gap:5rem; align-items:start; }
+  .signup-text h2 { font-family:'Fredoka One',cursive; font-size:clamp(2rem,3.5vw,2.8rem); color:var(--dark); margin-bottom:1rem; line-height:1.05; }
+  .signup-text h2 em { font-style:normal; color:var(--orange); }
+  .signup-text p { font-size:.97rem; color:var(--muted); line-height:1.85; margin-bottom:1.5rem; }
+  .signup-text a { font-size:.82rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--teal); text-decoration:none; border-bottom:2px solid var(--teal); padding-bottom:.15rem; transition:opacity .2s; display:inline-block; }
+  .signup-text a:hover { opacity:.65; }
+  .form-embed { background:#fff; border-radius:14px; overflow:hidden; border:1px solid rgba(42,127,111,.1); min-height:500px; display:flex; align-items:center; justify-content:center; position:relative; }
+  .form-embed iframe { width:100%; height:600px; border:none; display:block; }
+  /* placeholder shown until real iframe is dropped in */
+  .form-placeholder { text-align:center; padding:3rem 2rem; }
+  .form-placeholder .ph-label { font-size:.65rem; font-weight:900; letter-spacing:.2em; text-transform:uppercase; color:var(--orange); display:block; margin-bottom:.75rem; background:rgba(232,98,42,.08); padding:.4rem .8rem; border-radius:4px; width:fit-content; margin:0 auto .75rem; }
+  .form-placeholder h4 { font-family:'Fredoka One',cursive; font-size:1.3rem; color:var(--dark); margin-bottom:.5rem; }
+  .form-placeholder p { font-size:.85rem; color:var(--muted); line-height:1.75; max-width:280px; margin:0 auto; }
+
+  /* ── SCHEDULE A CALL ── */
+  #schedule { background:var(--dark); }
+  .schedule-inner { max-width:1060px; margin:0 auto; padding:5.5rem 2rem; display:grid; grid-template-columns:1fr 1.8fr; gap:5rem; align-items:start; }
+  .schedule-text .eyebrow { color:var(--teal-lt); }
+  .schedule-text h2 { font-family:'Fredoka One',cursive; font-size:clamp(2rem,3.5vw,2.8rem); color:#fff; margin-bottom:1rem; line-height:1.05; }
+  .schedule-text h2 em { font-style:normal; color:var(--orange); }
+  .schedule-text p { font-size:.97rem; color:rgba(255,255,255,.6); line-height:1.85; margin-bottom:1.5rem; }
+  .schedule-what { display:flex; flex-direction:column; gap:.75rem; margin-bottom:2rem; }
+  .schedule-what-item { display:flex; align-items:flex-start; gap:.75rem; }
+  .schedule-what-item .sw-dot { width:8px; height:8px; border-radius:50%; background:var(--orange); flex-shrink:0; margin-top:.35rem; }
+  .schedule-what-item p { font-size:.88rem; color:rgba(255,255,255,.65); line-height:1.65; margin:0; }
+  .schedule-embed { background:rgba(255,255,255,.04); border-radius:14px; border:1px solid rgba(255,255,255,.08); min-height:400px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .schedule-embed iframe { width:100%; height:500px; border:none; display:block; }
+  .schedule-placeholder { text-align:center; padding:3rem 2rem; }
+  .schedule-placeholder .ph-label { font-size:.65rem; font-weight:900; letter-spacing:.2em; text-transform:uppercase; color:var(--orange); display:block; background:rgba(232,98,42,.15); padding:.4rem .8rem; border-radius:4px; width:fit-content; margin:0 auto .75rem; }
+  .schedule-placeholder h4 { font-family:'Fredoka One',cursive; font-size:1.3rem; color:#fff; margin-bottom:.5rem; }
+  .schedule-placeholder p { font-size:.85rem; color:rgba(255,255,255,.5); line-height:1.75; max-width:300px; margin:0 auto; }
+
+  /* ── QUESTIONS / FAQ ── */
+  #faq { background:var(--cream); }
+  .faq-inner { max-width:760px; margin:0 auto; padding:5rem 2rem; }
+  .faq-inner h2 { font-family:'Fredoka One',cursive; font-size:clamp(1.8rem,3vw,2.4rem); color:var(--dark); margin-bottom:2.5rem; }
+  .faq-item { border-bottom:1px solid rgba(42,127,111,.12); padding:1.4rem 0; }
+  .faq-item:last-child { border-bottom:none; }
+  .faq-item h4 { font-family:'Fredoka One',cursive; font-size:1.1rem; color:var(--dark); margin-bottom:.5rem; }
+  .faq-item p { font-size:.92rem; line-height:1.8; color:var(--muted); }
+
+  /* ── FOOTER ── */
+  footer { background:var(--dark); padding:3rem 2rem 2rem; }
+  .foot-inner { max-width:1060px; margin:0 auto; display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:3rem; padding-bottom:2rem; border-bottom:1px solid rgba(255,255,255,.07); margin-bottom:1.5rem; }
+  .foot-logo img { height:30px; width:auto; display:block; margin-bottom:.75rem; opacity:.8; filter:brightness(0) invert(1); }
+  .foot-brand p { font-size:.8rem; color:rgba(255,255,255,.35); line-height:1.85; }
+  .foot-brand a { color:rgba(255,255,255,.35); text-decoration:none; transition:color .2s; }
+  .foot-brand a:hover { color:var(--teal-lt); }
+  .foot-col h5 { font-size:.65rem; font-weight:900; letter-spacing:.13em; text-transform:uppercase; color:rgba(255,255,255,.28); margin-bottom:1rem; }
+  .foot-col ul { list-style:none; }
+  .foot-col ul li { margin-bottom:.45rem; }
+  .foot-col ul a { font-size:.85rem; font-weight:700; color:rgba(255,255,255,.5); text-decoration:none; transition:color .2s; }
+  .foot-col ul a:hover { color:var(--teal-lt); }
+  .foot-bottom { max-width:1060px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+  .foot-bottom p { font-size:.77rem; color:rgba(255,255,255,.25); }
+  .foot-social { display:flex; gap:.45rem; }
+  .foot-social a { width:32px; height:32px; border-radius:6px; background:rgba(255,255,255,.06); display:flex; align-items:center; justify-content:center; font-size:.72rem; font-weight:900; color:rgba(255,255,255,.45); text-decoration:none; transition:background .2s,color .2s; }
+  .foot-social a:hover { background:var(--teal); color:#fff; }
+
+  @media(max-width:860px) {
+    nav { padding:0 1.25rem; }
+    .nav-burger { display:flex; }
+    .nav-links { display:none; }
+    .intro-inner, .signup-inner, .schedule-inner { grid-template-columns:1fr; gap:3rem; }
+    .role-card { grid-template-columns:1fr; }
+    .role-cta { flex-direction:row; align-items:center; min-width:unset; }
+    .role-cta .btn { width:auto; }
+    .foot-inner { grid-template-columns:1fr; gap:2rem; }
+    #urgent { padding:1.25rem; }
+    .urgent-inner { gap:.75rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/ff_header.svg" alt="Furry Freight">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="story.html">Our Story</a></li>
+    <li><a href="programs.html">Programs</a></li>
+    <li><a href="support.html">Support</a></li>
+    <li><a href="volunteer.html" class="active">Volunteer</a></li>
+    <li><a href="donate.html" class="nav-donate">Donate</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<nav class="nav-drawer" id="drawer">
+  <a href="index.html">Home</a>
+  <a href="story.html">Our Story</a>
+  <a href="programs.html">Programs</a>
+  <a href="support.html">Support</a>
+  <a href="volunteer.html">Volunteer</a>
+  <a href="donate.html" class="nav-donate">Donate</a>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="paw-bg">
+    <svg viewBox="0 0 100 100"><ellipse cx="50" cy="66" rx="24" ry="20"/><ellipse cx="24" cy="42" rx="9" ry="11"/><ellipse cx="40" cy="34" rx="9" ry="11"/><ellipse cx="60" cy="34" rx="9" ry="11"/><ellipse cx="76" cy="42" rx="9" ry="11"/></svg>
+    <svg viewBox="0 0 100 100"><ellipse cx="50" cy="66" rx="24" ry="20"/><ellipse cx="24" cy="42" rx="9" ry="11"/><ellipse cx="40" cy="34" rx="9" ry="11"/><ellipse cx="60" cy="34" rx="9" ry="11"/><ellipse cx="76" cy="42" rx="9" ry="11"/></svg>
+    <svg viewBox="0 0 100 100"><ellipse cx="50" cy="66" rx="24" ry="20"/><ellipse cx="24" cy="42" rx="9" ry="11"/><ellipse cx="40" cy="34" rx="9" ry="11"/><ellipse cx="60" cy="34" rx="9" ry="11"/><ellipse cx="76" cy="42" rx="9" ry="11"/></svg>
+    <svg viewBox="0 0 100 100"><ellipse cx="50" cy="66" rx="24" ry="20"/><ellipse cx="24" cy="42" rx="9" ry="11"/><ellipse cx="40" cy="34" rx="9" ry="11"/><ellipse cx="60" cy="34" rx="9" ry="11"/><ellipse cx="76" cy="42" rx="9" ry="11"/></svg>
+    <svg viewBox="0 0 100 100"><ellipse cx="50" cy="66" rx="24" ry="20"/><ellipse cx="24" cy="42" rx="9" ry="11"/><ellipse cx="40" cy="34" rx="9" ry="11"/><ellipse cx="60" cy="34" rx="9" ry="11"/><ellipse cx="76" cy="42" rx="9" ry="11"/></svg>
+  </div>
+  <span class="eyebrow">Get Involved</span>
+  <h1>Find your place<br>in the <em>pack.</em></h1>
+  <p>Furry Freight runs entirely on volunteers. No matter your skills or schedule, there is something here for you.</p>
+</div>
+
+<!-- ============================================================
+     URGENT NEEDS BANNER
+     ============================================================
+     Edit the text between the quotes below to update what's urgent.
+     To hide this banner entirely, add  style="display:none;"  to the
+     <section id="urgent"> tag below.
+     ============================================================ -->
+<section id="urgent">
+  <div class="urgent-inner">
+    <span class="urgent-badge">Urgent Need</span>
+    <p class="urgent-text">
+      <!-- EDIT THIS TEXT to reflect your current most urgent volunteer need -->
+      We urgently need <strong>drivers for our April transport</strong> from Southern Oregon to Bend. No experience needed — just a clean record and a love for animals.
+    </p>
+    <a href="#signup" class="btn btn-ghost" style="flex-shrink:0;">Sign Up Now</a>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section id="intro">
+  <div class="intro-inner">
+    <div class="intro-text reveal">
+      <span class="eyebrow">Why It Matters</span>
+      <h2>Without volunteers,<br>we simply <em>don't run.</em></h2>
+      <p>There is no paid staff at Furry Freight. Every animal saved, every transport completed, every surgery funded happens because people in our community decide to give their time.</p>
+      <p>Whether you drive across state lines or clean crates between trips, every role is essential. Browse what we need below and find where you fit.</p>
+    </div>
+    <div class="intro-stats reveal d1">
+      <div class="intro-stat"><span class="num">1,709+</span><span class="lbl">Animals saved since 2018</span></div>
+      <div class="intro-stat"><span class="num">100%</span><span class="lbl">Volunteer run — zero paid staff</span></div>
+      <div class="intro-stat"><span class="num">$70</span><span class="lbl">Sponsors one spay/neuter surgery</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ROLE CARDS -->
+<section id="roles">
+  <div class="roles-inner">
+    <div class="roles-header reveal">
+      <span class="eyebrow">Open Roles</span>
+      <h2>Where do you fit?</h2>
+      <p>Every role below is open year-round. Some need more vetting than others — we'll walk you through everything.</p>
+    </div>
+
+    <div class="role-cards">
+
+      <!-- ROLE 1: DRIVER -->
+      <div class="role-card driver reveal d1">
+        <div>
+          <span class="role-tag">Drive &amp; Transport</span>
+          <h3>Transport Driver</h3>
+          <p class="role-desc">Our most critical need. Drivers take multi-day road trips moving animals from overcrowded shelters to our Pacific Northwest partners. Trips typically run 1–2 days. You will be paired with another volunteer and provided with everything you need — fuel, lodging, and transport supplies are covered.</p>
+          <div class="role-reqs">
+            <span class="role-req">Must be 21+</span>
+            <span class="role-req">Clean driving record</span>
+            <span class="role-req">Comfortable with animals</span>
+            <span class="role-req">1–2 day availability</span>
+          </div>
+        </div>
+        <div class="role-cta">
+          <a href="#schedule" class="btn btn-orange">Schedule a Call</a>
+          <p class="driver-note">Drivers go through a brief vetting call before their first trip.</p>
+        </div>
+      </div>
+
+      <!-- ROLE 2: PRE/POST -->
+      <div class="role-card prepost reveal d2">
+        <div>
+          <span class="role-tag">Transport Pre &amp; Post</span>
+          <h3>Transport Prep &amp; Clean</h3>
+          <p class="role-desc">Everything that happens before and after the road trip. Crate building and van packing before departure, then crate cleaning and sanitization after animals arrive safely. Based locally in Bend. A great fit if you prefer hands-on tasks and want to support transports without the travel.</p>
+          <div class="role-reqs">
+            <span class="role-req">Local to Bend</span>
+            <span class="role-req">Physical tasks involved</span>
+            <span class="role-req">Flexible scheduling</span>
+          </div>
+        </div>
+        <div class="role-cta">
+          <a href="#signup" class="btn btn-teal">Sign Up</a>
+        </div>
+      </div>
+
+      <!-- ROLE 3: EVENTS -->
+      <div class="role-card events reveal d1">
+        <div>
+          <span class="role-tag">Events &amp; Fundraising</span>
+          <h3>Events Volunteer</h3>
+          <p class="role-desc">Help plan and run our annual fundraising events — Yard Sales, Holiday Treat Sales, Egg My House, and Bingo Nights. Tasks include setup, promotion, ticket sales, logistics, and cleanup. No prior event experience needed, just energy and enthusiasm. Great for one-time or recurring involvement.</p>
+          <div class="role-reqs">
+            <span class="role-req">Flexible availability</span>
+            <span class="role-req">Local to Bend preferred</span>
+            <span class="role-req">One-time OK</span>
+          </div>
+        </div>
+        <div class="role-cta">
+          <a href="#signup" class="btn btn-teal">Sign Up</a>
+        </div>
+      </div>
+
+      <!-- ROLE 4: SOCIAL MEDIA -->
+      <div class="role-card social reveal d2">
+        <div>
+          <span class="role-tag">Social Media</span>
+          <h3>Social Media Volunteer</h3>
+          <p class="role-desc">Help grow our presence on Instagram, Facebook, and TikTok. This includes writing captions, editing short videos, photographing animals, and sharing adoption posts. A great remote role — you can contribute from anywhere. If you love animals and spend time on social media, this one was made for you.</p>
+          <div class="role-reqs">
+            <span class="role-req">Remote friendly</span>
+            <span class="role-req">Instagram or TikTok experience</span>
+            <span class="role-req">Photography a plus</span>
+          </div>
+        </div>
+        <div class="role-cta">
+          <a href="#signup" class="btn btn-teal">Sign Up</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SIGN UP FORM -->
+<section id="signup">
+  <div class="signup-inner">
+    <div class="signup-text reveal">
+      <span class="eyebrow">Sign Up</span>
+      <h2>Tell us<br>you're <em>in.</em></h2>
+      <p>Fill out the form and we'll be in touch within a few days to match you with the right role and next steps. No commitment yet — just a conversation.</p>
+      <p>Prefer email? Reach us directly at <a href="mailto:info@furryfreight.org">info@furryfreight.org</a></p>
+    </div>
+
+    <div class="form-embed reveal d1">
+      <!--
+      ============================================================
+      GOOGLE FORM EMBED — SIGN UP FORM
+      ============================================================
+      HOW TO EMBED YOUR GOOGLE FORM:
+      1. Open your Google Form
+      2. Click Send → Embed tab (<>)
+      3. Copy the iframe code
+      4. DELETE the <div class="form-placeholder"> block below
+      5. PASTE your iframe here instead
+
+      Your iframe will look something like this:
+      <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true"
+              width="100%" height="600" frameborder="0">Loading…</iframe>
+
+      SUGGESTED FIELDS FOR YOUR FORM:
+      • Full name
+      • Email address
+      • Phone number
+      • Which role(s) interests you? (checkboxes: Driver, Pre/Post, Events, Social Media)
+      • Tell us a little about yourself / availability (paragraph)
+      ============================================================
+      -->
+      <div class="form-placeholder">
+        <span class="ph-label">↓ Paste Google Form embed here ↓</span>
+        <h4>General Interest Form</h4>
+        <p>Create a Google Form, copy the embed code, and replace this placeholder block with your iframe.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE A CALL (DRIVERS) -->
+<section id="schedule">
+  <div class="schedule-inner">
+    <div class="schedule-text reveal">
+      <span class="eyebrow">For Drivers</span>
+      <h2>Let's set up<br>a quick <em>call.</em></h2>
+      <p>Driving with us involves a short vetting conversation before your first trip — just to make sure it's a great fit for everyone. It's low key, takes about 15 minutes, and you can ask us anything.</p>
+      <div class="schedule-what">
+        <div class="schedule-what-item">
+          <div class="sw-dot"></div>
+          <p>We'll go over what a typical transport trip looks like</p>
+        </div>
+        <div class="schedule-what-item">
+          <div class="sw-dot"></div>
+          <p>Answer any questions you have about driving requirements</p>
+        </div>
+        <div class="schedule-what-item">
+          <div class="sw-dot"></div>
+          <p>Confirm your availability and get you added to the driver pool</p>
+        </div>
+        <div class="schedule-what-item">
+          <div class="sw-dot"></div>
+          <p>No commitment required — just a conversation</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="schedule-embed reveal d1">
+      <!--
+      ============================================================
+      SCHEDULING EMBED — DRIVER VETTING CALL
+      ============================================================
+      OPTION A — CALENDLY (recommended, free):
+      1. Sign up at calendly.com
+      2. Create a 15-min event called "Furry Freight Driver Chat"
+      3. Click Share → Add to website → Inline embed
+      4. Copy the iframe code
+      5. DELETE the <div class="schedule-placeholder"> block below
+      6. PASTE your Calendly iframe here
+
+      Your Calendly iframe will look like:
+      <iframe src="https://calendly.com/YOUR_USERNAME/driver-chat"
+              width="100%" height="500" frameborder="0"></iframe>
+
+      OPTION B — GOOGLE FORM with time slots:
+      1. Create a Google Form asking for name, email, phone,
+         and "What time slots work for you?" (checkboxes with
+         a few preset options like "Weekdays 10am–12pm" etc.)
+      2. Embed it the same way as the sign-up form above
+      ============================================================
+      -->
+      <div class="schedule-placeholder">
+        <span class="ph-label">↓ Paste Calendly or Google Form embed here ↓</span>
+        <h4>Driver Vetting Scheduler</h4>
+        <p>Embed Calendly or a Google Form with time slot options and replace this placeholder block.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="faq-inner">
+    <span class="eyebrow reveal">Common Questions</span>
+    <h2 class="reveal">What people ask us</h2>
+
+    <div class="faq-item reveal d1">
+      <h4>Do I need experience with animals?</h4>
+      <p>For most roles, no. A genuine love for animals and the ability to stay calm around them is enough. Drivers are paired with experienced volunteers on their first trip.</p>
+    </div>
+    <div class="faq-item reveal d2">
+      <h4>Are expenses covered for transport drivers?</h4>
+      <p>Yes — fuel, lodging, and transport costs are covered by Furry Freight. You should not be out of pocket for a trip.</p>
+    </div>
+    <div class="faq-item reveal d1">
+      <h4>How long are transport trips?</h4>
+      <p>Most trips run 1–2 days depending on the pickup location. We try to schedule in advance so you can plan around your life.</p>
+    </div>
+    <div class="faq-item reveal d2">
+      <h4>Can I volunteer remotely?</h4>
+      <p>Yes — social media, grant writing, and content creation can all be done from anywhere. Several of our most consistent contributors are fully remote.</p>
+    </div>
+    <div class="faq-item reveal d1">
+      <h4>I can only help occasionally. Is that okay?</h4>
+      <p>Absolutely. We welcome one-time event helpers just as much as regular monthly drivers. Any contribution moves us forward.</p>
+    </div>
+    <div class="faq-item reveal d2">
+      <h4>What if I'm not sure which role fits me?</h4>
+      <p>Fill out the sign-up form and tell us a bit about yourself. We'll figure it out together — there are no wrong answers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <div class="foot-logo"><img src="https://raw.githubusercontent.com/obrumwell/furryfreight/refs/heads/main/ff_header.svg" alt="Furry Freight"></div>
+      <p>Oregon-registered 501(c)(3) public charity.<br>
+         EIN: 82-4423390 &middot; PO Box 93, Bend OR 97709<br>
+         <a href="mailto:info@furryfreight.org">info@furryfreight.org</a></p>
+    </div>
+    <div class="foot-col">
+      <h5>Pages</h5>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="story.html">Our Story</a></li>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="support.html">Support Us</a></li>
+        <li><a href="donate.html">Donate</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Follow Us</h5>
+      <ul>
+        <li><a href="https://www.instagram.com/furry.freight/" target="_blank">Instagram</a></li>
+        <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
+        <li><a href="https://www.tiktok.com/@furryfreight" target="_blank">TikTok</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <p>Copyright &copy; 2018&ndash;2026 Furry Freight Shelter Transport. Saving shelter pets, one road trip at a time.</p>
+    <div class="foot-social">
+      <a href="https://facebook.com" target="_blank">FB</a>
+      <a href="https://www.instagram.com/furry.freight/" target="_blank">IG</a>
+      <a href="https://www.tiktok.com/@furryfreight" target="_blank">TT</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Hamburger
+  const burger = document.getElementById('burger');
+  const drawer = document.getElementById('drawer');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    drawer.classList.toggle('open');
+  });
+  drawer.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      burger.classList.remove('open');
+      drawer.classList.remove('open');
+    });
+  });
+
+  // Scroll reveal
+  const revs = document.querySelectorAll('.reveal');
+  function check() {
+    const vh = window.innerHeight;
+    revs.forEach(el => { if(el.getBoundingClientRect().top < vh - 60) el.classList.add('on'); });
+  }
+  window.addEventListener('scroll', check, {passive:true});
+  check();
+</script>
+</body>
+</html>
