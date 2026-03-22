@@ -9,15 +9,6 @@
 <body>
 
 <script>
-/* ============================================================
-   FURRY FREIGHT — EDITABLE CONTENT
-   ============================================================
-   HOW TO EDIT:
-   • Change any text between the quote marks " "
-   • To swap a photo, replace the URL with any image URL
-   • Only edit inside this CONFIG block
-   ============================================================ */
-
 const CONFIG = {
 
   /* ── SITE ── */
@@ -30,7 +21,7 @@ const CONFIG = {
   founded:  "Est. 2017",
   ein:      "82-4423390",
   address:  "PO Box 93, Bend OR 97709",
-  email:    "info@furryfreight.org",
+  email:    "info" + "@" + "furryfreight.org",
 
   /* ── STATS ── */
   stat1Number: "1,709+",
@@ -104,10 +95,7 @@ const CONFIG = {
   freeGivingDesc:     "Link your Fred Meyer Shopper's Card, use Oregon BottleDrop blue bags, and so much more!",
   freeGivingLink:     "support.html",
 
-  /* ── UPCOMING EVENTS PREVIEW ──────────────────────────────
-     Set showEvents to false to hide the section entirely.
-     Leave a link as "" to hide the "More info" button.
-  ──────────────────────────────────────────────────────── */
+  /* ── EVENTS ── */
   showEvents: true,
   events: [
     { month: "Apr", day: "12", title: "Spring Yard Sale",  meta: "10am – 3pm · Bend, OR",     link: "" },
@@ -120,8 +108,6 @@ const CONFIG = {
   volunteerBody:       "We run entirely on volunteers. There is a place for you here no matter your skills or schedule.",
   volunteerVideo:  "https://raw.githubusercontent.com/obrumwell/furryfreight/main/pack2.mp4",
   volunteerPhoto:  "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=900&q=80&fit=crop",
-
-  // 4 volunteer role cards
   volunteerRole1Title: "Drive and Transport",
   volunteerRole1Desc:  "Long-haul drivers for 1-2 day transport trips. Must be 21+ with a clean record.",
   volunteerRole2Title: "Transport Pre & Post",
@@ -158,7 +144,7 @@ const CONFIG = {
 };
 
 /* ============================================================
-   STOP HERE — everything below is generated from CONFIG.
+   STOP HERE
    ============================================================ */
 
 const css = `
@@ -177,7 +163,8 @@ const css = `
   html{scroll-behavior:smooth;}
   body{font-family:'Nunito',sans-serif;background:var(--white);color:var(--dark);overflow-x:hidden;}
 
-  nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;background:var(--dark);border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;padding:0 2.5rem;gap:2rem;}
+  /* ── NAV ── */
+  nav{position:fixed;top:0;left:0;right:0;z-index:200;height:56px;background:var(--dark);border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;padding:0 2.5rem;gap:2rem;}
   .nav-logo{text-decoration:none;margin-right:auto;display:flex;align-items:center;}
   .nav-logo img{height:34px;width:auto;display:block;}
   .nav-logo span{font-family:'Fredoka One',cursive;font-size:1.2rem;color:var(--teal-lt);}
@@ -187,6 +174,21 @@ const css = `
   .nav-donate{background:var(--orange)!important;color:#fff!important;border-radius:5px;}
   .nav-donate:hover{background:var(--teal)!important;}
 
+  /* hamburger button — hidden on desktop */
+  .nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;background:none;border:none;cursor:pointer;padding:4px;flex-shrink:0;}
+  .nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:transform .25s,opacity .25s;}
+  .nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .nav-burger.open span:nth-child(2){opacity:0;}
+  .nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  /* mobile drawer */
+  .nav-drawer{display:none;position:fixed;top:56px;left:0;right:0;background:var(--dark);border-bottom:1px solid rgba(255,255,255,.1);z-index:199;padding:1rem 1.5rem 1.5rem;flex-direction:column;gap:.25rem;}
+  .nav-drawer.open{display:flex;}
+  .nav-drawer a{font-size:1rem;font-weight:800;color:rgba(255,255,255,.65);text-decoration:none;padding:.65rem .8rem;border-radius:6px;transition:color .2s,background .2s;}
+  .nav-drawer a:hover{color:#fff;background:rgba(255,255,255,.08);}
+  .nav-drawer .nav-donate{background:var(--orange)!important;color:#fff!important;margin-top:.5rem;text-align:center;}
+
+  /* ── BUTTONS ── */
   .btn{display:inline-block;font-family:'Nunito',sans-serif;font-weight:800;font-size:.88rem;text-decoration:none;padding:.62rem 1.45rem;border-radius:5px;border:none;cursor:pointer;transition:transform .18s,box-shadow .18s,background .18s;}
   .btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.13);}
   .btn-orange{background:var(--orange);color:#fff;} .btn-orange:hover{background:var(--teal-dk);}
@@ -200,6 +202,7 @@ const css = `
   .reveal.on{opacity:1;transform:none;}
   .d1{transition-delay:.07s;} .d2{transition-delay:.14s;} .d3{transition-delay:.21s;}
 
+  /* ── HERO ── */
   #home{height:100vh;min-height:600px;padding-top:56px;position:relative;overflow:hidden;display:flex;align-items:flex-end;}
   .hero-img{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat;}
   .hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(28,46,42,.95) 0%,rgba(28,46,42,.4) 55%,transparent 100%);}
@@ -213,6 +216,7 @@ const css = `
   .hstat .n{font-family:'Fredoka One',cursive;font-size:1.9rem;color:var(--teal-lt);display:block;line-height:1;}
   .hstat .l{font-size:.68rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.4);display:block;margin-top:.2rem;}
 
+  /* ── MOSAIC ── */
   .mosaic{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;grid-template-rows:260px 220px 280px;gap:10px;padding:14px;background:var(--cream);}
   .mosaic-item{overflow:hidden;border-radius:14px;}
   .mosaic-item img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;transition:transform .45s;}
@@ -230,6 +234,7 @@ const css = `
   .eyebrow{font-size:.68rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:.7rem;display:block;}
   .section-title{font-family:'Fredoka One',cursive;font-size:clamp(2rem,3vw,2.8rem);line-height:1.1;color:var(--dark);margin-bottom:1rem;}
 
+  /* ── STORY ── */
   #story{background:var(--cream);}
   .story-inner{max-width:1060px;margin:0 auto;padding:5.5rem 2rem;}
   .story-top{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-bottom:4rem;}
@@ -240,7 +245,6 @@ const css = `
   .story-text p{font-size:1rem;line-height:1.85;color:var(--muted);margin-bottom:1rem;}
   .story-text .origin{font-size:.9rem;font-style:italic;color:var(--muted);opacity:.85;line-height:1.85;margin-bottom:1.5rem;padding-left:1rem;border-left:3px solid var(--teal-lt);}
   .story-btns{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.8rem;}
-
   .principles{margin-top:1rem;}
   .principles-label{font-size:.68rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:1.5rem;display:block;}
   .principles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
@@ -249,6 +253,7 @@ const css = `
   .principle h4{font-family:'Fredoka One',cursive;font-size:1.1rem;color:var(--dark);margin-bottom:.4rem;}
   .principle p{font-size:.87rem;line-height:1.72;color:var(--muted);}
 
+  /* ── PROGRAMS ── */
   #programs{background:var(--white);}
   .programs-inner{max-width:1060px;margin:0 auto;padding:5.5rem 2rem;}
   .section-head{text-align:center;margin-bottom:3.5rem;}
@@ -264,6 +269,7 @@ const css = `
   .prog-title{font-family:'Fredoka One',cursive;font-size:2rem;color:#fff;margin-bottom:.5rem;line-height:1.1;}
   .prog-desc{font-size:.88rem;color:rgba(255,255,255,.65);line-height:1.6;margin-bottom:1.2rem;}
 
+  /* ── IMPACT ── */
   #impact{background:var(--teal);}
   .impact-strip{max-width:1060px;margin:0 auto;padding:3rem 2rem;display:flex;align-items:center;justify-content:space-around;gap:2rem;flex-wrap:wrap;}
   .impact-num{text-align:center;}
@@ -273,6 +279,7 @@ const css = `
   .impact-cta h3{font-family:'Fredoka One',cursive;font-size:1.6rem;color:#fff;margin-bottom:.5rem;}
   .impact-cta p{font-size:.88rem;color:rgba(255,255,255,.7);margin-bottom:1rem;}
 
+  /* ── SUPPORT ── */
   #support{background:var(--sand);}
   .support-inner{max-width:1060px;margin:0 auto;padding:5.5rem 2rem;}
   .support-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3rem;}
@@ -287,13 +294,13 @@ const css = `
   .sup-card-body h3{font-family:'Fredoka One',cursive;font-size:1.3rem;color:var(--dark);margin-bottom:.4rem;}
   .sup-card-body p{font-size:.87rem;line-height:1.72;color:var(--muted);flex:1;margin-bottom:1.2rem;}
 
-  /* EVENTS PREVIEW */
+  /* ── EVENTS PREVIEW ── */
   #events-preview{background:var(--sand);}
   .events-preview-inner{max-width:1060px;margin:0 auto;padding:5rem 2rem;}
-  .events-preview-inner .ep-head{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem;}
-  .events-preview-inner .ep-head h2{font-family:'Fredoka One',cursive;font-size:clamp(1.8rem,3vw,2.4rem);color:var(--dark);}
-  .events-preview-inner .ep-head a{font-size:.85rem;font-weight:800;color:var(--teal);text-decoration:none;transition:color .2s;}
-  .events-preview-inner .ep-head a:hover{color:var(--teal-dk);}
+  .ep-head{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem;}
+  .ep-head h2{font-family:'Fredoka One',cursive;font-size:clamp(1.8rem,3vw,2.4rem);color:var(--dark);}
+  .ep-head a{font-size:.85rem;font-weight:800;color:var(--teal);text-decoration:none;transition:color .2s;}
+  .ep-head a:hover{color:var(--teal-dk);}
   .ep-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
   .ep-card{background:white;border-radius:16px;padding:1.6rem;border:1px solid rgba(42,127,111,.1);display:flex;flex-direction:column;gap:.9rem;transition:transform .25s,box-shadow .25s;}
   .ep-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(28,46,42,.1);}
@@ -305,7 +312,7 @@ const css = `
   .ep-card .ep-link{font-size:.82rem;font-weight:800;color:var(--orange);text-decoration:none;margin-top:auto;padding-top:.5rem;transition:color .2s;}
   .ep-card .ep-link:hover{color:var(--teal-dk);}
 
-  /* VOLUNTEER — 4 role cards in a 2x2 grid */
+  /* ── VOLUNTEER ── */
   #volunteer{background:var(--dark);color:#fff;}
   .vol-inner{max-width:1060px;margin:0 auto;padding:5.5rem 2rem;}
   .vol-header{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-bottom:3.5rem;}
@@ -321,6 +328,7 @@ const css = `
   .vol-role h4{font-family:'Fredoka One',cursive;font-size:1.1rem;color:#fff;margin-bottom:.3rem;}
   .vol-role p{font-size:.83rem;line-height:1.65;color:rgba(255,255,255,.5);}
 
+  /* ── SOCIAL ── */
   #social{background:var(--teal-lt);}
   .social-inner{max-width:1060px;margin:0 auto;padding:5rem 2rem;text-align:center;}
   .social-inner .eyebrow{display:block;margin-bottom:.7rem;}
@@ -338,6 +346,7 @@ const css = `
   .social-card .sc-handle{font-size:.82rem;font-weight:800;color:var(--muted);letter-spacing:.02em;}
   .social-card .sc-cta{font-size:.78rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-top:.25rem;}
 
+  /* ── NEWSLETTER ── */
   #newsletter{background:var(--orange);}
   .nl-inner{max-width:620px;margin:0 auto;padding:4.5rem 2rem;text-align:center;}
   .nl-inner .eyebrow{color:rgba(255,255,255,.7);}
@@ -351,6 +360,7 @@ const css = `
   .nl-form button:hover{background:var(--teal-dk);}
   #nl-ok{display:none;color:#fff;font-weight:800;margin-top:1rem;}
 
+  /* ── SUPPORTERS ── */
   .supporters{background:var(--white);border-top:1px solid var(--sand);}
   .sup-row{max-width:1060px;margin:0 auto;padding:2rem;display:flex;align-items:center;gap:2.5rem;flex-wrap:wrap;}
   .sup-label{font-size:.65rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
@@ -358,6 +368,7 @@ const css = `
   .sup-logos img{height:30px;width:auto;object-fit:contain;opacity:.55;filter:grayscale(1);transition:opacity .2s,filter .2s;}
   .sup-logos img:hover{opacity:1;filter:none;}
 
+  /* ── FOOTER ── */
   footer{background:var(--dark);padding:3rem 2rem 2rem;}
   .foot-inner{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:1.5rem;}
   .foot-logo img{height:30px;width:auto;display:block;margin-bottom:.75rem;opacity:.8;filter:brightness(0) invert(1);}
@@ -375,19 +386,46 @@ const css = `
   .foot-social a{width:32px;height:32px;border-radius:6px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:900;color:rgba(255,255,255,.45);text-decoration:none;transition:background .2s,color .2s;}
   .foot-social a:hover{background:var(--teal);color:#fff;}
 
+  /* ── MOBILE ── */
   @media(max-width:860px){
-    .story-top,.vol-header,.foot-inner{grid-template-columns:1fr;gap:2.5rem;}
-    .prog-grid,.support-cards,.social-cards,.principles-grid,.vol-roles,.ep-cards{grid-template-columns:1fr;}
-    .mosaic{grid-template-columns:1fr 1fr;grid-template-rows:auto;gap:8px;padding:10px;}
-    .mosaic-item{border-radius:10px;height:200px;}
-    .mosaic-item:nth-child(1){grid-column:1/3;grid-row:auto;height:240px;}
-    .mosaic-item:nth-child(4){grid-column:auto;grid-row:auto;}
-    .mosaic-item:nth-child(8){grid-column:auto;grid-row:auto;}
-    .mosaic-item:nth-child(9){grid-column:auto;grid-row:auto;}
-    .hero-content{padding:0 2rem 4rem;}
+    /* show hamburger, hide desktop links */
+    .nav-burger{display:flex;}
+    .nav-links{display:none;}
     nav{padding:0 1.25rem;}
+
+    .hero-content{padding:0 1.5rem 3.5rem;}
+    .hero-stats{gap:1.5rem;}
+
+    /* mobile mosaic: just 2 photos side by side */
+    .mosaic{
+      grid-template-columns:1fr 1fr;
+      grid-template-rows:200px;
+      gap:8px;padding:10px;
+    }
+    .mosaic-item{border-radius:10px;height:200px;}
+    /* show only first 2 items on mobile */
+    .mosaic-item:nth-child(n+3){display:none;}
+    .mosaic-item:nth-child(1){grid-column:1;grid-row:1;}
+    .mosaic-item:nth-child(2){grid-column:2;grid-row:1;}
+
+    .story-top,.vol-header,.foot-inner{grid-template-columns:1fr;gap:2rem;}
+    .prog-grid,.support-cards,.social-cards,.principles-grid,.vol-roles,.ep-cards{grid-template-columns:1fr;}
     .impact-div{display:none;}
     .impact-strip{justify-content:center;gap:1.5rem;}
+
+    /* volunteer video on mobile — show as poster fallback if video fails */
+    .vol-header video{height:240px;}
+
+    #hours,#programs,#support,#story,#volunteer,#events-preview,#social,#impact{padding:3.5rem 1.25rem;}
+    .story-inner,.programs-inner,.support-inner,.vol-inner,.events-preview-inner,.nl-inner{padding:3.5rem 1.25rem;}
+    footer{padding:2.5rem 1.25rem 2rem;}
+    .foot-inner{gap:2rem;}
+  }
+
+  @media(max-width:480px){
+    .hero-stats{flex-wrap:wrap;gap:1rem;}
+    .nl-form{flex-direction:column;}
+    .nl-form button{width:100%;}
   }
 `;
 
@@ -401,7 +439,7 @@ const mosaicPhotos = [
 ].filter(Boolean);
 
 const mosaicHTML = mosaicPhotos.map((url, i) =>
-  `<div class="mosaic-item"><img src="${url}" alt="Furry Freight animal ${i+1}" loading="lazy"></div>`
+  `<div class="mosaic-item"><img src="${url}" alt="Furry Freight animal ${i+1}" loading="eager" decoding="async"></div>`
 ).join('');
 
 const eventsHTML = CONFIG.showEvents && CONFIG.events.length ? `
@@ -445,6 +483,18 @@ document.body.innerHTML = `
     <li><a href="#volunteer">Volunteer</a></li>
     <li><a href="donate.html" class="nav-donate">Donate</a></li>
   </ul>
+  <button class="nav-burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<nav class="nav-drawer" id="drawer">
+  <a href="#home" class="drawer-link">Home</a>
+  <a href="#story" class="drawer-link">Our Story</a>
+  <a href="#programs" class="drawer-link">Programs</a>
+  <a href="#support" class="drawer-link">Support</a>
+  <a href="#volunteer" class="drawer-link">Volunteer</a>
+  <a href="donate.html" class="nav-donate">Donate</a>
 </nav>
 
 <section id="home">
@@ -471,7 +521,7 @@ document.body.innerHTML = `
   <div class="story-inner">
     <div class="story-top">
       <div class="story-img reveal">
-        <img src="${CONFIG.storyPhoto}" alt="Dogs ready for a new home">
+        <img src="${CONFIG.storyPhoto}" alt="Dogs ready for a new home" loading="lazy">
         <div class="story-badge"><strong>${CONFIG.storyBadgeNumber}</strong>${CONFIG.storyBadgeLabel}</div>
       </div>
       <div class="story-text reveal d1">
@@ -592,11 +642,12 @@ document.body.innerHTML = `
       </div>
       <div class="reveal d1">
         ${CONFIG.volunteerVideo
-          ? `<video id="vol-video" muted loop playsinline preload="metadata" style="width:100%;border-radius:14px;display:block;height:340px;object-fit:cover;background:var(--dark);">
+          ? `<video id="vol-video" muted loop playsinline autoplay preload="auto" style="width:100%;border-radius:14px;display:block;height:340px;object-fit:cover;background:var(--dark);" poster="${CONFIG.volunteerPhoto}">
               <source src="${CONFIG.volunteerVideo}" type="video/mp4">
               <source src="${CONFIG.volunteerVideo}" type="video/quicktime">
+              <img src="${CONFIG.volunteerPhoto}" alt="Furry Freight volunteers" style="width:100%;height:340px;object-fit:cover;border-radius:14px;">
             </video>`
-          : `<img src="${CONFIG.volunteerPhoto}" alt="Furry Freight volunteers" loading="lazy">`}
+          : `<img src="${CONFIG.volunteerPhoto}" alt="Furry Freight volunteers" loading="lazy" style="width:100%;border-radius:14px;display:block;height:340px;object-fit:cover;">`}
       </div>
     </div>
     <div class="vol-roles">
@@ -702,7 +753,21 @@ ${eventsHTML}
 </footer>
 `;
 
-// SCROLL SPY NAV
+/* ── HAMBURGER ── */
+const burger = document.getElementById('burger');
+const drawer = document.getElementById('drawer');
+burger.addEventListener('click', () => {
+  burger.classList.toggle('open');
+  drawer.classList.toggle('open');
+});
+drawer.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    burger.classList.remove('open');
+    drawer.classList.remove('open');
+  });
+});
+
+/* ── SCROLL SPY NAV ── */
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
 function updateNav() {
@@ -712,25 +777,36 @@ function updateNav() {
   navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
 }
 
+/* ── REVEAL ON SCROLL ── */
 const revs = document.querySelectorAll('.reveal');
 function checkReveal() {
   const vh = window.innerHeight;
   revs.forEach(el => { if (el.getBoundingClientRect().top < vh - 50) el.classList.add('on'); });
 }
 
+/* ── VIDEO — play when in view, fallback gracefully ── */
 const volVideo = document.getElementById('vol-video');
 let videoPlaying = false;
 function checkVideo() {
   if (!volVideo) return;
   const rect = volVideo.getBoundingClientRect();
-  const inView = rect.top < window.innerHeight * 0.85 && rect.bottom > 0;
-  if (inView && !videoPlaying) { volVideo.play().catch(() => {}); videoPlaying = true; }
-  else if (!inView && videoPlaying) { volVideo.pause(); videoPlaying = false; }
+  const inView = rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
+  if (inView && !videoPlaying) {
+    const p = volVideo.play();
+    if (p !== undefined) p.catch(() => { videoPlaying = false; });
+    videoPlaying = true;
+  } else if (!inView && videoPlaying) {
+    volVideo.pause();
+    videoPlaying = false;
+  }
 }
 
 window.addEventListener('scroll', () => { updateNav(); checkReveal(); checkVideo(); }, { passive: true });
-updateNav(); checkReveal(); checkVideo();
+updateNav(); checkReveal();
+/* small delay so video element is fully in DOM before first check */
+setTimeout(checkVideo, 300);
 
+/* ── NEWSLETTER ── */
 function handleNL(e) {
   e.preventDefault();
   e.target.style.display = 'none';
